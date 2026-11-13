@@ -474,7 +474,11 @@ const p=((t*.22)%1.7)-.35,sg=tx.createLinearGradient(box.x+box.w*(p-.18),box.y,b
 sg.addColorStop(0,'rgba(255,255,255,0)');sg.addColorStop(.5,dark?'rgba(255,255,255,.75)':'rgba(255,255,255,.45)');sg.addColorStop(1,'rgba(255,255,255,0)');
 tx.globalCompositeOperation='source-atop';tx.fillStyle=sg;tx.fillRect(0,0,LW,LH);
 lx.save();lx.shadowColor=dark?'rgba(255,255,255,.35)':'rgba(0,0,0,.28)';lx.shadowBlur=(dark?30:22)*dpr;lx.shadowOffsetY=dark?0:8*dpr;lx.drawImage(tmp,0,0);lx.restore()}
-img.onload=()=>{ready=true;rebuild();layout()};img.src='logo-clean.png';
+
+img.onload=()=>{ready=true;rebuild();layout()};
+img.onerror=()=>{ready=true;layout()};
+img.src='logo-clean.png';
+
 addEventListener('resize',rs);rs();
 
 const M={x:0,y:0,sx:0,sy:0,vx:0,vy:0};let run=true,t0=0,heroVis=true;
@@ -832,6 +836,14 @@ gsap.to(o,{v:100,duration:1.2,ease:'power2.inOut',onUpdate:()=>{if(bar)bar.style
   gsap.from('#pegasus',{opacity:0,duration:1.5,delay:.2,ease:'power3.out'});
 }});
 setTimeout(()=>{const pre=$('#pre');if(pre)pre.remove();},3000);
+
+// Гарантированная страховка прелоадера (на случай зависания картинок)
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const pre = document.getElementById('pre');
+    if (pre) { pre.style.opacity = '0'; setTimeout(() => pre.remove(), 500); }
+  }, 1500);
+});
 })();
 </script>
 </body>
