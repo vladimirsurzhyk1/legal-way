@@ -528,7 +528,7 @@ addEventListener('keydown',e=>{if(e.key==='Escape')mt(false)});
 const API_URL='https://script.google.com/macros/s/AKfycbyJ3MVw0wDUacoKeWYYY3v44RFStvtX1b60qktOZCXT4G3cNqnnJWc-aU91kHZxkxp_/exec';
 const KR='lw_role',KP='lw_phone',KT='lw_token',KC='lw_cache',mem={};
 const sess={get(k){try{return sessionStorage.getItem(k)}catch(e){return mem['s'+k]||null}},set(k,v){try{sessionStorage.setItem(k,v)}catch(e){mem['s'+k]=v}},del(k){try{sessionStorage.removeItem(k)}catch(e){delete mem['s'+k]}}};
-const store={get(k){try{return localStorage.getItem(k)}catch(e){return mem[k]||null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}},del(k){try{localStorage.removeItem(k)}catch(e){ته delete mem[k]}}};
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return mem[k]||null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}},del(k){try{localStorage.removeItem(k)}catch(e){delete mem[k]}}};
 const df=new Intl.DateTimeFormat('uk-UA',{timeZone:'Europe/Kyiv',day:'2-digit',month:'2-digit',year:'numeric'});
 let CASES=[],CLIENTS=[],DATA=null,role=null,reqId=0,lastLoad=0,curCase=0;
 const advQ=$('#adv-q'),advBody=$('#adv-body');
