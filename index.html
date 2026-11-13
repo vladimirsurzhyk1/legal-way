@@ -123,7 +123,6 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
 #adv-clients-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;align-items:stretch}
 #adv-clients-grid .glass{display:flex;flex-direction:column;justify-content:space-between;height:100%}
 
-/* Жесткое переключение: на мобильных скрываем десктопную таблицу, показываем карточки */
 .table-responsive-wrapper { display: block; }
 #adv-mobile-cards { display: none; }
 
@@ -347,10 +346,8 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
         <input id="adv-q" type="search" placeholder="Пошук за номером, судом, стороною…" aria-label="Пошук справ" style="max-width:340px;">
       </div>
       
-      <!-- Десктопная таблица (скрывается на мобильных) -->
       <div class="glass rv table-responsive-wrapper" style="overflow-x:auto"><table class="tb"><thead><tr><th>№ справи</th><th>Суд</th><th>Клієнт / предмет</th><th>Наступна дія</th><th>Дата</th><th>Статус</th><th>Дія (Клопотання)</th></tr></thead><tbody id="adv-body"></tbody></table></div>
       
-      <!-- Мобильные карточки для адвоката (отображаются на телефонах) -->
       <div id="adv-mobile-cards"></div>
     </div>
     
@@ -531,7 +528,7 @@ addEventListener('keydown',e=>{if(e.key==='Escape')mt(false)});
 const API_URL='https://script.google.com/macros/s/AKfycbyJ3MVw0wDUacoKeWYYY3v44RFStvtX1b60qktOZCXT4G3cNqnnJWc-aU91kHZxkxp_/exec';
 const KR='lw_role',KP='lw_phone',KT='lw_token',KC='lw_cache',mem={};
 const sess={get(k){try{return sessionStorage.getItem(k)}catch(e){return mem['s'+k]||null}},set(k,v){try{sessionStorage.setItem(k,v)}catch(e){mem['s'+k]=v}},del(k){try{sessionStorage.removeItem(k)}catch(e){delete mem['s'+k]}}};
-const store={get(k){try{return localStorage.getItem(k)}catch(e){return mem[k]||null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}},del(k){try{localStorage.removeItem(k)}catch(e){delete mem[k]}}};
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return mem[k]||null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}},del(k){try{localStorage.removeItem(k)}catch(e){ته delete mem[k]}}};
 const df=new Intl.DateTimeFormat('uk-UA',{timeZone:'Europe/Kyiv',day:'2-digit',month:'2-digit',year:'numeric'});
 let CASES=[],CLIENTS=[],DATA=null,role=null,reqId=0,lastLoad=0,curCase=0;
 const advQ=$('#adv-q'),advBody=$('#adv-body');
@@ -571,7 +568,6 @@ function renderAdv(){
   const q=(advQ.value||'').trim().toLowerCase();
   const rows=CASES.filter(c=>[c.num,c.court,c.client,c.subject].join(' ').toLowerCase().includes(q));
   
-  // 1. Отрисовка десктопной таблицы
   advBody.innerHTML=rows.length?rows.map(c=>{const u=c.d!=null&&c.d<=3;
   return `<tr${c.active?'':' style="opacity:.55"'}>
     <td class="font-mono text-xs whitespace-nowrap">
@@ -586,7 +582,6 @@ function renderAdv(){
     <td><button class="btn-o hv" style="font-size:10px;padding:4px 10px" onclick="sendMotion('${esc(c.num)}')">Створити клопотання</button></td>
   </tr>`}).join(''):'<tr><td colspan="7" class="faint" style="text-align:center;padding:40px">Нічого не знайдено</td></tr>';
 
-  // 2. Отрисовка мобильных карточек взамен таблицы для телефонов и планшетов
   const mobContainer=$('#adv-mobile-cards');
   if(mobContainer){
     mobContainer.innerHTML=rows.length?rows.map(c=>{const u=c.d!=null&&c.d<=3;
@@ -828,7 +823,7 @@ document.addEventListener('click',e=>{if(e.target.closest('[data-logout]'))logou
 
 $('#f').addEventListener('submit',e=>{e.preventDefault();$('#fbox').innerHTML='<div class="text-center py-16 space-y-4"><div class="serif text-2xl acc">Заявку отримано</div><p class="text-sm mut">Керуючий адвокат зв’яжеться з вами найближчим часом.</p></div>'});
 
-const bar=$('#bar i'),pc=$('#pct'],o={v:0};
+const bar=$('#bar i'),pc=$('#pct'),o={v:0};
 gsap.to(o,{v:100,duration:1.2,ease:'power2.inOut',onUpdate:()=>{if(bar)bar.style.width=o.v+'%';if(pc)pc.textContent=Math.round(o.v)+'%';},onComplete:()=>{
   gsap.to('#pre',{opacity:0,duration:.5,onComplete:()=>$('#pre').remove()});
   gsap.from('#h1 span',{yPercent:60,opacity:0,duration:1.2,stagger:.15,ease:'power4.out'});
@@ -837,12 +832,12 @@ gsap.to(o,{v:100,duration:1.2,ease:'power2.inOut',onUpdate:()=>{if(bar)bar.style
 }});
 setTimeout(()=>{const pre=$('#pre');if(pre)pre.remove();},3000);
 
-// Гарантированная страховка прелоадера (на случай зависания картинок)
+// Защита от зависания прелоадера
 window.addEventListener('load', () => {
   setTimeout(() => {
     const pre = document.getElementById('pre');
     if (pre) { pre.style.opacity = '0'; setTimeout(() => pre.remove(), 500); }
-  }, 1500);
+  }, 1200);
 });
 })();
 </script>
