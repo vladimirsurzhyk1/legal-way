@@ -427,6 +427,14 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
 </div>
 
 <script>
+window.copyCaseData = function(txt) {
+  navigator.clipboard.writeText(txt).then(function() {
+    alert('Всі дані справи скопійовано!');
+  }, function() {
+    alert('Помилка копіювання');
+  });
+};
+
 (function(){
 const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
@@ -603,10 +611,11 @@ function renderAdv(){
   const rows=CASES.filter(c=>[c.num,c.court,c.client,c.subject].join(' ').toLowerCase().includes(q));
   
   advBody.innerHTML=rows.length?rows.map(c=>{const u=c.d!=null&&c.d<=3;
+  const copyText = (c.num||c.id) + ' | ' + c.court + ' | ' + c.client + ' | ' + c.subject;
   return `<tr${c.active?'':' style="opacity:.55"'}>
     <td class="font-mono text-xs whitespace-nowrap">
       <span style="color:var(--acc);font-weight:600">${esc(c.num||c.id)}</span>
-      <button type="button" onclick="navigator.clipboard.writeText('${esc(c.num||c.id)} | ${esc(c.court)} | ${esc(c.client)} | ${esc(c.subject)}');alert('Дані справи скопійовано!');" style="background:none;border:0;cursor:pointer;margin-left:6px;font-size:12px;" title="Копіювати дані">📋</button>
+      <button type="button" onclick="copyCaseData('${esc(copyText)}')" style="background:none;border:0;cursor:pointer;margin-left:6px;font-size:12px;" title="Копіювати дані">📋</button>
     </td>
     <td>${esc(c.court)}</td>
     <td class="mut">${esc(c.client)}</td>
@@ -619,10 +628,11 @@ function renderAdv(){
   const mobContainer=$('#adv-mobile-cards');
   if(mobContainer){
     mobContainer.innerHTML=rows.length?rows.map(c=>{const u=c.d!=null&&c.d<=3;
+    const copyText = (c.num||c.id) + ' | ' + c.court + ' | ' + c.client + ' | ' + c.subject;
     return `<div class="glass p-5 space-y-3"${c.active?'':' style="opacity:.55"'}>
       <div class="flex justify-between items-start">
         <span class="font-mono text-xs acc font-bold">${esc(c.num||c.id)}</span>
-        <button type="button" onclick="navigator.clipboard.writeText('${esc(c.num||c.id)} | ${esc(c.court)} | ${esc(c.client)} | ${esc(c.subject)}');alert('Дані скопійовано!');" class="btn-o" style="font-size:10px;padding:2px 8px;">📋 Копіювати</button>
+        <button type="button" onclick="copyCaseData('${esc(copyText)}')" class="btn-o" style="font-size:10px;padding:2px 8px;">📋 Копіювати</button>
       </div>
       <div>
         <h4 class="font-semibold text-base">${esc(c.client)}</h4>
