@@ -151,17 +151,17 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
   </nav>
   <div class="flex items-center gap-3 flex-wrap">
     <div class="lbl hidden md:flex items-center gap-2 acc" style="font-size:10px"><span class="dot"></span><span class="hidden md:inline" data-i18n="sys_active">Система активна</span><span id="clk" class="faint tabular-nums">--:--:--</span></div>
-    <button class="tg hv" id="tg" aria-label="Змінити тему"><i></i></button>
-    <button class="btn-o hv" id="lang-toggle" type="button" aria-label="Змінити мову" style="font-size:10px;padding:0 10px;min-width:38px;">EN</button>
-    <button class="bgr lg:hidden" id="bgr" aria-label="Меню" aria-expanded="false"><svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 1h18M0 11h18"/></svg></button>
-    <button class="btn-o hv" id="lg-open" type="button" aria-haspopup="dialog" title="Вхід в кабінет">
+    <button class="tg hv" id="tg" data-i18n-aria="aria_theme" aria-label="Змінити тему"><i></i></button>
+    <button class="btn-o hv lang-toggle" id="lang-toggle" type="button" data-i18n-aria="aria_lang" aria-label="Змінити мову" style="font-size:10px;padding:0 10px;min-width:38px;">EN</button>
+    <button class="bgr lg:hidden" id="bgr" data-i18n-aria="aria_menu" aria-label="Меню" aria-expanded="false"><svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 1h18M0 11h18"/></svg></button>
+    <button class="btn-o hv" id="lg-open" type="button" aria-haspopup="dialog" data-i18n-title="login_btn" title="Вхід в кабінет">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
       <span class="hidden sm:inline" data-i18n="login_btn">Вхід в кабінет</span>
     </button>
   </div>
 </header>
 
-<nav id="mn" aria-label="Меню">
+<nav id="mn" data-i18n-aria="aria_menu" aria-label="Меню">
   <a href="#practices" data-i18n="nav_practices">Практики</a><a href="#process" data-i18n="nav_process">Процес</a><a href="#platform" data-i18n="nav_platform">Платформа</a><a href="#lawyer" data-i18n="nav_lawyer">Керівництво</a><a href="#faq">FAQ</a><a href="#contact" data-i18n="nav_contact">Контакти</a>
 </nav>
 
@@ -184,8 +184,8 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
 </section>
 
 <div class="mq lbl faint"><div>
-  <span>Надрокористування</span><span>•</span><span>M&amp;A</span><span>•</span><span>Господарські спори</span><span>•</span><span>Vendor Due Diligence</span><span>•</span><span>Міжнародні інвестиції</span><span>•</span><span>Спецдозволи</span><span>•</span><span>Податкові спори</span><span>•</span>
-  <span>Надрокористування</span><span>•</span><span>M&amp;A</span><span>•</span><span>Господарські спори</span><span>•</span><span>Vendor Due Diligence</span><span>•</span><span>Міжнародні інвестиції</span><span>•</span><span>Спецдозволи</span><span>•</span><span>Податкові спори</span><span>•</span>
+  <span data-i18n="mq1">Надрокористування</span><span>•</span><span>M&amp;A</span><span>•</span><span data-i18n="mq2">Господарські спори</span><span>•</span><span>Vendor Due Diligence</span><span>•</span><span data-i18n="mq3">Міжнародні інвестиції</span><span>•</span><span data-i18n="mq4">Спецдозволи</span><span>•</span><span data-i18n="mq5">Податкові спори</span><span>•</span>
+  <span data-i18n="mq1">Надрокористування</span><span>•</span><span>M&amp;A</span><span>•</span><span data-i18n="mq2">Господарські спори</span><span>•</span><span>Vendor Due Diligence</span><span>•</span><span data-i18n="mq3">Міжнародні інвестиції</span><span>•</span><span data-i18n="mq4">Спецдозволи</span><span>•</span><span data-i18n="mq5">Податкові спори</span><span>•</span>
 </div></div>
 
 <section id="practices" class="min-h-screen flex flex-col justify-center wrap py-32">
@@ -247,7 +247,7 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
   <div class="space-y-14">
     <div class="fu max-w-2xl space-y-4"><span class="lbl sky" data-i18n="plat_lbl">[ 03 / LegalTech платформа ]</span>
       <h2 class="serif text-4xl md:text-5xl font-medium leading-tight" data-i18n="plat_title">Ваші справи — у реальному часі</h2>
-      <p class="text-sm leading-relaxed mut" data-i18n="plat_desc">Ми працюємо в цифровому середовищі: статуси справ, документи та терміни зібрані в одном місці, а важливі події надходять вам у месенджер.</p></div>
+      <p class="text-sm leading-relaxed mut" data-i18n="plat_desc">Ми працюємо в цифровому середовищі: статуси справ, документи та терміни зібрані в одному місці, а важливі події надходять вам у месенджер.</p></div>
     <div class="grid md:grid-cols-[1.3fr_1fr] gap-6">
       <div class="glass hv p-6 md:p-8 fu space-y-6">
         <div class="flex justify-between items-center"><span class="lbl" style="font-size:10px" data-i18n="client_cab">Кабінет клієнта</span><span class="chip acc" data-i18n="demo_ui">Демо-інтерфейс</span></div>
@@ -269,7 +269,7 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
 <section id="lawyer" class="min-h-screen flex flex-col justify-center wrap py-32">
   <div class="glass hv p-8 md:p-14 space-y-10 fu">
     <div><span class="lbl acc" data-i18n="lawyer_lbl">[ 04 / Керівництво компанії ]</span>
-      <h2 class="serif text-3xl md:text-4xl font-medium mt-4">Липко Олег Юрійович</h2>
+      <h2 class="serif text-3xl md:text-4xl font-medium mt-4" data-i18n="lawyer_name">Липко Олег Юрійович</h2>
       <p class="text-sm faint mt-2" data-i18n="lawyer_pos">Керуючий адвокат • Директор ТОВ «МЮК «ЛІГАЛ ВЕЙ»</p></div>
     <p class="text-sm leading-loose mut" data-i18n="lawyer_bio">Свідоцтво про право на заняття адвокатською діяльністю: <strong style="color:var(--fg)">серія ЗР №21/2301</strong>.<br>Понад 15 років безперервної практики у сфері захисту корпоративної власності, комерційного арбітражу, супроводу надрокористування.</p>
     <div class="grid grid-cols-3 gap-4 pt-8 border-t text-center" style="border-color:var(--line)">
@@ -304,9 +304,9 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
       </div></div>
     <div class="glass p-8 md:p-10 fu" id="fbox">
       <form id="f" class="space-y-5">
-        <div><label class="lbl block mut mb-2" style="font-size:10px" data-i18n="form_name">Ваше ім’я або компанія</label><input required placeholder="Коваленко Олександр"></div>
-        <div><label class="lbl block mut mb-2" style="font-size:10px" data-i18n="form_phone">Номер телефону</label><input type="tel" required placeholder="+380..."></div>
-        <div><label class="lbl block mut mb-2" style="font-size:10px" data-i18n="form_msg">Короткий опис питання</label><textarea rows="3" placeholder="Опишіть ситуацію..."></textarea></div>
+        <div><label class="lbl block mut mb-2" style="font-size:10px" data-i18n="form_name">Ваше ім’я або компанія</label><input required autocomplete="name" data-i18n-ph="form_name_ph" placeholder="Коваленко Олександр"></div>
+        <div><label class="lbl block mut mb-2" style="font-size:10px" data-i18n="form_phone">Номер телефону</label><input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" required data-i18n-ph="form_phone_ph" placeholder="+38 (0__) ___-__-__"></div>
+        <div><label class="lbl block mut mb-2" style="font-size:10px" data-i18n="form_msg">Короткий опис питання</label><textarea rows="3" data-i18n-ph="form_msg_ph" placeholder="Опишіть ситуацію..."></textarea></div>
         <button class="btn btn-w w-full mag hv" type="submit" data-i18n="form_btn">Відправити заявку</button>
       </form>
     </div>
@@ -324,37 +324,37 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
   <header class="dh wrap">
     <div class="flex items-center gap-3">
       <img src="logo-clean.png" alt="Legal Way" class="h-8 w-auto lg-l" style="filter:none;"><img src="logo-white.png" alt="Legal Way" class="h-8 w-auto lg-d" style="filter:none;">
-      <div class="leading-tight"><div class="serif font-bold tracking-[.25em] uppercase text-sm">Legal Way</div><div class="lbl faint" style="font-size:9px">Кабінет адвоката</div></div>
+      <div class="leading-tight"><div class="serif font-bold tracking-[.25em] uppercase text-sm">Legal Way</div><div class="lbl faint" style="font-size:9px" data-i18n="adv_cab">Кабінет адвоката</div></div>
     </div>
     <div class="flex items-center gap-3 flex-wrap">
-      <button class="btn-o hv on" type="button" id="adv-tab-cases" onclick="switchAdvTab('cases')">Судові справи</button>
-      <button class="btn-o hv" type="button" id="adv-tab-clients" onclick="switchAdvTab('clients')">Актуальні клієнти</button>
-      <button class="tg hv" aria-label="Змінити тему"><i></i></button>
-      <button class="btn-o hv" type="button" data-refresh>Оновити</button>
-      <button class="btn-o hv" type="button" data-logout>Вийти</button>
+      <button class="btn-o hv on" type="button" id="adv-tab-cases" onclick="switchAdvTab('cases')" data-i18n="tab_cases">Судові справи</button>
+      <button class="btn-o hv" type="button" id="adv-tab-clients" onclick="switchAdvTab('clients')" data-i18n="tab_clients">Актуальні клієнти</button>
+      <button class="tg hv" data-i18n-aria="aria_theme" aria-label="Змінити тему"><i></i></button><button class="btn-o hv lang-toggle" type="button" data-i18n-aria="aria_lang" aria-label="Змінити мову" style="font-size:10px;padding:0 10px;min-width:38px;">EN</button>
+      <button class="btn-o hv" type="button" data-refresh data-i18n="refresh">Оновити</button>
+      <button class="btn-o hv" type="button" data-logout data-i18n="logout">Вийти</button>
     </div>
   </header>
   <div class="wrap pt-14 pb-28 space-y-10">
     <div id="adv-section-cases">
-      <div class="rv space-y-4"><span class="lbl acc">[ Реєстр судових справ ]</span><h1 class="serif text-4xl md:text-5xl font-medium leading-tight">Актуальні справи</h1>
-        <p class="text-sm leading-relaxed mut max-w-xl">Сьогодні: <span id="adv-date"></span>. <span id="adv-sync" class="faint"></span></p></div>
+      <div class="rv space-y-4"><span class="lbl acc" data-i18n="reg_lbl">[ Реєстр судових справ ]</span><h1 class="serif text-4xl md:text-5xl font-medium leading-tight" data-i18n="cases_h">Актуальні справи</h1>
+        <p class="text-sm leading-relaxed mut max-w-xl"><span data-i18n="today">Сьогодні:</span> <span id="adv-date"></span>. <span id="adv-sync" class="faint"></span></p></div>
       <div class="grid sm:grid-cols-2 gap-6 mb-6" style="max-width: 600px;">
-        <div class="glass hv p-6 rv"><div class="lbl faint" style="font-size:10px">Активних справ</div><div class="serif text-4xl acc mt-3" id="adv-s1">0</div></div>
-        <div class="glass hv p-6 rv"><div class="lbl faint" style="font-size:10px">Засідань за 7 днів</div><div class="serif text-4xl acc mt-3" id="adv-s2">0</div></div>
+        <div class="glass hv p-6 rv"><div class="lbl faint" style="font-size:10px" data-i18n="stat_active">Активних справ</div><div class="serif text-4xl acc mt-3" id="adv-s1">0</div></div>
+        <div class="glass hv p-6 rv"><div class="lbl faint" style="font-size:10px" data-i18n="stat_week">Засідань за 7 днів</div><div class="serif text-4xl acc mt-3" id="adv-s2">0</div></div>
       </div>
       <div class="rv flex flex-wrap gap-4 items-center justify-between mb-6">
-        <div class="flex flex-wrap gap-2" id="adv-f"><button class="fc on" data-f="all">Усі справи</button></div>
-        <input id="adv-q" type="search" placeholder="Пошук за номером, судом, стороною…" aria-label="Пошук справ" style="max-width:340px;">
+        <div class="flex flex-wrap gap-2" id="adv-f"><button class="fc on" data-f="all" data-i18n="f_all">Усі справи</button></div>
+        <input id="adv-q" type="search" data-i18n-ph="search_ph" data-i18n-aria="search_aria" placeholder="Пошук за номером, судом, стороною…" aria-label="Пошук справ" style="max-width:340px;">
       </div>
       
-      <div class="glass rv table-responsive-wrapper" style="overflow-x:auto"><table class="tb"><thead><tr><th>№ справи</th><th>Суд</th><th>Клієнт</th><th>Предмет спора</th><th>Наступна дія</th><th>Дата</th><th>Дія (Клопотання)</th></tr></thead><tbody id="adv-body"></tbody></table></div>
+      <div class="glass rv table-responsive-wrapper" style="overflow-x:auto"><table class="tb"><thead><tr><th data-i18n="th1">№ справи</th><th data-i18n="th2">Суд</th><th data-i18n="th3">Клієнт</th><th data-i18n="th4">Предмет спору</th><th data-i18n="th5">Наступна дія</th><th data-i18n="th6">Дата</th><th data-i18n="th7">Дія (Клопотання)</th></tr></thead><tbody id="adv-body"></tbody></table></div>
       
       <div id="adv-mobile-cards"></div>
     </div>
     
     <div id="adv-section-clients" style="display:none">
-      <div class="rv space-y-4"><span class="lbl acc">[ База довірителів ]</span><h1 class="serif text-4xl md:text-5xl font-medium leading-tight">Актуальні клієнти</h1>
-        <p class="text-sm leading-relaxed mut max-w-xl">Швидкий зв'язок з клієнтами та доступ до їхніх карток і месенджерів.</p></div>
+      <div class="rv space-y-4"><span class="lbl acc" data-i18n="cl_base_lbl">[ База довірителів ]</span><h1 class="serif text-4xl md:text-5xl font-medium leading-tight" data-i18n="tab_clients">Актуальні клієнти</h1>
+        <p class="text-sm leading-relaxed mut max-w-xl" data-i18n="clients_d">Швидкий зв'язок з клієнтами та доступ до їхніх карток і месенджерів.</p></div>
       <div id="adv-clients-grid"></div>
     </div>
   </div>
@@ -364,31 +364,31 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
   <header class="dh wrap">
     <div class="flex items-center gap-3">
       <img src="logo-clean.png" alt="Legal Way" class="h-8 w-auto lg-l" style="filter:none;"><img src="logo-white.png" alt="Legal Way" class="h-8 w-auto lg-d" style="filter:none;">
-      <div class="leading-tight"><div class="serif font-bold tracking-[.25em] uppercase text-sm">Legal Way</div><div class="lbl faint" style="font-size:9px">Кабінет довірителя</div></div>
+      <div class="leading-tight"><div class="serif font-bold tracking-[.25em] uppercase text-sm">Legal Way</div><div class="lbl faint" style="font-size:9px" data-i18n="cab_client_h">Кабінет довірителя</div></div>
     </div>
-    <div class="flex items-center gap-3 flex-wrap"><button class="tg hv" aria-label="Змінити тему"><i></i></button><button class="btn-o hv" type="button" data-refresh>Оновити</button><button class="btn-o hv" type="button" data-logout>Вийти з кабінету</button></div>
+    <div class="flex items-center gap-3 flex-wrap"><button class="tg hv" data-i18n-aria="aria_theme" aria-label="Змінити тему"><i></i></button><button class="btn-o hv lang-toggle" type="button" data-i18n-aria="aria_lang" aria-label="Змінити мову" style="font-size:10px;padding:0 10px;min-width:38px;">EN</button><button class="btn-o hv" type="button" data-refresh data-i18n="refresh">Оновити</button><button class="btn-o hv" type="button" data-logout data-i18n="logout_cab">Вийти з кабінету</button></div>
   </header>
   <div class="wrap pt-14 pb-28 space-y-10">
-    <div class="rv space-y-4"><span class="lbl acc">[ Особистий кабінет ]</span><h1 class="serif text-4xl md:text-5xl font-medium leading-tight">Ваша справа</h1>
-      <p class="text-sm leading-relaxed mut">Номер телефону: <b id="cl-phone" style="color:var(--fg)" class="tabular-nums"></b>. <span id="cl-sync" class="faint"></span></p></div>
+    <div class="rv space-y-4"><span class="lbl acc" data-i18n="priv_lbl">[ Особистий кабінет ]</span><h1 class="serif text-4xl md:text-5xl font-medium leading-tight" data-i18n="your_case">Ваша справа</h1>
+      <p class="text-sm leading-relaxed mut"><span data-i18n="cl_phone_lbl">Номер телефону:</span> <b id="cl-phone" style="color:var(--fg)" class="tabular-nums"></b>. <span id="cl-sync" class="faint"></span></p></div>
     <div class="grid lg:grid-cols-[1.4fr_1fr] gap-6">
       <div class="glass hv p-8 md:p-10 rv space-y-8"><div id="cl-pick" class="flex flex-wrap gap-2" style="display:none"></div>
         <div class="flex flex-wrap justify-between gap-3 items-start"><div><div class="text-xs faint font-mono mb-2" id="cl-num">—</div><h2 class="serif text-2xl" id="cl-title">—</h2></div><span class="chip ok" id="cl-status">У роботі</span></div>
-        <div class="space-y-2"><div class="flex justify-between text-xs mut"><span>Прогрес справи</span><b id="cl-pct" style="color:var(--fg)">0%</b></div><div class="pb"><i id="cl-bar"></i></div></div>
+        <div class="space-y-2"><div class="flex justify-between text-xs mut"><span data-i18n="cl_progress">Прогрес справи</span><b id="cl-pct" style="color:var(--fg)">0%</b></div><div class="pb"><i id="cl-bar"></i></div></div>
         <ol class="tl" id="cl-tl"></ol>
       </div>
       <div class="space-y-6">
-        <div class="glass hv p-6 rv space-y-2"><div class="lbl faint" style="font-size:10px">Найближча подія</div><div class="serif text-2xl" id="cl-next-d">—</div><div class="text-sm mut" id="cl-next-l">Найближчих подій немає</div></div>
-        <div class="glass hv p-6 rv space-y-4"><div class="lbl faint" style="font-size:10px">Документи та Договори</div>
+        <div class="glass hv p-6 rv space-y-2"><div class="lbl faint" style="font-size:10px" data-i18n="cl_next">Найближча подія</div><div class="serif text-2xl" id="cl-next-d">—</div><div class="text-sm mut" id="cl-next-l">Найближчих подій немає</div></div>
+        <div class="glass hv p-6 rv space-y-4"><div class="lbl faint" style="font-size:10px" data-i18n="cl_docs">Документи та Договори</div>
           <div id="cl-docs" class="space-y-4"></div></div>
         
         <div class="glass hv p-6 rv space-y-3">
-          <div class="lbl faint" style="font-size:10px">Зв'язок з адвокатом</div>
-          <p class="text-xs mut">Маєте питання щодо справи чи процесуальних документів?</p>
-          <button class="btn-o hv w-full" type="button" onclick="openAskModal()" style="border-color:var(--acc);color:var(--acc)">Задати питання адвокату</button>
+          <div class="lbl faint" style="font-size:10px" data-i18n="cl_contact">Зв'язок з адвокатом</div>
+          <p class="text-xs mut" data-i18n="cl_q_hint">Маєте питання щодо справи чи процесуальних документів?</p>
+          <button class="btn-o hv w-full" type="button" onclick="openAskModal()" style="border-color:var(--acc);color:var(--acc)" data-i18n="cl_ask">Задати питання адвокату</button>
         </div>
 
-        <div class="glass hv p-6 rv space-y-3"><div class="lbl faint" style="font-size:10px">Ваш адвокат</div><div class="font-semibold">Липко Олег Юрійович</div>
+        <div class="glass hv p-6 rv space-y-3"><div class="lbl faint" style="font-size:10px" data-i18n="cl_lawyer">Ваш адвокат</div><div class="font-semibold" data-i18n="lawyer_name">Липко Олег Юрійович</div>
           <div class="text-xs space-y-1"><div><a href="tel:+380968881000" class="underline acc">+380 (96) 888 1000</a></div><div><a href="mailto:ask@lway.ua" class="underline acc">ask@lway.ua</a></div></div></div>
       </div>
     </div>
@@ -398,42 +398,51 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
 <div id="login-modal" class="lm" role="dialog" aria-modal="true" aria-labelledby="lm-t" aria-hidden="true" inert>
   <div class="lm-bd" data-close></div>
   <form class="glass lm-card" id="lm-form" novalidate>
-    <button type="button" class="hv" data-close aria-label="Закрити" style="position:absolute;top:16px;right:18px;font-size:24px;line-height:1;background:none;border:0;color:var(--mut)">×</button>
-    <span class="lbl acc">Захищений вхід</span>
+    <button type="button" class="hv" data-close data-i18n-aria="close" aria-label="Закрити" style="position:absolute;top:16px;right:18px;font-size:24px;line-height:1;background:none;border:0;color:var(--mut)">×</button>
+    <span class="lbl acc" data-i18n="lm_lbl">Захищений вхід</span>
     <h2 class="serif text-3xl font-medium mt-3" id="lm-t">Вхід в кабінет</h2>
     
     <div class="tabs mt-4">
-      <button type="button" id="tab-client" class="btn-o on" onclick="switchLoginMode('client')" style="border:0">Я клієнт</button>
-      <button type="button" id="tab-advocate" class="btn-o" onclick="switchLoginMode('advocate')" style="border:0">Я адвокат</button>
+      <button type="button" id="tab-client" class="btn-o on" onclick="switchLoginMode('client')" style="border:0" data-i18n="lm_client">Я клієнт</button>
+      <button type="button" id="tab-advocate" class="btn-o" onclick="switchLoginMode('advocate')" style="border:0" data-i18n="lm_adv">Я адвокат</button>
     </div>
 
-    <p class="text-sm leading-relaxed mut mt-3" id="lm-desc">Адвокат — PIN-код (2301). Клієнт — номер телефону (тест: 0662848897).</p>
+    <p class="text-sm leading-relaxed mut mt-3" id="lm-desc">Клієнт — введіть номер телефону, на який зареєстровано справу.</p>
     <label class="lbl block mut mt-4 mb-2" style="font-size:10px" for="lm-in" id="lm-lbl">Номер телефону</label>
-    <input id="lm-in" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="0662848897">
+    <input id="lm-in" type="tel" inputmode="tel" autocomplete="tel" autocapitalize="off" spellcheck="false" placeholder="+38 (0__) ___-__-__">
     <p id="lm-err" role="alert" class="text-xs mt-3 amb" style="min-height:18px"></p>
-    <button class="btn btn-w w-full mt-4 hv" type="submit">Отримати код →</button>
+    <button class="btn btn-w w-full mt-4 hv" id="lm-btn" type="submit">Отримати код →</button>
   </form>
 </div>
 
 <div id="ask-modal" class="lm" role="dialog" aria-modal="true" aria-hidden="true" inert>
   <div class="lm-bd" onclick="closeAskModal()"></div>
   <div class="glass lm-card space-y-4">
-    <button type="button" class="hv" onclick="closeAskModal()" aria-label="Закрити" style="position:absolute;top:16px;right:18px;font-size:24px;line-height:1;background:none;border:0;color:var(--mut)">×</button>
-    <span class="lbl acc">Питання адвокату</span>
-    <h2 class="serif text-2xl font-medium">Зв'язок по справі</h2>
-    <p class="text-sm mut">Опишіть ваше питання. Керуючий адвокат отримає сповіщення в Telegram і зв'яжеться з вами.</p>
-    <textarea id="ask-text" rows="4" placeholder="Ваше питання або коментар..."></textarea>
-    <button class="btn btn-w w-full hv" type="button" onclick="sendClientQuestion()">Надіслати адвокату →</button>
+    <button type="button" class="hv" onclick="closeAskModal()" data-i18n-aria="close" aria-label="Закрити" style="position:absolute;top:16px;right:18px;font-size:24px;line-height:1;background:none;border:0;color:var(--mut)">×</button>
+    <span class="lbl acc" data-i18n="ask_lbl">Питання адвокату</span>
+    <h2 class="serif text-2xl font-medium" data-i18n="ask_h">Зв'язок по справі</h2>
+    <p class="text-sm mut" data-i18n="ask_p">Опишіть ваше питання. Керуючий адвокат отримає сповіщення в Telegram і зв'яжеться з вами.</p>
+    <textarea id="ask-text" rows="4" data-i18n-ph="ask_ph" placeholder="Ваше питання або коментар..."></textarea>
+    <button class="btn btn-w w-full hv" type="button" onclick="sendClientQuestion()" data-i18n="ask_send">Надіслати адвокату →</button>
   </div>
 </div>
 
+<script>setTimeout(function(){if(window.__lwReady)return;var p=document.getElementById("pre");if(p)p.remove();document.querySelectorAll(".fu").forEach(function(e){e.style.opacity=1;e.style.transform="none"})},5000)</script>
 <script>
 window.copyCaseData = function(txt) {
-  navigator.clipboard.writeText(txt).then(function() {
-    alert('Всі дані справи скопійовано!');
-  }, function() {
-    alert('Помилка копіювання');
-  });
+  const T = function(k){ return window._t ? window._t(k) : k; };
+  const fallback = function(){
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = txt; ta.setAttribute('readonly',''); ta.style.cssText = 'position:fixed;left:-9999px;top:0';
+      document.body.appendChild(ta); ta.select();
+      const ok = document.execCommand('copy'); ta.remove();
+      alert(ok ? T('copied') : T('copy_fail'));
+    } catch(e) { alert(T('copy_fail')); }
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(txt).then(function(){ alert(T('copied')); }, fallback);
+  } else { fallback(); }
 };
 
 (function(){
@@ -442,7 +451,10 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const html=document.documentElement,theme=()=>html.dataset.theme;
 gsap.registerPlugin(ScrollTrigger);ScrollTrigger.config({ignoreMobileResize:true});
 
-let currentLang = localStorage.getItem('lw-lang') || 'uk';
+let currentLang='uk';try{currentLang=localStorage.getItem('lw-lang')||'uk'}catch(e){}
+if(currentLang!=='uk'&&currentLang!=='en')currentLang='uk';
+const langHooks=[];
+const loc=()=>currentLang==='en'?'en-GB':'uk-UA';
 const dict = {
   uk: {
     nav_practices: "Практики", nav_process: "Процес", nav_platform: "Платформа", nav_lawyer: "Керівництво", nav_contact: "Контакти",
@@ -520,21 +532,24 @@ const dict = {
   }
 };
 
+
+Object.assign(dict.uk,{"p1_li1": "Участь в аукціонах Держгеонадр і підготовка пакету документів", "p1_li2": "Отримання, продовження та переоформлення спецдозволів", "p1_li3": "Супровід процедури оцінки впливу на довкілля (ОВД)", "p1_st1": "Аналіз ділянки та вимог до заявника", "p1_st2": "Підготовка та подання документів", "p1_st3": "Супровід до отримання рішення", "p2_li1": "Vendor Due Diligence та підготовка компанії до продажу", "p2_li2": "Договори купівлі-продажу часток у статутному капіталі", "p2_li3": "Корпоративні конфлікти та захист від недружніх поглинань", "p2_st1": "Аудит структури та документів", "p2_st2": "Структурування й узгодження угоди", "p2_st3": "Підписання та реєстрація змін", "p3_li1": "Представництво в господарських судах усіх інстанцій", "p3_li2": "Апеляційні та касаційні скарги у Верховному Суді", "p3_li3": "Податкові спори та взаємодія з фіскальними органами", "p3_st1": "Аналіз доказів і правової позиції", "p3_st2": "Підготовка та подання процесуальних документів", "p3_st3": "Участь у засіданнях та виконання рішення", "p4_li1": "Договори зовнішньоекономічної діяльності з партнерами з ЄС", "p4_li2": "Підготовка та узгодження LOI / MOU", "p4_li3": "Захист інтересів іноземного капіталу", "p4_st1": "Вивчення юрисдикцій та ризиків", "p4_st2": "Узгодження ключових умов", "p4_st3": "Супровід укладення та виконання", "mq1": "Надрокористування", "mq2": "Господарські спори", "mq3": "Міжнародні інвестиції", "mq4": "Спецдозволи", "mq5": "Податкові спори", "doc_title": "LEGAL WAY — Міжнародна юридична компанія", "lawyer_name": "Липко Олег Юрійович", "aria_theme": "Змінити тему", "aria_lang": "Змінити мову", "aria_menu": "Меню", "close": "Закрити", "form_name_ph": "Коваленко Олександр", "form_phone_ph": "+38 (0__) ___-__-__", "form_msg_ph": "Опишіть ситуацію...", "form_sent_t": "Заявку отримано", "form_sent_d": "Керуючий адвокат зв’яжеться з вами найближчим часом.", "phone_incomplete": "Введіть номер повністю: +38 (0XX) XXX-XX-XX", "topic_prefix": "Питання щодо: ", "adv_cab": "Кабінет адвоката", "cab_client_h": "Кабінет довірителя", "tab_cases": "Судові справи", "tab_clients": "Актуальні клієнти", "refresh": "Оновити", "logout": "Вийти", "logout_cab": "Вийти з кабінету", "reg_lbl": "[ Реєстр судових справ ]", "cases_h": "Актуальні справи", "today": "Сьогодні:", "stat_active": "Активних справ", "stat_week": "Засідань за 7 днів", "f_all": "Усі справи", "search_ph": "Пошук за номером, судом, стороною…", "search_aria": "Пошук справ", "th1": "№ справи", "th2": "Суд", "th3": "Клієнт", "th4": "Предмет спору", "th5": "Наступна дія", "th6": "Дата", "th7": "Дія (Клопотання)", "cl_base_lbl": "[ База довірителів ]", "clients_d": "Швидкий зв'язок з клієнтами та доступ до їхніх карток і месенджерів.", "priv_lbl": "[ Особистий кабінет ]", "your_case": "Ваша справа", "cl_phone_lbl": "Номер телефону:", "cl_progress": "Прогрес справи", "cl_next": "Найближча подія", "cl_no_events": "Найближчих подій немає", "cl_docs": "Документи та Договори", "cl_contact": "Зв'язок з адвокатом", "cl_q_hint": "Маєте питання щодо справи чи процесуальних документів?", "cl_ask": "Задати питання адвокату", "cl_lawyer": "Ваш адвокат", "in_work": "У роботі", "no_cases": "Справ не знайдено", "court_case": "Судова справа", "ask_lbl": "Питання адвокату", "ask_h": "Зв'язок по справі", "ask_p": "Опишіть ваше питання. Керуючий адвокат отримає сповіщення в Telegram і зв'яжеться з вами.", "ask_ph": "Ваше питання або коментар...", "ask_send": "Надіслати адвокату →", "ask_empty": "Введіть текст питання.", "ask_ok": "Ваше питання успішно надіслано адвокату в Telegram!", "ask_fail": "Не вдалося надіслати питання. Спробуйте ще раз.", "lm_lbl": "Захищений вхід", "lm_title": "Вхід в кабінет", "lm_confirm": "Підтвердження входу", "lm_client": "Я клієнт", "lm_adv": "Я адвокат", "lm_desc_cl": "Клієнт — введіть номер телефону, на який зареєстровано справу.", "lm_desc_adv": "Адвокат — введіть PIN-код.", "lm_pin": "PIN-код", "lm_code_lbl": "Введіть код з Telegram", "lm_sent": "Код відправлено в Telegram-бот адвоката для номера", "lm_get_code": "Отримати код →", "lm_enter": "Увійти →", "lm_sending": "Надсилання коду...", "lm_checking_pin": "Зачекайте, перевірка...", "lm_checking_code": "Перевірка коду...", "err_enter": "Введіть дані.", "err_locked": "Забагато спроб. Спробуйте через", "sec": "с.", "err_pin": "Невірний PIN-код.", "err_conn": "Помилка зв’язку із сервером.", "err_phone_nf": "Номер не зареєстровано в базі.", "err_code": "Невірний код підтвердження.", "err_code_short": "Введіть код повністю.", "hearing": "Судове засідання", "d_today": "сьогодні", "d_tomorrow": "завтра", "d_in": "через {n} дн.", "copied": "Всі дані справи скопійовано!", "copy_fail": "Помилка копіювання", "lbl_case": "Справа", "lbl_court": "Суд", "lbl_client": "Клієнт", "lbl_subject": "Предмет", "lbl_event": "Подія", "lbl_date": "Дата", "copy_btn": "Копіювати", "copy_title": "Копіювати дані", "mk_motion": "Створити клопотання", "nothing": "Нічого не знайдено", "no_clients": "Клієнтів не знайдено", "tax_id": "РНОКПП/ЄДРПОУ", "lbl_address": "Адреса", "lbl_phone": "Телефон", "btn_call": "Подзвонити", "dl_pdf": "Завантажити PDF", "sync_updating": "Оновлення…", "sync_done": "Оновлено о", "sync_cached": "Дані від", "sync_fail": "Не вдалося оновити — показано останні дані.", "load_fail": "Не вдалося завантажити дані.", "retry": "Спробувати ще раз", "motion_confirm": "Сформувати клопотання по справі №{n} та відправити в Telegram?", "motion_sent": "Запит на формування клопотання надіслано в систему!", "stg1": "Первинний аналіз", "stg2": "Договір про надання правничої допомоги", "stg3": "Підготовка позовної заяви", "stg4": "Судовий розгляд", "stg5": "Рішення та виконання", "in_progress": "В процесі", "expected": "Очікується", "today_cap": "Сьогодні", "ev1": "Документ завантажено до справи", "ev2": "Призначено дату засідання", "ev3": "Сповіщення надіслано в Telegram", "ev4": "Статус справи оновлено", "ev5": "Новий коментар від адвоката", "ev6": "Нагадування про процесуальний строк", "dc1": "Господарський спір (демо)", "dc1s": "У суді", "dc2": "Угода M&A (демо)", "dc2s": "Due Diligence", "dc3": "Спецдозвіл (демо)", "dc3s": "Подання документів"});
+Object.assign(dict.en,{"p1_li1": "Participation in StateGeoCadastre auctions and preparation of the document package", "p1_li2": "Obtaining, extending and re-issuing special permits", "p1_li3": "Support of the environmental impact assessment (EIA) procedure", "p1_st1": "Analysis of the site and applicant requirements", "p1_st2": "Preparation and filing of documents", "p1_st3": "Support until the decision is received", "p2_li1": "Vendor Due Diligence and preparing the company for sale", "p2_li2": "Share purchase agreements for charter capital interests", "p2_li3": "Corporate disputes and defense against hostile takeovers", "p2_st1": "Audit of structure and documents", "p2_st2": "Structuring and negotiating the deal", "p2_st3": "Signing and registration of changes", "p3_li1": "Representation in commercial courts of all instances", "p3_li2": "Appeals and cassation complaints to the Supreme Court", "p3_li3": "Tax disputes and interaction with tax authorities", "p3_st1": "Analysis of evidence and legal position", "p3_st2": "Preparation and filing of procedural documents", "p3_st3": "Attending hearings and enforcing the decision", "p4_li1": "Foreign economic activity agreements with EU partners", "p4_li2": "Preparation and negotiation of LOI / MOU", "p4_li3": "Protection of foreign capital interests", "p4_st1": "Study of jurisdictions and risks", "p4_st2": "Agreeing key terms", "p4_st3": "Support of conclusion and performance", "mq1": "Subsoil use", "mq2": "Commercial disputes", "mq3": "International investments", "mq4": "Special permits", "mq5": "Tax disputes", "doc_title": "LEGAL WAY — International Law Firm", "lawyer_name": "Oleh Lypko", "aria_theme": "Toggle theme", "aria_lang": "Change language", "aria_menu": "Menu", "close": "Close", "form_name_ph": "John Smith", "form_phone_ph": "+38 (0__) ___-__-__", "form_msg_ph": "Describe the situation...", "form_sent_t": "Request received", "form_sent_d": "The managing attorney will contact you shortly.", "phone_incomplete": "Enter the full number: +38 (0XX) XXX-XX-XX", "topic_prefix": "Question regarding: ", "adv_cab": "Attorney cabinet", "cab_client_h": "Client cabinet", "tab_cases": "Court cases", "tab_clients": "Current clients", "refresh": "Refresh", "logout": "Sign out", "logout_cab": "Sign out", "reg_lbl": "[ Court case register ]", "cases_h": "Current cases", "today": "Today:", "stat_active": "Active cases", "stat_week": "Hearings in 7 days", "f_all": "All cases", "search_ph": "Search by number, court, party…", "search_aria": "Search cases", "th1": "Case no.", "th2": "Court", "th3": "Client", "th4": "Subject of dispute", "th5": "Next action", "th6": "Date", "th7": "Action (Motion)", "cl_base_lbl": "[ Client base ]", "clients_d": "Quick contact with clients and access to their records and messengers.", "priv_lbl": "[ Personal cabinet ]", "your_case": "Your case", "cl_phone_lbl": "Phone number:", "cl_progress": "Case progress", "cl_next": "Next event", "cl_no_events": "No upcoming events", "cl_docs": "Documents & Agreements", "cl_contact": "Contact the attorney", "cl_q_hint": "Have a question about the case or procedural documents?", "cl_ask": "Ask the attorney", "cl_lawyer": "Your attorney", "in_work": "In progress", "no_cases": "No cases found", "court_case": "Court case", "ask_lbl": "Question for the attorney", "ask_h": "Case inquiry", "ask_p": "Describe your question. The managing attorney will be notified in Telegram and will contact you.", "ask_ph": "Your question or comment...", "ask_send": "Send to attorney →", "ask_empty": "Enter your question.", "ask_ok": "Your question has been sent to the attorney in Telegram!", "ask_fail": "Could not send the question. Please try again.", "lm_lbl": "Secure sign-in", "lm_title": "Cabinet sign-in", "lm_confirm": "Sign-in confirmation", "lm_client": "I'm a client", "lm_adv": "I'm an attorney", "lm_desc_cl": "Client — enter the phone number your case is registered to.", "lm_desc_adv": "Attorney — enter your PIN.", "lm_pin": "PIN", "lm_code_lbl": "Enter the code from Telegram", "lm_sent": "The code was sent to the attorney's Telegram bot for number", "lm_get_code": "Get code →", "lm_enter": "Sign in →", "lm_sending": "Sending code...", "lm_checking_pin": "Please wait, verifying...", "lm_checking_code": "Verifying code...", "err_enter": "Please enter your details.", "err_locked": "Too many attempts. Try again in", "sec": "s.", "err_pin": "Wrong PIN.", "err_conn": "Server connection error.", "err_phone_nf": "Number not found in the database.", "err_code": "Invalid confirmation code.", "err_code_short": "Enter the full code.", "hearing": "Court hearing", "d_today": "today", "d_tomorrow": "tomorrow", "d_in": "in {n} d.", "copied": "All case data copied!", "copy_fail": "Copy failed", "lbl_case": "Case", "lbl_court": "Court", "lbl_client": "Client", "lbl_subject": "Subject", "lbl_event": "Event", "lbl_date": "Date", "copy_btn": "Copy", "copy_title": "Copy data", "mk_motion": "Create motion", "nothing": "Nothing found", "no_clients": "No clients found", "tax_id": "Tax ID / EDRPOU", "lbl_address": "Address", "lbl_phone": "Phone", "btn_call": "Call", "dl_pdf": "Download PDF", "sync_updating": "Updating…", "sync_done": "Updated at", "sync_cached": "Data as of", "sync_fail": "Could not refresh — showing the latest data.", "load_fail": "Failed to load data.", "retry": "Try again", "motion_confirm": "Create a motion for case No. {n} and send it to Telegram?", "motion_sent": "The motion request has been sent to the system!", "stg1": "Initial analysis", "stg2": "Legal aid agreement", "stg3": "Drafting the statement of claim", "stg4": "Court proceedings", "stg5": "Decision and enforcement", "in_progress": "In progress", "expected": "Pending", "today_cap": "Today", "ev1": "Document uploaded to the case", "ev2": "Hearing date scheduled", "ev3": "Notification sent to Telegram", "ev4": "Case status updated", "ev5": "New comment from the attorney", "ev6": "Procedural deadline reminder", "dc1": "Commercial dispute (demo)", "dc1s": "In court", "dc2": "M&A deal (demo)", "dc2s": "Due Diligence", "dc3": "Special permit (demo)", "dc3s": "Filing documents"});
+const _t=(k,v)=>{let x=dict[currentLang]&&dict[currentLang][k];if(x==null)x=dict.uk[k];if(x==null)x=k;if(v)for(const n in v)x=x.split('{'+n+'}').join(v[n]);return x};
+window._t=_t;
 function applyLang(lang){
-  currentLang = lang;
-  localStorage.setItem('lw-lang', lang);
-  const btn = $('#lang-toggle');
-  if(btn) btn.textContent = lang === 'uk' ? 'EN' : 'UA';
-  $$('[data-i18n]').forEach(el=>{
-    const k = el.getAttribute('data-i18n');
-    if(dict[lang][k]) el.innerHTML = dict[lang][k];
-  });
+  currentLang=lang;try{localStorage.setItem('lw-lang',lang)}catch(e){}
+  html.lang=lang==='en'?'en':'uk';
+  document.title=_t('doc_title');
+  $$('.lang-toggle').forEach(b=>b.textContent=lang==='uk'?'EN':'UA');
+  $$('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');const v=dict[lang][k]!=null?dict[lang][k]:dict.uk[k];if(v!=null)el.innerHTML=v});
+  $$('[data-i18n-ph]').forEach(el=>el.setAttribute('placeholder',_t(el.getAttribute('data-i18n-ph'))));
+  $$('[data-i18n-aria]').forEach(el=>el.setAttribute('aria-label',_t(el.getAttribute('data-i18n-aria'))));
+  $$('[data-i18n-title]').forEach(el=>el.setAttribute('title',_t(el.getAttribute('data-i18n-title'))));
+  langHooks.forEach(f=>{try{f()}catch(e){console.error(e)}});
 }
-window.toggleLang = function(){
-  applyLang(currentLang === 'uk' ? 'en' : 'uk');
-};
-const langBtn = $('#lang-toggle');
-if(langBtn) langBtn.addEventListener('click', toggleLang);
+window.toggleLang=function(){applyLang(currentLang==='uk'?'en':'uk')};
+$$('.lang-toggle').forEach(b=>b.addEventListener('click',window.toggleLang));
 applyLang(currentLang);
 
 let lenis=null;if(!RM&&window.Lenis){lenis=new Lenis({lerp:.085});lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
@@ -561,7 +576,7 @@ function rebuild(){if(ready)side=tint(theme()==='dark'?'#6b7280':'#8a909b')}
 function layout(){if(!ready)return;const r=host.getBoundingClientRect();dpr=Math.min(devicePixelRatio||1,2);LW=Math.max(1,Math.round(r.width*dpr));LH=Math.max(1,Math.round(r.height*dpr));
 lc.width=tmp.width=LW;lc.height=tmp.height=LH;const pad=Math.min(LW,LH)*.1,s=Math.min((LW-pad*2)/img.width,(LH-pad*2)/img.height);
 box={w:img.width*s,h:img.height*s};box.x=(LW-box.w)/2;box.y=(LH-box.h)/2}
-function drawLogo(t,mx,my){if(!ready||!box)return;const dark=theme()==='dark';
+function drawLogo(t,mx,my){if(!ready||!box||!side)return;const dark=theme()==='dark';
 const cx=mx*.7+Math.sin(t*.5)*.4,cy=my*.5+Math.cos(t*.3)*.2;
 lx.setTransform(1,0,0,1,0,0);lx.clearRect(0,0,LW,LH);
 const k=DEPTH*dpr,dx=k*(.1+.5*cx),dy=k*(.2+.5*cy),ox=cx*14*dpr,oy=cy*14*dpr;
@@ -577,7 +592,7 @@ tx.globalCompositeOperation='source-atop';tx.fillStyle=sg;tx.fillRect(0,0,LW,LH)
 lx.save();lx.shadowColor=dark?'rgba(255,255,255,.35)':'rgba(0,0,0,.28)';lx.shadowBlur=(dark?30:22)*dpr;lx.shadowOffsetY=dark?0:8*dpr;lx.drawImage(tmp,0,0);lx.restore()}
 
 img.onload=()=>{ready=true;rebuild();layout()};
-img.onerror=()=>{ready=true;layout()};
+img.onerror=()=>{ready=false};
 img.src='logo-clean.png';
 
 addEventListener('resize',rs);rs();
@@ -605,13 +620,15 @@ const pr=$('#prog');addEventListener('scroll',()=>{pr.style.transform=`scaleX(${
 gsap.to('.rail i',{height:'100%',ease:'none',scrollTrigger:{trigger:'#steps',start:'top 70%',end:'bottom 70%',scrub:true}});
 $$('.stp').forEach(s=>ScrollTrigger.create({trigger:s,start:'top 72%',onEnter:()=>s.classList.add('on'),onLeaveBack:()=>s.classList.remove('on')}));
 
-const cases=[['Господарський спір (демо)','У суді',72],['Угода M&A (демо)','Due Diligence',45],['Спецдозвіл (демо)','Подання документів',88]];
-$('#cases').innerHTML=cases.map(c=>`<div class="space-y-2"><div class="flex justify-between items-center gap-3 text-sm"><span class="font-medium">${c[0]}</span><span class="chip mut">${c[1]}</span></div><div class="pb"><i data-w="${c[2]}"></i></div></div>`).join('');
-ScrollTrigger.create({trigger:'#cases',start:'top 85%',once:true,onEnter:()=>$$('.pb i').forEach(b=>gsap.to(b,{width:b.dataset.w+'%',duration:1.8,ease:'power3.out'}))});
-const evs=['Документ завантажено до справи','Призначено дату засідання','Сповіщення надіслано в Telegram','Статус справи оновлено','Новий коментар від адвоката','Нагадування про процесуальний строк'];
-const tf=new Intl.DateTimeFormat('uk-UA',{timeZone:'Europe/Kyiv',hour:'2-digit',minute:'2-digit',second:'2-digit'}),feed=$('#feed');let ei=0;
-function addEv(){const d=document.createElement('div');d.className='ev flex gap-3 items-start';d.innerHTML=`<span class="faint tabular-nums text-[11px] pt-px">${tf.format(new Date())}</span><span>${evs[ei++%evs.length]}</span>`;feed.prepend(d);while(feed.children.length>5)feed.lastChild.remove()}
-addEv();addEv();setInterval(addEv,3500);
+const DEMO=[['dc1','dc1s',72],['dc2','dc2s',45],['dc3','dc3s',88]];let casesShown=false;
+function renderDemo(){$('#cases').innerHTML=DEMO.map(c=>`<div class="space-y-2"><div class="flex justify-between items-center gap-3 text-sm"><span class="font-medium">${_t(c[0])}</span><span class="chip mut">${_t(c[1])}</span></div><div class="pb"><i data-w="${c[2]}" style="width:${casesShown?c[2]:0}%"></i></div></div>`).join('')}
+renderDemo();
+ScrollTrigger.create({trigger:'#cases',start:'top 85%',once:true,onEnter:()=>{casesShown=true;$$('#cases .pb i').forEach(b=>gsap.to(b,{width:b.dataset.w+'%',duration:1.8,ease:'power3.out'}))}});
+const tf={format:d=>new Intl.DateTimeFormat(loc(),{timeZone:'Europe/Kyiv',hour:'2-digit',minute:'2-digit',second:'2-digit'}).format(d)},feed=$('#feed');let ei=0;
+function addEv(){const d=document.createElement('div');d.className='ev flex gap-3 items-start';d.innerHTML=`<span class="faint tabular-nums text-[11px] pt-px">${tf.format(new Date())}</span><span>${_t('ev'+(ei++%6+1))}</span>`;feed.prepend(d);while(feed.children.length>5)feed.lastChild.remove()}
+function resetFeed(){feed.innerHTML='';ei=0;addEv();addEv()}
+resetFeed();setInterval(addEv,3500);
+langHooks.push(()=>{renderDemo();resetFeed()});
 
 setInterval(()=>$('#clk').textContent=tf.format(new Date()),1000);
 
@@ -621,7 +638,7 @@ $$('.acd').forEach(c=>{const b=c.querySelector('.acd-h'),p=c.querySelector('.acd
 b.addEventListener('click',()=>{const o=!c.classList.contains('open');$$('.acd.open').forEach(x=>x!==c&&setAcd(x,false));setAcd(c,o)});
 p.addEventListener('transitionend',e=>{if(e.propertyName!=='grid-template-rows')return;settle();
 if(c.classList.contains('open')){const r=c.getBoundingClientRect();if(r.top<90||r.bottom>innerHeight-24){const y=Math.max(0,scrollY+r.top-120);lenis?lenis.scrollTo(y,{duration:1}):scrollTo({top:y,behavior:'smooth'})}}})});
-$$('[data-topic]').forEach(a=>a.addEventListener('click',()=>{const t=$('#f textarea');if(t&&!t.value)t.value='Питання щодо: '+a.dataset.topic}));
+$$('[data-topic]').forEach(a=>a.addEventListener('click',()=>{const ta=$('#f textarea');const ar=a.closest('article');const ti=ar&&ar.querySelector('[data-i18n$="_title"]');if(ta&&!ta.value)ta.value=_t('topic_prefix')+(ti?ti.textContent:a.dataset.topic)}));
 
 const mn=$('#mn'),bgr=$('#bgr');function mt(o){mn.classList.toggle('on',o);bgr.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':''}
 bgr.addEventListener('click',()=>mt(!mn.classList.contains('on')));$$('#mn a').forEach(a=>a.addEventListener('click',()=>mt(false)));
@@ -631,7 +648,7 @@ const API_URL='https://script.google.com/macros/s/AKfycbyJ3MVw0wDUacoKeWYYY3v44R
 const KR='lw_role',KP='lw_phone',KT='lw_token',KC='lw_cache',mem={};
 const sess={get(k){try{return sessionStorage.getItem(k)}catch(e){return mem['s'+k]||null}},set(k,v){try{sessionStorage.setItem(k,v)}catch(e){mem['s'+k]=v}},del(k){try{sessionStorage.removeItem(k)}catch(e){delete mem['s'+k]}}};
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return mem[k]||null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}},del(k){try{localStorage.removeItem(k)}catch(e){delete mem[k]}}};
-const df=new Intl.DateTimeFormat('uk-UA',{timeZone:'Europe/Kyiv',day:'2-digit',month:'2-digit',year:'numeric'});
+const df={format:d=>new Intl.DateTimeFormat(loc(),{timeZone:'Europe/Kyiv',day:'2-digit',month:'2-digit',year:'numeric'}).format(d)};
 let CASES=[],CLIENTS=[],DATA=null,role=null,reqId=0,lastLoad=0,curCase=0;
 const advQ=$('#adv-q'),advBody=$('#adv-body');
 const esc=v=>String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -639,8 +656,8 @@ const kyivYmd=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Kyiv'}).form
 const dayNum=y=>{const p=y.split('-').map(Number);return Date.UTC(p[0],p[1]-1,p[2])/864e5};
 const daysTo=y=>dayNum(y)-dayNum(kyivYmd());
 const fmtYmd=y=>{const p=y.split('-');return p[2]+'.'+p[1]+'.'+p[0]};
-const relDays=d=>d===0?'сьогодні':d===1?'завтра':'через '+d+' дн.';
-const hhmm=ts=>new Intl.DateTimeFormat('uk-UA',{timeZone:'Europe/Kyiv',hour:'2-digit',minute:'2-digit'}).format(ts);
+const relDays=d=>d===0?_t('d_today'):d===1?_t('d_tomorrow'):_t('d_in',{n:d});
+const hhmm=ts=>new Intl.DateTimeFormat(loc(),{timeZone:'Europe/Kyiv',hour:'2-digit',minute:'2-digit'}).format(ts);
 
 window.switchAdvTab=function(tab){
   const casesSec=$('#adv-section-cases'), clientsSec=$('#adv-section-clients');
@@ -656,7 +673,7 @@ window.switchAdvTab=function(tab){
 };
 
 function nextEv(c){if(!c.active)return null;const t=kyivYmd(),ev=[];
-if(c.hearing&&c.hearing>=t)ev.push({type:'hearing',label:'Судове засідання',date:c.hearing,time:c.time||''});
+if(c.hearing&&c.hearing>=t)ev.push({type:'hearing',label:_t('hearing'),date:c.hearing,time:c.time||''});
 ev.sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:0);return ev[0]||null}
 
 function prepare(){
@@ -674,15 +691,15 @@ function renderAdv(){
   return `<tr${c.active?'':' style="opacity:.55"'}>
     <td class="font-mono text-xs whitespace-nowrap">
       <span style="color:var(--acc);font-weight:600">${esc(c.num||c.id)}</span>
-      <button type="button" class="copy-case-btn" data-num="${esc(c.num||c.id)}" data-court="${esc(c.court)}" data-client="${esc(c.client)}" data-subject="${esc(c.subject)}" style="background:none;border:0;cursor:pointer;margin-left:6px;font-size:12px;" title="Копіювати дані">📋</button>
+      <button type="button" class="copy-case-btn" data-num="${esc(c.num||c.id)}" data-court="${esc(c.court)}" data-client="${esc(c.client)}" data-subject="${esc(c.subject)}" style="background:none;border:0;cursor:pointer;margin-left:6px;font-size:12px;" title="${esc(_t('copy_title'))}">📋</button>
     </td>
     <td>${esc(c.court)}</td>
     <td class="mut">${esc(c.client)}</td>
     <td>${esc(c.subject||'—')}</td>
     <td>${esc(c.ev?c.ev.label:(c.stage||'—'))}</td>
     <td class="tabular-nums whitespace-nowrap">${c.ev?fmtYmd(c.ev.date)+(c.ev.time?' '+esc(c.ev.time):'')+`<div class="text-[11px] ${u?'amb':'faint'}">${relDays(c.d)}</div>`:'<span class="faint">—</span>'}</td>
-    <td><button class="btn-o hv" style="font-size:10px;padding:4px 10px" onclick="sendMotion('${esc(c.num)}')">Створити клопотання</button></td>
-  </tr>`}).join(''):'<tr><td colspan="7" class="faint" style="text-align:center;padding:40px">Нічого не знайдено</td></tr>';
+    <td><button class="btn-o hv" style="font-size:10px;padding:4px 10px" data-motion="${esc(c.num)}">${_t('mk_motion')}</button></td>
+  </tr>`}).join(''):'<tr><td colspan="7" class="faint" style="text-align:center;padding:40px">'+_t('nothing')+'</td></tr>';
 
   const mobContainer=$('#adv-mobile-cards');
   if(mobContainer){
@@ -690,28 +707,28 @@ function renderAdv(){
     return `<div class="glass p-5 space-y-3"${c.active?'':' style="opacity:.55"'}>
       <div class="flex justify-between items-start">
         <span class="font-mono text-xs acc font-bold">${esc(c.num||c.id)}</span>
-        <button type="button" class="copy-case-btn btn-o" data-num="${esc(c.num||c.id)}" data-court="${esc(c.court)}" data-client="${esc(c.client)}" data-subject="${esc(c.subject)}" style="font-size:10px;padding:2px 8px;">📋 Копіювати</button>
+        <button type="button" class="copy-case-btn btn-o" data-num="${esc(c.num||c.id)}" data-court="${esc(c.court)}" data-client="${esc(c.client)}" data-subject="${esc(c.subject)}" style="font-size:10px;padding:2px 8px;">📋 ${_t('copy_btn')}</button>
       </div>
       <div>
         <h4 class="font-semibold text-base">${esc(c.client)}</h4>
-        <p class="text-xs faint"><b>Предмет:</b> ${esc(c.subject)}</p>
+        <p class="text-xs faint"><b>${_t('lbl_subject')}:</b> ${esc(c.subject)}</p>
       </div>
       <div class="text-xs space-y-1 mut pt-2 border-t" style="border-color:var(--line)">
-        <div><b>Суд:</b> ${esc(c.court)}</div>
-        <div><b>Подія:</b> ${esc(c.ev?c.ev.label:(c.stage||'—'))}</div>
-        <div><b>Дата:</b> ${c.ev?fmtYmd(c.ev.date)+(c.ev.time?' '+esc(c.ev.time):''):'—'} ${c.ev?`(${relDays(c.d)})`:''}</div>
+        <div><b>${_t('lbl_court')}:</b> ${esc(c.court)}</div>
+        <div><b>${_t('lbl_event')}:</b> ${esc(c.ev?c.ev.label:(c.stage||'—'))}</div>
+        <div><b>${_t('lbl_date')}:</b> ${c.ev?fmtYmd(c.ev.date)+(c.ev.time?' '+esc(c.ev.time):''):'—'} ${c.ev?`(${relDays(c.d)})`:''}</div>
       </div>
       <div class="pt-2">
-        <button class="btn-o hv w-full" style="font-size:11px" onclick="sendMotion('${esc(c.num)}')">Створити клопотання</button>
+        <button class="btn-o hv w-full" style="font-size:11px" data-motion="${esc(c.num)}">${_t('mk_motion')}</button>
       </div>
-    </div>`}).join(''):'<div class="faint text-center py-10">Нічого не знайдено</div>';
+    </div>`}).join(''):'<div class="faint text-center py-10">'+_t('nothing')+'</div>';
   }
 }
 
 document.addEventListener('click', e => {
   const btn = e.target.closest('.copy-case-btn');
   if(btn) {
-    const text = "Справа: " + btn.dataset.num + " | Суд: " + btn.dataset.court + " | Клієнт: " + btn.dataset.client + " | Предмет: " + btn.dataset.subject;
+    const text = [_t('lbl_case')+": "+btn.dataset.num,_t('lbl_court')+": "+btn.dataset.court,_t('lbl_client')+": "+btn.dataset.client,_t('lbl_subject')+": "+btn.dataset.subject].join(" | ");
     copyCaseData(text);
   }
 });
@@ -726,61 +743,64 @@ function renderClients(){
       <div>
         <div class="flex justify-between items-start mb-1">
           <span class="text-xs faint font-mono">${esc(cl.id)}</span>
-          <span class="chip acc">${esc(cl.type||'Клієнт')}</span>
+          <span class="chip acc">${esc(cl.type||_t('lbl_client'))}</span>
         </div>
         <h3 class="serif text-xl font-medium">${esc(cl.name)}</h3>
       </div>
       <div class="text-xs space-y-1 mut">
-        <div><b>РНОКПП/ЄДРПОУ:</b> ${esc(cl.taxId||'—')}</div>
-        <div><b>Адреса:</b> ${esc(cl.address||'—')}</div>
-        <div><b>Телефон:</b> ${esc(cl.phone||'—')}</div>
+        <div><b>${_t('tax_id')}:</b> ${esc(cl.taxId||'—')}</div>
+        <div><b>${_t('lbl_address')}:</b> ${esc(cl.address||'—')}</div>
+        <div><b>${_t('lbl_phone')}:</b> ${esc(cl.phone||'—')}</div>
       </div>
       <div class="flex gap-2 pt-2 border-t" style="border-color:var(--line)">
-        ${cl.phone?`<a href="tel:${esc(cl.phone)}" class="btn-o hv flex-1 text-center" style="font-size:10px">Подзвонити</a>`:''}
-        ${phoneClean?`<a href="${tgLink}" target="_blank" class="btn-o hv flex-1 text-center" style="font-size:10px;color:var(--sky)">Telegram</a>`:''}
+        ${cl.phone?`<a href="tel:${esc(cl.phone)}" class="btn-o hv flex-1 text-center" style="font-size:10px">${_t('btn_call')}</a>`:''}
+        ${phoneClean?`<a href="${tgLink}" target="_blank" rel="noopener noreferrer" class="btn-o hv flex-1 text-center" style="font-size:10px;color:var(--sky)">Telegram</a>`:''}
       </div>
     </div>`;
-  }).join(''):'<div class="faint col-span-3 text-center py-10">Клієнтів не знайдено</div>';
+  }).join(''):'<div class="faint col-span-3 text-center py-10">'+_t('no_clients')+'</div>';
 }
 
 window.sendMotion=async function(caseNum){
-  if(!confirm(`Сформувати клопотання по справі №${caseNum} та відправити в Telegram?`)) return;
-  alert('Запит на формування клопотання надіслано в систему!');
+  if(!confirm(_t('motion_confirm',{n:caseNum}))) return;
+  alert(_t('motion_sent'));
 };
+document.addEventListener('click',e=>{const b=e.target.closest('[data-motion]');if(b)window.sendMotion(b.dataset.motion)});
 
 if(advQ) advQ.addEventListener('input',renderAdv);
 
-const STAGES=['Первинний аналіз','Договір про надання правничої допомоги','Підготовка позовної заяви','Судовий розгляд','Рішення та виконання'];
-const STAGE_DATES=['10.04.2026','15.04.2026','20.04.2026','В процесі','Очікується'];
+const STAGE_KEYS=['stg1','stg2','stg3','stg4','stg5'];
+const STAGE_DATES=['10.04.2026','15.04.2026','20.04.2026','@in_progress','@expected'];
+const stageDate=i=>{const v=STAGE_DATES[i]||'';return v.charAt(0)==='@'?_t(v.slice(1)):v};
 
-function renderClient(){$('#cl-phone').textContent=store.get(KP)||'';
+function renderClient(){$('#cl-phone').textContent=phoneFmt(store.get(KP)||'');
 const L=(DATA&&DATA.cases)||[];if(curCase>=L.length)curCase=0;const c=L[curCase];
 const pick=$('#cl-pick');pick.style.display=L.length>1?'flex':'none';
 pick.innerHTML=L.length>1?L.map((x,i)=>`<button type="button" class="fc${i===curCase?' on':''}" data-ci="${i}">${esc(x.num)}</button>`).join(''):'';
-if(!c){$('#cl-num').textContent='—';$('#cl-title').textContent='Справ не знайдено';$('#cl-tl').innerHTML='';$('#cl-docs').innerHTML='';return}
-const CUR=Math.min(Math.max(c.stageIdx|0,0),STAGES.length-1);
-$('#cl-num').textContent=c.num||'';$('#cl-title').textContent=c.subject||'Судова справа';
-const st=$('#cl-status');st.textContent=c.status||'У роботі';st.className='chip '+(c.active?'ok':'mut');
-$('#cl-tl').innerHTML=STAGES.map((s,i)=>{
-  const dateStr=i<CUR?STAGE_DATES[i]:(i===CUR?'Сьогодні':'Очікується');
+if(!c){$('#cl-num').textContent='—';$('#cl-title').textContent=_t('no_cases');$('#cl-tl').innerHTML='';$('#cl-docs').innerHTML='';return}
+const CUR=Math.min(Math.max(c.stageIdx|0,0),STAGE_KEYS.length-1);
+$('#cl-num').textContent=c.num||'';$('#cl-title').textContent=c.subject||_t('court_case');
+const st=$('#cl-status');st.textContent=c.status||_t('in_work');st.className='chip '+(c.active?'ok':'mut');
+$('#cl-tl').innerHTML=STAGE_KEYS.map((k,i)=>{
+  const s=_t(k);
+  const dateStr=i<CUR?stageDate(i):(i===CUR?_t('today_cap'):_t('expected'));
   return `<li class="${i<CUR?'d':i===CUR?'c':''}"><i>${i<CUR?'✓':i+1}</i><div><span>${s}</span><div class="text-[11px] faint">${dateStr}</div></div></li>`;
 }).join('');
-const pct=Math.round((CUR+.5)/STAGES.length*100);$('#cl-pct').textContent=pct+'%';$('#cl-bar').style.width=pct+'%';
+const pct=Math.round((CUR+.5)/STAGE_KEYS.length*100);$('#cl-pct').textContent=pct+'%';$('#cl-bar').style.width=pct+'%';
 const ev=nextEv(c);$('#cl-next-d').textContent=ev?fmtYmd(ev.date)+(ev.time?', '+ev.time:''):'—';
-$('#cl-next-l').textContent=ev?ev.label+(c.court?' · '+c.court:''):'Найближчих подій немає';
-const D=c.docs||[];$('#cl-docs').innerHTML=D.length?D.map(d=>`<div class="flex justify-between items-center gap-3 text-sm"><span>${esc(d.name)}</span><a href="${esc(d.url||'https://drive.google.com')}" target="_blank" rel="noopener noreferrer" class="chip acc" style="text-decoration:none">Завантажити PDF</a></div>`).join(''):'';}
+$('#cl-next-l').textContent=ev?ev.label+(c.court?' · '+c.court:''):_t('cl_no_events');
+const D=c.docs||[];$('#cl-docs').innerHTML=D.length?D.map(d=>`<div class="flex justify-between items-center gap-3 text-sm"><span>${esc(d.name)}</span><a href="${esc(d.url||'https://drive.google.com')}" target="_blank" rel="noopener noreferrer" class="chip acc" style="text-decoration:none">${_t('dl_pdf')}</a></div>`).join(''):'';}
 
 function renderAdvStats(){$('#adv-date').textContent=df.format(new Date());const t=kyivYmd(),lim=dayNum(t)+7;
-const wk=y=>y&&y>=t&&dayNum(t)<=lim;
+const wk=y=>y&&y>=t&&dayNum(y)<=lim;
 $('#adv-s1').textContent=CASES.filter(c=>c.active).length;
 $('#adv-s2').textContent=CASES.filter(c=>c.active&&wk(c.hearing)).length;}
 
 function skeleton(){
 if(role==='advocate'){['#adv-s1','#adv-s2'].forEach(x=>$(x).textContent='…');$('#adv-date').textContent=df.format(new Date());
 if(advBody)advBody.innerHTML=Array.from({length:6},()=>'<tr>'+'<td><span class="sk"></span></td>'.repeat(7)+'</tr>').join('')}
-else{$('#cl-phone').textContent=store.get(KP)||'';$('#cl-num').innerHTML='<span class="sk" style="width:110px"></span>';
+else{$('#cl-phone').textContent=phoneFmt(store.get(KP)||'');$('#cl-num').innerHTML='<span class="sk" style="width:110px"></span>';
 $('#cl-title').innerHTML='<span class="sk" style="width:60%;height:22px"></span>';
-$('#cl-tl').innerHTML=STAGES.map(()=>'<li><i></i><span class="sk" style="width:55%;margin-top:6px"></span></li>').join('');
+$('#cl-tl').innerHTML=STAGE_KEYS.map(()=>'<li><i></i><span class="sk" style="width:55%;margin-top:6px"></span></li>').join('');
 $('#cl-docs').innerHTML='<span class="sk"></span><span class="sk"></span>';$('#cl-next-d').innerHTML='<span class="sk" style="width:120px"></span>';
 $('#cl-pct').textContent='…';$('#cl-bar').style.width='0'}}
 
@@ -790,18 +810,18 @@ function readCache(rl){try{const o=JSON.parse(sess.get(KC)||'null');return o&&o.
 async function api(body,ms){const ctl=new AbortController(),tm=setTimeout(()=>ctl.abort(),ms||25000);
 try{const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(body),signal:ctl.signal});
 if(!r.ok)throw new Error('HTTP '+r.status);return await r.json()}finally{clearTimeout(tm)}}
-function showLoadErr(){if(DATA){setSync('Не вдалося оновити — показано останні дані.');return}
-const b='Не вдалося завантажити дані. <button type="button" class="underline acc" data-refresh>Спробувати ще раз</button>';
+function showLoadErr(){if(DATA){setSync(_t('sync_fail'));return}
+const b=_t('load_fail')+' <button type="button" class="underline acc" data-refresh>'+_t('retry')+'</button>';
 if(role==='advocate')advBody.innerHTML='<tr><td colspan="7" class="faint" style="text-align:center;padding:40px">'+b+'</td></tr>';
 else{$('#cl-tl').innerHTML='<li class="faint">'+b+'</li>';$('#cl-docs').innerHTML='';setSync('')}}
 async function loadData(){const token=store.get(KT);if(!token){logout();return}
-const my=++reqId;setSync('Оновлення…');
+const my=++reqId;setSync(_t('sync_updating'));
 try{const r=await api({action:'cabinet_data',token:token});if(my!==reqId)return;
 if(!r.ok){if(r.auth===false){logout();return}throw new Error(r.error||'error')}
-DATA=r.data;lastLoad=Date.now();sess.set(KC,JSON.stringify({role:role,t:lastLoad,data:DATA}));renderAll();setSync('Оновлено о '+hhmm(lastLoad))}
+DATA=r.data;lastLoad=Date.now();sess.set(KC,JSON.stringify({role:role,t:lastLoad,data:DATA}));renderAll();setSync(_t('sync_done')+' '+hhmm(lastLoad))}
 catch(e){if(my===reqId)showLoadErr()}}
 function openCabinet(rl){role=rl;const c=readCache(rl);
-if(c){DATA=c.data;lastLoad=c.t;renderAll();setSync('Дані від '+hhmm(c.t))}else{DATA=null;skeleton()}
+if(c){DATA=c.data;lastLoad=c.t;renderAll();setSync(_t('sync_cached')+' '+hhmm(c.t))}else{DATA=null;skeleton()}
 if(!c||Date.now()-c.t>3e4)loadData()}
 $('#cl-pick').addEventListener('click',e=>{const b=e.target.closest('[data-ci]');if(!b)return;curCase=+b.dataset.ci;renderClient()});
 document.addEventListener('click',e=>{if(e.target.closest('[data-refresh]')&&role){if(!DATA)skeleton();loadData()}});
@@ -809,92 +829,98 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&role&&Dat
 const toTop=()=>{if(lenis)lenis.scrollTo(0,{immediate:true});scrollTo(0,0)};
 function show(rl){html.dataset.view=rl;openCabinet(rl);toTop();settle()}
 
-let loginMode='client';
+let loginMode='client',loginStep=1,tempPhone='',busy=false,lockUntil=0,fails=0,lastF=null;
+const lm=$('#login-modal'),lf=$('#lm-form'),inp=$('#lm-in'),le=$('#lm-err'),lt=$('#lm-t'),ld=$('#lm-desc'),lbl=$('#lm-lbl'),lbtn=$('#lm-btn');
+
+/* --- телефон: +38 (0XX) XXX-XX-XX, приймає будь-який формат вставки --- */
+const phoneNat=raw=>{let d=String(raw==null?'':raw).replace(/\D/g,'');if(!d)return '';if(d[0]==='3'){d=d.length<3?'':d.slice(2)}else if(d.startsWith('80'))d=d.slice(1);if(d&&d[0]!=='0')d='0'+d;return d.slice(0,10)};
+const phoneFmt=raw=>{const rd=String(raw==null?'':raw).replace(/\D/g,'');if(!rd)return '';if(rd==='3')return '+3';const d=phoneNat(rd);let o='+38';if(d.length)o+=' ('+d.slice(0,3);if(d.length>=3)o+=')';if(d.length>3)o+=' '+d.slice(3,6);if(d.length>6)o+='-'+d.slice(6,8);if(d.length>8)o+='-'+d.slice(8,10);return o};
+function bindPhone(el,active){
+  el.addEventListener('input',e=>{
+    if(active&&!active())return;
+    const v=el.value;let caret=v.length;try{caret=el.selectionStart==null?v.length:el.selectionStart}catch(x){}
+    const atEnd=caret>=v.length;
+    let rd=v.replace(/\D/g,'');
+    const prevDigits=(el.dataset.prev||'').replace(/\D/g,'');
+    const del=e&&e.inputType&&e.inputType.indexOf('delete')===0;
+    if(del&&rd.length&&rd===prevDigits)rd=rd.slice(0,-1);
+    const nv=phoneFmt(rd);
+    el.value=nv;el.dataset.prev=nv;
+    if(!atEnd){const pos=Math.max(0,nv.length-(v.length-caret));try{el.setSelectionRange(pos,pos)}catch(x){}}
+    if(el.id==='f-phone')el.setCustomValidity(phoneNat(nv).length===10?'':_t('phone_incomplete'));
+  });
+}
+bindPhone(inp,()=>loginMode==='client'&&loginStep===1);
+inp.addEventListener('input',()=>{if(loginMode==='client'&&loginStep===2){const nv=inp.value.replace(/\D/g,'').slice(0,8);if(nv!==inp.value)inp.value=nv}});
+const fPhone=$('#f-phone');if(fPhone)bindPhone(fPhone);
+
+function paintLogin(){
+  inp.dataset.prev='';
+  if(loginMode==='advocate'){
+    lt.textContent=_t('lm_title');ld.textContent=_t('lm_desc_adv');lbl.textContent=_t('lm_pin');
+    inp.type='password';inp.removeAttribute('inputmode');inp.setAttribute('autocomplete','off');inp.placeholder='';
+    lbtn.textContent=_t('lm_enter');
+  }else if(loginStep===1){
+    lt.textContent=_t('lm_title');ld.textContent=_t('lm_desc_cl');lbl.textContent=_t('form_phone');
+    inp.type='tel';inp.setAttribute('inputmode','tel');inp.setAttribute('autocomplete','tel');inp.placeholder='+38 (0__) ___-__-__';
+    lbtn.textContent=_t('lm_get_code');
+  }else{
+    lt.textContent=_t('lm_confirm');ld.textContent=_t('lm_sent')+' '+phoneFmt(tempPhone);lbl.textContent=_t('lm_code_lbl');
+    inp.type='text';inp.setAttribute('inputmode','numeric');inp.setAttribute('autocomplete','one-time-code');inp.placeholder='••••';
+    lbtn.textContent=_t('lm_enter');
+  }
+}
 window.switchLoginMode=function(mode){
-  loginMode=mode;
+  loginMode=mode;loginStep=1;tempPhone='';
   $('#tab-client').classList.toggle('on',mode==='client');
   $('#tab-advocate').classList.toggle('on',mode==='advocate');
-  const lbl=$('#lm-lbl'), inp=$('#lm-in'), desc=$('#lm-desc');
-  if(mode==='client'){
-    desc.textContent='Клієнт — введіть номер телефону (тест: 0662848897).';
-    lbl.textContent='Номер телефону';
-    inp.value='';
-    inp.placeholder='0662848897';
-    inp.type='text';
-  } else {
-    desc.textContent='Адвокат — введіть PIN-код (2301).';
-    lbl.textContent='PIN-код';
-    inp.value='';
-    inp.placeholder='2301';
-    inp.type='password';
-  }
-  $('#lm-err').textContent='';
+  inp.value='';le.textContent='';paintLogin();
 };
-
-const lm=$('#login-modal'),lf=$('#lm-form'),inp=$('#lm-in'),le=$('#lm-err'),lt=$('#lm-t'),ld=$('#lm-desc'),lbl=$('#lm-lbl');
-let loginStep=1, tempPhone='', busy=false, lockUntil=0, lastF=null;
-
 function openM(){
   lastF=document.activeElement;
-  loginStep=1;
   switchLoginMode('client');
   lm.classList.add('on');lm.removeAttribute('inert');lm.setAttribute('aria-hidden','false');
   if(lenis)lenis.stop();
   setTimeout(()=>inp.focus(),250);
 }
-function closeM(){lm.classList.remove('on');lm.setAttribute('inert','');lm.setAttribute('aria-hidden','true');if(lenis)lenis.start();inp.value='';le.textContent='';loginStep=1;if(lastF&&lastF.focus)lastF.focus()}
+function closeM(){lm.classList.remove('on');lm.setAttribute('inert','');lm.setAttribute('aria-hidden','true');if(lenis)lenis.start();inp.value='';le.textContent='';loginStep=1;tempPhone='';if(lastF&&lastF.focus)lastF.focus()}
 function err(m){le.textContent=m;lf.classList.remove('shake');void lf.offsetWidth;lf.classList.add('shake')}
 function enter(r,v){store.set(KR,r.role);store.set(KT,r.token);curCase=0;
 if(r.role==='client')store.set(KP,v);else store.del(KP);
 sess.set(KC,JSON.stringify({role:r.role,t:Date.now(),data:r.data}));closeM();show(r.role)}
 
-lf.addEventListener('submit',async e=>{e.preventDefault();if(busy)return;const now=Date.now();
-if(now<lockUntil){err('Забагато спроб. Спробуйте через '+Math.ceil((lockUntil-now)/1000)+' с.');return}
-const rawV=inp.value.trim();if(!rawV){err('Введіть дані.');return}
-const v=rawV.replace(/[\s\+]/g,'');
-const btn=lf.querySelector('button[type=submit]'),t0=btn.textContent;busy=true;btn.disabled=true;
-
-if(loginMode==='advocate'){
-  btn.textContent='Зачекайте, перевірка...';
-  try{
-    const r=await api({action:'cabinet_login',credential:v},20000);
-    busy=false;btn.disabled=false;btn.textContent=t0;
-    if(r.ok){fails=0;enter(r,v)}else err(r.error||'Невірний PIN-код.');
-  }catch(x){busy=false;btn.disabled=false;btn.textContent=t0;err('Помилка зв’язку із сервером.')}
-} else {
-  if(loginStep===1){
-    btn.textContent='Надсилання коду...';
-    try{
-      const r=await api({action:'request_client_code',phone:v},20000);
-      busy=false;btn.disabled=false;btn.textContent=t0;
-      if(r.ok){
-        tempPhone=v;
-        loginStep=2;
-        lt.textContent='Підтвердження входу';
-        ld.textContent='Код відправлено в Telegram-бот адвоката для номера +' + v + ' (тест: 7777)';
-        lbl.textContent='Введіть 4-значний код з Telegram';
-        inp.value='';
-        inp.placeholder='7777';
-        btn.textContent='Увійти →';
-      } else {
-        err(r.error||'Номер не зареєстровано в базі.');
-      }
-    }catch(x){
-      busy=false;btn.disabled=false;btn.textContent=t0;
-      err('Клієнта з таким номером не знайдено в базі даних.');
-    }
-  } else {
-    btn.textContent='Перевірка коду...';
-    try{
-      const r=await api({action:'verify_client_code',phone:tempPhone,code:v},20000);
-      busy=false;btn.disabled=false;btn.textContent=t0;
-      if(r.ok){fails=0;enter(r,tempPhone)}else err(r.error||'Невірний код підтвердження.');
-    }catch(x){
-      busy=false;btn.disabled=false;btn.textContent=t0;
-      err('Помилка перевірки коду.');
-    }
+lf.addEventListener('submit',async e=>{
+  e.preventDefault();if(busy)return;
+  const now=Date.now();
+  if(now<lockUntil){err(_t('err_locked')+' '+Math.ceil((lockUntil-now)/1000)+' '+_t('sec'));return}
+  le.textContent='';
+  const fail=m=>{fails++;if(fails>=5){lockUntil=Date.now()+30000;fails=0}err(m)};
+  let body,busyMsg;
+  if(loginMode==='advocate'){
+    const v=inp.value.replace(/\s/g,'');
+    if(!v){err(_t('err_enter'));return}
+    body={action:'cabinet_login',credential:v};busyMsg=_t('lm_checking_pin');
+  }else if(loginStep===1){
+    const d=phoneNat(inp.value);
+    if(d.length!==10){err(_t('phone_incomplete'));return}
+    body={action:'request_client_code',phone:d};busyMsg=_t('lm_sending');
+  }else{
+    const c=inp.value.replace(/\D/g,'');
+    if(c.length<4){err(_t('err_code_short'));return}
+    body={action:'verify_client_code',phone:tempPhone,code:c};busyMsg=_t('lm_checking_code');
   }
-}
+  busy=true;lbtn.disabled=true;lbtn.textContent=busyMsg;
+  let r=null;
+  try{r=await api(body,20000)}catch(x){r=null}
+  busy=false;lbtn.disabled=false;paintLogin();
+  if(!r){err(_t('err_conn'));return}
+  if(loginMode==='advocate'){
+    if(r.ok){fails=0;enter(r,'')}else fail(r.error||_t('err_pin'));
+  }else if(loginStep===1){
+    if(r.ok){fails=0;tempPhone=body.phone;loginStep=2;inp.value='';paintLogin();setTimeout(()=>inp.focus(),50)}else fail(r.error||_t('err_phone_nf'));
+  }else{
+    if(r.ok){fails=0;enter(r,tempPhone)}else fail(r.error||_t('err_code'));
+  }
 });
 
 window.openAskModal=function(){
@@ -910,40 +936,15 @@ window.closeAskModal=function(){
 };
 window.sendClientQuestion=async function(){
   const text=$('#ask-text').value.trim();
-  if(!text){alert('Введіть текст питання.');return;}
+  if(!text){alert(_t('ask_empty'));return}
   const token=store.get(KT);
   try{
-    await api({action:'client_question',token:token,question:text},15000);
-    alert('Ваше питання успішно надіслано адвокату в Telegram!');
+    const r=await api({action:'client_question',token:token,question:text},15000);
+    if(r&&r.ok===false){if(r.auth===false){closeAskModal();logout();return}throw new Error(r.error||'error')}
+    alert(_t('ask_ok'));
     closeAskModal();
   }catch(e){
-    alert('Питання надіслано в систему!');
-    closeAskModal();
-  }
-};
-
-window.openAskModal=function(){
-  const m=$('#ask-modal');
-  m.classList.add('on');m.removeAttribute('inert');m.setAttribute('aria-hidden','false');
-  if(lenis)lenis.stop();
-};
-window.closeAskModal=function(){
-  const m=$('#ask-modal');
-  m.classList.remove('on');m.setAttribute('inert','');m.setAttribute('aria-hidden','true');
-  if(lenis)lenis.start();
-  $('#ask-text').value='';
-};
-window.sendClientQuestion=async function(){
-  const text=$('#ask-text').value.trim();
-  if(!text){alert('Введіть текст питання.');return;}
-  const token=store.get(KT);
-  try{
-    await api({action:'client_question',token:token,question:text},15000);
-    alert('Ваше питання успішно надіслано адвокату в Telegram!');
-    closeAskModal();
-  }catch(e){
-    alert('Питання надіслано в систему!');
-    closeAskModal();
+    alert(_t('ask_fail'));
   }
 };
 
@@ -956,10 +957,10 @@ html.dataset.view='public';toTop();requestAnimationFrame(settle)}
 document.addEventListener('click',e=>{if(e.target.closest('[data-logout]'))logout()});
 {const r0=store.get(KR);if((r0==='advocate'||r0==='client')&&store.get(KT)){html.dataset.view=r0;openCabinet(r0)}else{store.del(KR);store.del(KT);html.dataset.view='public'}}
 
-$('#f').addEventListener('submit',e=>{e.preventDefault();$('#fbox').innerHTML='<div class="text-center py-16 space-y-4"><div class="serif text-2xl acc">Заявку отримано</div><p class="text-sm mut">Керуючий адвокат зв’яжеться з вами найближчим часом.</p></div>'});
+$('#f').addEventListener('submit',e=>{e.preventDefault();$('#fbox').innerHTML='<div class="text-center py-16 space-y-4"><div class="serif text-2xl acc">'+_t('form_sent_t')+'</div><p class="text-sm mut">'+_t('form_sent_d')+'</p></div>'});
 
-const bar=$('#bar i'),pc=$('#pct'],o={v:0};
-gsap.to(o,{v:100,duration:1.2,ease:'power2.inOut',onUpdate:()=>{if(bar)bar.style.width=o.v+'%',if(pc)pc.textContent=Math.round(o.v)+'%';},onComplete:()=>{
+const bar=$('#bar i'),pc=$('#pct'),o={v:0};
+gsap.to(o,{v:100,duration:1.2,ease:'power2.inOut',onUpdate:()=>{if(bar)bar.style.width=o.v+'%';if(pc)pc.textContent=Math.round(o.v)+'%';},onComplete:()=>{
   gsap.to('#pre',{opacity:0,duration:.5,onComplete:()=>$('#pre').remove()});
   gsap.from('#h1 span',{yPercent:60,opacity:0,duration:1.2,stagger:.15,ease:'power4.out'});
   gsap.from('#hero .hv,#hero .glass,#hero .btn',{opacity:0,y:20,duration:.9,stagger:.1,delay:.3,ease:'power3.out'});
@@ -973,6 +974,10 @@ window.addEventListener('load', () => {
     if (pre) { pre.style.opacity = '0'; setTimeout(() => pre.remove(), 500); }
   }, 1200);
 });
+
+langHooks.push(()=>{paintLogin();if(role){if(DATA)renderAll();else skeleton()}});
+applyLang(currentLang);
+window.__lwReady=true;
 })();
 </script>
 </body>
