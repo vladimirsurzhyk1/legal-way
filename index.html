@@ -387,7 +387,7 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
           <button class="btn-o hv w-full" type="button" onclick="openAskModal()" style="border-color:var(--acc);color:var(--acc)">Задати питання адвокату</button>
         </div>
 
-        <div class="glass hv p-6 rv space-y-3"><div class="lbl faint" style="font-size:10px">Ваш адвокат</div><div class="font-semibold">Липко Олег Юрійович</div>
+        <div class="glass hv p-6 rv space-y-3"><div class="lbl faint" style="font-size:10px">Ваш адвокат</div><div class="semibold">Липко Олег Юрійович</div>
           <div class="text-xs space-y-1"><div><a href="tel:+380968881000" class="underline acc">+380 (96) 888 1000</a></div><div><a href="mailto:ask@lway.ua" class="underline acc">ask@lway.ua</a></div></div></div>
       </div>
     </div>
@@ -615,7 +615,7 @@ function renderAdv(){
   return `<tr${c.active?'':' style="opacity:.55"'}>
     <td class="font-mono text-xs whitespace-nowrap">
       <span style="color:var(--acc);font-weight:600">${esc(c.num||c.id)}</span>
-      <button type="button" data-copy-txt="${esc(copyText)}" onclick="copyCaseData(this.getAttribute('data-copy-txt'))" style="background:none;border:0;cursor:pointer;margin-left:6px;font-size:12px;" title="Копіювати дані">📋</button>
+      <button type="button" class="copy-case-btn" data-copy="${esc(copyText)}" style="background:none;border:0;cursor:pointer;margin-left:6px;font-size:12px;" title="Копіювати дані">📋</button>
     </td>
     <td>${esc(c.court)}</td>
     <td class="mut">${esc(c.client)}</td>
@@ -632,7 +632,7 @@ function renderAdv(){
     return `<div class="glass p-5 space-y-3"${c.active?'':' style="opacity:.55"'}>
       <div class="flex justify-between items-start">
         <span class="font-mono text-xs acc font-bold">${esc(c.num||c.id)}</span>
-        <button type="button" data-copy-txt="${esc(copyText)}" onclick="copyCaseData(this.getAttribute('data-copy-txt'))" class="btn-o" style="font-size:10px;padding:2px 8px;">📋 Копіювати</button>
+        <button type="button" class="copy-case-btn btn-o" data-copy="${esc(copyText)}" style="font-size:10px;padding:2px 8px;">📋 Копіювати</button>
       </div>
       <div>
         <h4 class="font-semibold text-base">${esc(c.client)}</h4>
@@ -649,6 +649,14 @@ function renderAdv(){
     </div>`}).join(''):'<div class="faint text-center py-10">Нічого не знайдено</div>';
   }
 }
+
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.copy-case-btn');
+  if(btn) {
+    const txt = btn.getAttribute('data-copy');
+    copyCaseData(txt);
+  }
+});
 
 function renderClients(){
   const grid=$('#adv-clients-grid');
