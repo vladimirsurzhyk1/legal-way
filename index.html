@@ -143,7 +143,7 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
 <div id="view-public">
 <header class="fixed top-0 left-0 w-full z-50 wrap flex justify-between items-center gap-3 border-b" style="background:var(--hd);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-color:var(--line);padding-top:calc(14px + env(safe-area-inset-top,0px));padding-bottom:14px;flex-wrap:wrap;">
   <a href="#hero" class="flex items-center gap-3">
-    <img src="logo-clean.png" alt="Legal Way" class="h-8 w-auto lg-l"><img src="logo-white.png" alt="Legal Way" class="h-8 w-auto lg-d">
+    <img src="logo-clean.png" alt="Legal Way" class="h-8 w-auto lg-l" style="filter:none;"><img src="logo-white.png" alt="Legal Way" class="h-8 w-auto lg-d" style="filter:none;">
     <span class="serif font-bold tracking-[.3em] uppercase text-base hidden sm:inline">Legal Way</span>
   </a>
   <nav class="nav hidden lg:flex gap-9 text-[11px] tracking-[.2em] uppercase font-medium">
@@ -162,7 +162,7 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
 </header>
 
 <nav id="mn" aria-label="Меню">
-  <a href="#practices">Практики</a><a href="#process">Процес</a><a href="#platform">Платформа</a><a href="#lawyer">Керівництво</a><a href="#faq">FAQ</a><a href="#contact">Контакти</a>
+  <a href="#practices" data-i18n="nav_practices">Практики</a><a href="#process" data-i18n="nav_process">Процес</a><a href="#platform" data-i18n="nav_platform">Платформа</a><a href="#lawyer" data-i18n="nav_lawyer">Керівництво</a><a href="#faq">FAQ</a><a href="#contact" data-i18n="nav_contact">Контакти</a>
 </nav>
 
 <main>
@@ -190,39 +190,39 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
 
 <section id="practices" class="min-h-screen flex flex-col justify-center wrap py-32">
   <div class="space-y-16">
-    <div class="fu"><span class="lbl amb">[ 01 / Напрямки практики ]</span>
-      <h2 class="serif text-4xl md:text-5xl font-medium mt-4 leading-tight">Ключові юридичні практики</h2></div>
+    <div class="fu"><span class="lbl amb" data-i18n="prac_lbl">[ 01 / Напрямки практики ]</span>
+      <h2 class="serif text-4xl md:text-5xl font-medium mt-4 leading-tight" data-i18n="prac_title">Ключові юридичні практики</h2></div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
       <article class="acd glass hv p-8 md:p-10 fu">
-        <button class="acd-h" id="ah1" aria-expanded="false" aria-controls="ap1"><span><span class="block text-xs faint font-mono mb-3">[ 01 ]</span><span class="block text-xl font-semibold">Надрокористування та енергетика</span><span class="block text-sm leading-relaxed mut mt-3">Супровід аукціонів Держгеонадр, спецдозволів на видобуток нафти й газу, процедури ОВД.</span></span><span class="acd-ic" aria-hidden="true">+</span></button>
+        <button class="acd-h" id="ah1" aria-expanded="false" aria-controls="ap1"><span><span class="block text-xs faint font-mono mb-3">[ 01 ]</span><span class="block text-xl font-semibold" data-i18n="p1_title">Надрокористування та енергетика</span><span class="block text-sm leading-relaxed mut mt-3" data-i18n="p1_desc">Супровід аукціонів Держгеонадр, спецдозволів на видобуток нафти й газу, процедури ОВД.</span></span><span class="acd-ic" aria-hidden="true">+</span></button>
         <div class="acd-p" id="ap1" role="region" aria-labelledby="ah1"><div><div class="pt-8 mt-8 border-t space-y-7" style="border-color:var(--line)">
-          <div><div class="lbl faint mb-3" style="font-size:10px">Що входить</div><ul class="space-y-2 text-sm mut"><li>Участь в аукціонах Держгеонадр і підготовка пакету документів</li><li>Отримання, продовження та переоформлення спецдозволів</li><li>Супровід процедури оцінки впливу на довкілля (ОВД)</li></ul></div>
-          <div><div class="lbl faint mb-3" style="font-size:10px">Етапи роботи</div><ol class="mut"><li>Аналіз ділянки та вимог до заявника</li><li>Підготовка та подання документів</li><li>Супровід до отримання рішення</li></ol></div>
-          <a href="#contact" class="btn btn-w mag hv" data-topic="Надрокористування та енергетика">Обговорити питання →</a>
+          <div><div class="lbl faint mb-3" style="font-size:10px" data-i18n="incl_lbl">Що входить</div><ul class="space-y-2 text-sm mut"><li data-i18n="p1_li1">Участь в аукціонах Держгеонадр і підготовка пакету документів</li><li data-i18n="p1_li2">Отримання, продовження та переоформлення спецдозволів</li><li data-i18n="p1_li3">Супровід процедури оцінки впливу на довкілля (ОВД)</li></ul></div>
+          <div><div class="lbl faint mb-3" style="font-size:10px" data-i18n="steps_lbl">Етапи роботи</div><ol class="mut"><li data-i18n="p1_st1">Аналіз ділянки та вимог до заявника</li><li data-i18n="p1_st2">Підготовка та подання документів</li><li data-i18n="p1_st3">Супровід до отримання рішення</li></ol></div>
+          <a href="#contact" class="btn btn-w mag hv" data-topic="Надрокористування та енергетика" data-i18n="discuss_btn">Обговорити питання →</a>
         </div></div></div>
       </article>
       <article class="acd glass hv p-8 md:p-10 fu">
-        <button class="acd-h" id="ah2" aria-expanded="false" aria-controls="ap2"><span><span class="block text-xs faint font-mono mb-3">[ 02 ]</span><span class="block text-xl font-semibold">Корпоративне право та M&amp;A</span><span class="block text-sm leading-relaxed mut mt-3">Vendor Due Diligence, договори купівлі-продажу часток у статутному капіталі, захист від поглинань.</span></span><span class="acd-ic" aria-hidden="true">+</span></button>
+        <button class="acd-h" id="ah2" aria-expanded="false" aria-controls="ap2"><span><span class="block text-xs faint font-mono mb-3">[ 02 ]</span><span class="block text-xl font-semibold" data-i18n="p2_title">Корпоративне право та M&amp;A</span><span class="block text-sm leading-relaxed mut mt-3" data-i18n="p2_desc">Vendor Due Diligence, договори купівлі-продажу часток у статутному капіталі, захист від поглинань.</span></span><span class="acd-ic" aria-hidden="true">+</span></button>
         <div class="acd-p" id="ap2" role="region" aria-labelledby="ah2"><div><div class="pt-8 mt-8 border-t space-y-7" style="border-color:var(--line)">
-          <div><div class="lbl faint mb-3" style="font-size:10px">Що входить</div><ul class="space-y-2 text-sm mut"><li>Vendor Due Diligence та підготовка компанії до продажу</li><li>Договори купівлі-продажу часток у статутному капіталі</li><li>Корпоративні конфлікти та захист від недружніх поглинань</li></ul></div>
-          <div><div class="lbl faint mb-3" style="font-size:10px">Етапи роботи</div><ol class="mut"><li>Аудит структури та документів</li><li>Структурування й узгодження угоди</li><li>Підписання та реєстрація змін</li></ol></div>
-          <a href="#contact" class="btn btn-w mag hv" data-topic="Корпоративне право та M&A">Обговорити питання →</a>
+          <div><div class="lbl faint mb-3" style="font-size:10px" data-i18n="incl_lbl">Що входить</div><ul class="space-y-2 text-sm mut"><li data-i18n="p2_li1">Vendor Due Diligence та підготовка компанії до продажу</li><li data-i18n="p2_li2">Договори купівлі-продажу часток у статутному капіталі</li><li data-i18n="p2_li3">Корпоративні конфлікти та захист від недружніх поглинань</li></ul></div>
+          <div><div class="lbl faint mb-3" style="font-size:10px" data-i18n="steps_lbl">Етапи роботи</div><ol class="mut"><li data-i18n="p2_st1">Аудит структури та документів</li><li data-i18n="p2_st2">Структурування й узгодження угоди</li><li data-i18n="p2_st3">Підписання та реєстрація змін</li></ol></div>
+          <a href="#contact" class="btn btn-w mag hv" data-topic="Корпоративне право та M&A" data-i18n="discuss_btn">Обговорити питання →</a>
         </div></div></div>
       </article>
       <article class="acd glass hv p-8 md:p-10 fu">
-        <button class="acd-h" id="ah3" aria-expanded="false" aria-controls="ap3"><span><span class="block text-xs faint font-mono mb-3">[ 03 ]</span><span class="block text-xl font-semibold">Судова практика та арбітраж</span><span class="block text-sm leading-relaxed mut mt-3">Захист інтересів у господарських судах, апеляції, Верховному Суді, взаємодія з фіскальними органами.</span></span><span class="acd-ic" aria-hidden="true">+</span></button>
+        <button class="acd-h" id="ah3" aria-expanded="false" aria-controls="ap3"><span><span class="block text-xs faint font-mono mb-3">[ 03 ]</span><span class="block text-xl font-semibold" data-i18n="p3_title">Судова практика та арбітраж</span><span class="block text-sm leading-relaxed mut mt-3" data-i18n="p3_desc">Захист інтересів у господарських судах, апеляції, Верховному Суді, взаємодія з фіскальними органами.</span></span><span class="acd-ic" aria-hidden="true">+</span></button>
         <div class="acd-p" id="ap3" role="region" aria-labelledby="ah3"><div><div class="pt-8 mt-8 border-t space-y-7" style="border-color:var(--line)">
-          <div><div class="lbl faint mb-3" style="font-size:10px">Що входить</div><ul class="space-y-2 text-sm mut"><li>Представництво в господарських судах усіх інстанцій</li><li>Апеляційні та касаційні скарги у Верховному Суді</li><li>Податкові спори та взаємодія з фіскальними органами</li></ul></div>
-          <div><div class="lbl faint mb-3" style="font-size:10px">Етапи роботи</div><ol class="mut"><li>Аналіз доказів і правової позиції</li><li>Підготовка та подання процесуальних документів</li><li>Участь у засіданнях та виконання рішення</li></ol></div>
-          <a href="#contact" class="btn btn-w mag hv" data-topic="Судова практика та арбітраж">Обговорити питання →</a>
+          <div><div class="lbl faint mb-3" style="font-size:10px" data-i18n="incl_lbl">Що входить</div><ul class="space-y-2 text-sm mut"><li data-i18n="p3_li1">Представництво в господарських судах усіх інстанцій</li><li data-i18n="p3_li2">Апеляційні та касаційні скарги у Верховному Суді</li><li data-i18n="p3_li3">Податкові спори та взаємодія з фіскальними органами</li></ul></div>
+          <div><div class="lbl faint mb-3" style="font-size:10px" data-i18n="steps_lbl">Етапи роботи</div><ol class="mut"><li data-i18n="p3_st1">Аналіз доказів і правової позиції</li><li data-i18n="p3_st2">Підготовка та подання процесуальних документів</li><li data-i18n="p3_st3">Участь у засіданнях та виконання рішення</li></ol></div>
+          <a href="#contact" class="btn btn-w mag hv" data-topic="Судова практика та арбітраж" data-i18n="discuss_btn">Обговорити питання →</a>
         </div></div></div>
       </article>
       <article class="acd glass hv p-8 md:p-10 fu">
-        <button class="acd-h" id="ah4" aria-expanded="false" aria-controls="ap4"><span><span class="block text-xs faint font-mono mb-3">[ 04 ]</span><span class="block text-xl font-semibold">Міжнародні інвестиції</span><span class="block text-sm leading-relaxed mut mt-3">Юридичний супровід ЗЕД у країнах ЄС, транскордонні LOI / MOU та захист іноземного капіталу.</span></span><span class="acd-ic" aria-hidden="true">+</span></button>
+        <button class="acd-h" id="ah4" aria-expanded="false" aria-controls="ap4"><span><span class="block text-xs faint font-mono mb-3">[ 04 ]</span><span class="block text-xl font-semibold" data-i18n="p4_title">Міжнародні інвестиції</span><span class="block text-sm leading-relaxed mut mt-3" data-i18n="p4_desc">Юридичний супровід ЗЕД у країнах ЄС, транскордонні LOI / MOU та захист іноземного капіталу.</span></span><span class="acd-ic" aria-hidden="true">+</span></button>
         <div class="acd-p" id="ap4" role="region" aria-labelledby="ah4"><div><div class="pt-8 mt-8 border-t space-y-7" style="border-color:var(--line)">
-          <div><div class="lbl faint mb-3" style="font-size:10px">Що входить</div><ul class="space-y-2 text-sm mut"><li>Договори зовнішньоекономічної діяльності з партнерами з ЄС</li><li>Підготовка та узгодження LOI / MOU</li><li>Захист інтересів іноземного капіталу</li></ul></div>
-          <div><div class="lbl faint mb-3" style="font-size:10px">Етапи роботи</div><ol class="mut"><li>Вивчення юрисдикцій та ризиків</li><li>Узгодження ключових умов</li><li>Супровід укладення та виконання</li></ol></div>
-          <a href="#contact" class="btn btn-w mag hv" data-topic="Міжнародні інвестиції">Обговорити питання →</a>
+          <div><div class="lbl faint mb-3" style="font-size:10px" data-i18n="incl_lbl">Що входить</div><ul class="space-y-2 text-sm mut"><li data-i18n="p4_li1">Договори зовнішньоекономічної діяльності з партнерами з ЄС</li><li data-i18n="p4_li2">Підготовка та узгодження LOI / MOU</li><li data-i18n="p4_li3">Захист інтересів іноземного капіталу</li></ul></div>
+          <div><div class="lbl faint mb-3" style="font-size:10px" data-i18n="steps_lbl">Етапи роботи</div><ol class="mut"><li data-i18n="p4_st1">Вивчення юрисдикцій та ризиків</li><li data-i18n="p4_st2">Узгодження ключових умов</li><li data-i18n="p4_st3">Супровід укладення та виконання</li></ol></div>
+          <a href="#contact" class="btn btn-w mag hv" data-topic="Міжнародні інвестиції" data-i18n="discuss_btn">Обговорити питання →</a>
         </div></div></div>
       </article>
     </div>
@@ -231,83 +231,83 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
 
 <section id="process" class="wrap py-32">
   <div class="grid md:grid-cols-[1fr_1.2fr] gap-16 md:gap-24">
-    <div class="fu md:sticky md:top-32 self-start space-y-6"><span class="lbl acc">[ 02 / Як ми працюємо ]</span>
-      <h2 class="serif text-4xl md:text-5xl font-medium leading-tight">Від заявки до результату</h2>
-      <p class="text-sm leading-relaxed mut max-w-sm">Прозорий процес без сюрпризів: на кожному етапі ви знаєте, що відбувається зі справою і що буде далі.</p></div>
+    <div class="fu md:sticky md:top-32 self-start space-y-6"><span class="lbl acc" data-i18n="proc_lbl">[ 02 / Як ми працюємо ]</span>
+      <h2 class="serif text-4xl md:text-5xl font-medium leading-tight" data-i18n="proc_title">Від заявки до результату</h2>
+      <p class="text-sm leading-relaxed mut max-w-sm" data-i18n="proc_desc">Прозорий процес без сюрпризів: на кожному етапі ви знаєте, що відбувається зі справою і що буде далі.</p></div>
     <div class="relative space-y-14" id="steps"><div class="rail"><i></i></div>
-      <div class="stp"><div class="n">01</div><h3 class="font-semibold text-lg mb-2">Заявка та первинний аналіз</h3><p class="text-sm leading-relaxed mut">Ви описуєте ситуацію, керуючий адвокат оцінює перспективи й ризики та пропонує формат співпраці.</p></div>
-      <div class="stp"><div class="n">02</div><h3 class="font-semibold text-lg mb-2">Стратегія та домовленості</h3><p class="text-sm leading-relaxed mut">Узгоджуємо правову позицію, строки та умови. Підписуємо договір про надання правничої допомоги.</p></div>
-      <div class="stp"><div class="n">03</div><h3 class="font-semibold text-lg mb-2">Супровід і представництво</h3><p class="text-sm leading-relaxed mut">Готуємо документи, представляємо інтереси в судах і держорганах, тримаємо вас в курсі подій.</p></div>
-      <div class="stp"><div class="n">04</div><h3 class="font-semibold text-lg mb-2">Результат і звітність</h3><p class="text-sm leading-relaxed mut">Фіксуємо результат, передаємо повний пакет документів і підсумковий звіт по справі.</p></div>
+      <div class="stp"><div class="n">01</div><h3 class="font-semibold text-lg mb-2" data-i18n="s1_title">Заявка та первинний аналіз</h3><p class="text-sm leading-relaxed mut" data-i18n="s1_desc">Ви описуєте ситуацію, керуючий адвокат оцінює перспективи й ризики та пропонує формат співпраці.</p></div>
+      <div class="stp"><div class="n">02</div><h3 class="font-semibold text-lg mb-2" data-i18n="s2_title">Стратегія та домовленості</h3><p class="text-sm leading-relaxed mut" data-i18n="s2_desc">Узгоджуємо правову позицію, строки та умови. Підписуємо договір про надання правничої допомоги.</p></div>
+      <div class="stp"><div class="n">03</div><h3 class="font-semibold text-lg mb-2" data-i18n="s3_title">Супровід і представництво</h3><p class="text-sm leading-relaxed mut" data-i18n="s3_desc">Готуємо документи, представляємо інтереси в судах і держорганах, тримаємо вас в курсі подій.</p></div>
+      <div class="stp"><div class="n">04</div><h3 class="font-semibold text-lg mb-2" data-i18n="s4_title">Результат і звітність</h3><p class="text-sm leading-relaxed mut" data-i18n="s4_desc">Фіксуємо результат, передаємо повний пакет документів і підсумковий звіт по справі.</p></div>
     </div>
   </div>
 </section>
 
 <section id="platform" class="wrap py-32">
   <div class="space-y-14">
-    <div class="fu max-w-2xl space-y-4"><span class="lbl sky">[ 03 / LegalTech платформа ]</span>
-      <h2 class="serif text-4xl md:text-5xl font-medium leading-tight">Ваші справи — у реальному часі</h2>
-      <p class="text-sm leading-relaxed mut">Ми працюємо в цифровому середовищі: статуси справ, документи та терміни зібрані в одному місці, а важливі події надходять вам у месенджер.</p></div>
+    <div class="fu max-w-2xl space-y-4"><span class="lbl sky" data-i18n="plat_lbl">[ 03 / LegalTech платформа ]</span>
+      <h2 class="serif text-4xl md:text-5xl font-medium leading-tight" data-i18n="plat_title">Ваші справи — у реальному часі</h2>
+      <p class="text-sm leading-relaxed mut" data-i18n="plat_desc">Ми працюємо в цифровому середовищі: статуси справ, документи та терміни зібрані в одном місці, а важливі події надходять вам у месенджер.</p></div>
     <div class="grid md:grid-cols-[1.3fr_1fr] gap-6">
       <div class="glass hv p-6 md:p-8 fu space-y-6">
-        <div class="flex justify-between items-center"><span class="lbl" style="font-size:10px">Кабінет клієнта</span><span class="chip acc">Демо-інтерфейс</span></div>
+        <div class="flex justify-between items-center"><span class="lbl" style="font-size:10px" data-i18n="client_cab">Кабінет клієнта</span><span class="chip acc" data-i18n="demo_ui">Демо-інтерфейс</span></div>
         <div class="space-y-5" id="cases"></div>
       </div>
       <div class="glass hv p-6 md:p-8 fu space-y-5">
-        <div class="flex items-center gap-2 lbl" style="font-size:10px"><span class="dot"></span>Стрічка подій</div>
+        <div class="flex items-center gap-2 lbl" style="font-size:10px"><span class="dot"></span><span data-i18n="feed_lbl">Стрічка подій</span></div>
         <div id="feed" class="space-y-3 text-[13px]"></div>
       </div>
     </div>
     <div class="grid sm:grid-cols-3 gap-6">
-      <div class="glass hv p-6 fu"><div class="serif text-lg mb-2">Єдине вікно</div><p class="text-xs leading-relaxed mut">Договори, процесуальні документи та листування — в одному захищеному просторі.</p></div>
-      <div class="glass hv p-6 fu"><div class="serif text-lg mb-2">Контроль строків</div><p class="text-xs leading-relaxed mut">Автоматичні нагадування про засідання та процесуальні терміни.</p></div>
-      <div class="glass hv p-6 fu"><div class="serif text-lg mb-2">Сповіщення</div><p class="text-xs leading-relaxed mut">Ключові зміни по справі — миттєво в Telegram.</p></div>
+      <div class="glass hv p-6 fu"><div class="serif text-lg mb-2" data-i18n="feat1_t">Єдине вікно</div><p class="text-xs leading-relaxed mut" data-i18n="feat1_d">Договори, процесуальні документи та листування — в одному захищеному просторі.</p></div>
+      <div class="glass hv p-6 fu"><div class="serif text-lg mb-2" data-i18n="feat2_t">Контроль строків</div><p class="text-xs leading-relaxed mut" data-i18n="feat2_d">Автоматичні нагадування про засідання та процесуальні терміни.</p></div>
+      <div class="glass hv p-6 fu"><div class="serif text-lg mb-2" data-i18n="feat3_t">Сповіщення</div><p class="text-xs leading-relaxed mut" data-i18n="feat3_d">Ключові зміни по справі — миттєво в Telegram.</p></div>
     </div>
   </div>
 </section>
 
 <section id="lawyer" class="min-h-screen flex flex-col justify-center wrap py-32">
   <div class="glass hv p-8 md:p-14 space-y-10 fu">
-    <div><span class="lbl acc">[ 04 / Керівництво компанії ]</span>
+    <div><span class="lbl acc" data-i18n="lawyer_lbl">[ 04 / Керівництво компанії ]</span>
       <h2 class="serif text-3xl md:text-4xl font-medium mt-4">Липко Олег Юрійович</h2>
-      <p class="text-sm faint mt-2">Керуючий адвокат • Директор ТОВ «МЮК «ЛІГАЛ ВЕЙ»</p></div>
-    <p class="text-sm leading-loose mut">Свідоцтво про право на заняття адвокатською діяльністю: <strong style="color:var(--fg)">серія ЗР №21/2301</strong>.<br>Понад 15 років безперервної практики у сфері захисту корпоративної власності, комерційного арбітражу, супроводу надрокористування.</p>
+      <p class="text-sm faint mt-2" data-i18n="lawyer_pos">Керуючий адвокат • Директор ТОВ «МЮК «ЛІГАЛ ВЕЙ»</p></div>
+    <p class="text-sm leading-loose mut" data-i18n="lawyer_bio">Свідоцтво про право на заняття адвокатською діяльністю: <strong style="color:var(--fg)">серія ЗР №21/2301</strong>.<br>Понад 15 років безперервної практики у сфері захисту корпоративної власності, комерційного арбітражу, супроводу надрокористування.</p>
     <div class="grid grid-cols-3 gap-4 pt-8 border-t text-center" style="border-color:var(--line)">
-      <div><div class="serif text-3xl md:text-4xl acc"><span class="cnt" data-n="15">0</span>+</div><div class="lbl faint mt-2" style="font-size:9px">Років досвіду</div></div>
-      <div><div class="serif text-3xl md:text-4xl acc"><span class="cnt" data-n="500">0</span>+</div><div class="lbl faint mt-2" style="font-size:9px">Успішних справ</div></div>
-      <div><div class="serif text-3xl md:text-4xl acc"><span class="cnt" data-n="98">0</span>%</div><div class="lbl faint mt-2" style="font-size:9px">Виграних спорів</div></div>
+      <div><div class="serif text-3xl md:text-4xl acc"><span class="cnt" data-n="15">0</span>+</div><div class="lbl faint mt-2" style="font-size:9px" data-i18n="st1_lbl">Років досвіду</div></div>
+      <div><div class="serif text-3xl md:text-4xl acc"><span class="cnt" data-n="500">0</span>+</div><div class="lbl faint mt-2" style="font-size:9px" data-i18n="st2_lbl">Успішних справ</div></div>
+      <div><div class="serif text-3xl md:text-4xl acc"><span class="cnt" data-n="98">0</span>%</div><div class="lbl faint mt-2" style="font-size:9px" data-i18n="st3_lbl">Виграних спорів</div></div>
     </div>
   </div>
 </section>
 
 <section id="faq" class="wrap py-32">
   <div class="grid md:grid-cols-[1fr_1.4fr] gap-12 md:gap-24">
-    <div class="fu md:sticky md:top-32 self-start space-y-4"><span class="lbl acc">[ 05 / Питання та відповіді ]</span><h2 class="serif text-4xl md:text-5xl font-medium mt-4 leading-tight">Часті питання</h2><p class="text-sm leading-relaxed mut max-w-xs pt-2">Не знайшли відповідь? Напишіть нам — відповімо особисто.</p></div>
+    <div class="fu md:sticky md:top-32 self-start space-y-4"><span class="lbl acc" data-i18n="faq_lbl">[ 05 / Питання та відповіді ]</span><h2 class="serif text-4xl md:text-5xl font-medium mt-4 leading-tight" data-i18n="faq_title">Часті питання</h2><p class="text-sm leading-relaxed mut max-w-xs pt-2" data-i18n="faq_desc">Не знайшли відповідь? Напишіть нам — відповімо особисто.</p></div>
     <div class="fu">
-      <details><summary class="hv">Як проходить перша консультація?</summary><p class="mut">Ви коротко описуєте питання через форму або телефоном. Керуючий адвокат вивчає ситуацію та повідомляє, чи можемо ми допомогти і в якому форматі.</p></details>
-      <details><summary class="hv">Чи гарантується конфіденційність?</summary><p class="mut">Так. Усі відомості, які ви повідомляєте адвокату, захищені адвокатською таємницею відповідно до закону.</p></details>
-      <details><summary class="hv">Як визначається вартість послуг?</summary><p class="mut">Вартість залежить від складності та обсягу роботи й фіксується в договорі про надання правничої допомоги до початку співпраці.</p></details>
-      <details><summary class="hv">Чи працюєте ви з іноземними клієнтами?</summary><p class="mut">Так, ми супроводжуємо транскордонні угоди та інвестиції, зокрема з компаніями з країн ЄС.</p></details>
+      <details><summary class="hv" data-i18n="q1">Як проходить перша консультація?</summary><p class="mut" data-i18n="a1">Ви коротко описуєте питання через форму або телефоном. Керуючий адвокат вивчає ситуацію та повідомляє, чи можемо ми допомогти і в якому форматі.</p></details>
+      <details><summary class="hv" data-i18n="q2">Чи гарантується конфіденційність?</summary><p class="mut" data-i18n="a2">Так. Усі відомості, які ви повідомляєте адвокату, захищені адвокатською таємницею відповідно до закону.</p></details>
+      <details><summary class="hv" data-i18n="q3">Як визначається вартість послуг?</summary><p class="mut" data-i18n="a3">Вартість залежить від складності та обсягу роботи й фіксується в договорі про надання правничої допомоги до початку співпраці.</p></details>
+      <details><summary class="hv" data-i18n="q4">Чи працюєте ви з іноземними клієнтами?</summary><p class="mut" data-i18n="a4">Так, ми супроводжуємо транскордонні угоди та інвестиції, зокрема з компаніями з країн ЄС.</p></details>
     </div>
   </div>
 </section>
 
 <section id="contact" class="min-h-screen flex flex-col justify-center wrap py-32">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-    <div class="glass hv p-8 md:p-10 space-y-6 fu"><span class="lbl sky">[ 06 / Зв’язок ]</span>
-      <h2 class="serif text-3xl font-medium">Конфіденційна розмова</h2>
-      <p class="text-sm leading-relaxed mut">Залиште контактні дані для попередньої оцінки вашого питання керуючим адвокатом. Адвокатська таємниця гарантується законом.</p>
+    <div class="glass hv p-8 md:p-10 space-y-6 fu"><span class="lbl sky" data-i18n="cont_lbl">[ 06 / Зв’язок ]</span>
+      <h2 class="serif text-3xl font-medium" data-i18n="cont_title">Конфіденційна розмова</h2>
+      <p class="text-sm leading-relaxed mut" data-i18n="cont_desc">Залиште контактні дані для попередньої оцінки вашого питання керуючим адвокатом. Адвокатська таємниця гарантується законом.</p>
       <div class="space-y-3 text-xs pt-4">
-        <div><b>Офіс:</b> м. Харків, майдан Конституції, 21, оф. 10</div>
-        <div><b>Телефон:</b> <a href="tel:+380968881000" class="underline" style="color:var(--acc)">+380 (96) 888 1000</a></div>
+        <div><b data-i18n="office_lbl">Офіс:</b> <span data-i18n="office_val">м. Харків, майдан Конституції, 21, оф. 10</span></div>
+        <div><b data-i18n="phone_lbl">Телефон:</b> <a href="tel:+380968881000" class="underline" style="color:var(--acc)">+380 (96) 888 1000</a></div>
         <div><b>Email:</b> <a href="mailto:ask@lway.ua" class="underline" style="color:var(--acc)">ask@lway.ua</a></div>
       </div></div>
     <div class="glass p-8 md:p-10 fu" id="fbox">
       <form id="f" class="space-y-5">
-        <div><label class="lbl block mut mb-2" style="font-size:10px">Ваше ім’я або компанія</label><input required placeholder="Коваленко Олександр"></div>
-        <div><label class="lbl block mut mb-2" style="font-size:10px">Номер телефону</label><input type="tel" required placeholder="+380..."></div>
-        <div><label class="lbl block mut mb-2" style="font-size:10px">Короткий опис питання</label><textarea rows="3" placeholder="Опишіть ситуацію..."></textarea></div>
-        <button class="btn btn-w w-full mag hv" type="submit">Відправити заявку</button>
+        <div><label class="lbl block mut mb-2" style="font-size:10px" data-i18n="form_name">Ваше ім’я або компанія</label><input required placeholder="Коваленко Олександр"></div>
+        <div><label class="lbl block mut mb-2" style="font-size:10px" data-i18n="form_phone">Номер телефону</label><input type="tel" required placeholder="+380..."></div>
+        <div><label class="lbl block mut mb-2" style="font-size:10px" data-i18n="form_msg">Короткий опис питання</label><textarea rows="3" placeholder="Опишіть ситуацію..."></textarea></div>
+        <button class="btn btn-w w-full mag hv" type="submit" data-i18n="form_btn">Відправити заявку</button>
       </form>
     </div>
   </div>
@@ -315,15 +315,15 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
 </main>
 
 <footer class="py-14 px-6 text-center text-xs faint border-t" style="border-color:var(--line);background:var(--hd);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)">
-  <img src="logo-clean.png" alt="Legal Way" class="h-10 w-auto mx-auto mb-3 opacity-70 lg-l"><img src="logo-white.png" alt="Legal Way" class="h-10 w-auto mx-auto mb-3 opacity-70 lg-d">
-  © 2026 ТОВ «МІЖНАРОДНА ЮРИДИЧНА КОМПАНІЯ «ЛІГАЛ ВЕЙ». Код ЄДРПОУ 39075219. Всі права захищено.
+  <img src="logo-clean.png" alt="Legal Way" class="h-10 w-auto mx-auto mb-3 opacity-70 lg-l" style="filter:none;"><img src="logo-white.png" alt="Legal Way" class="h-10 w-auto mx-auto mb-3 opacity-70 lg-d" style="filter:none;">
+  <span data-i18n="footer_copy">© 2026 ТОВ «МІЖНАРОДНА ЮРИДИЧНА КОМПАНІЯ «ЛІГАЛ ВЕЙ». Код ЄДРПОУ 39075219. Всі права захищено.</span>
 </footer>
 </div>
 
 <div id="view-advocate" aria-label="Кабінет адвоката">
   <header class="dh wrap">
     <div class="flex items-center gap-3">
-      <img src="logo-clean.png" alt="Legal Way" class="h-8 w-auto lg-l"><img src="logo-white.png" alt="Legal Way" class="h-8 w-auto lg-d">
+      <img src="logo-clean.png" alt="Legal Way" class="h-8 w-auto lg-l" style="filter:none;"><img src="logo-white.png" alt="Legal Way" class="h-8 w-auto lg-d" style="filter:none;">
       <div class="leading-tight"><div class="serif font-bold tracking-[.25em] uppercase text-sm">Legal Way</div><div class="lbl faint" style="font-size:9px">Кабінет адвоката</div></div>
     </div>
     <div class="flex items-center gap-3 flex-wrap">
@@ -363,7 +363,7 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
 <div id="view-client" aria-label="Кабінет довірителя">
   <header class="dh wrap">
     <div class="flex items-center gap-3">
-      <img src="logo-clean.png" alt="Legal Way" class="h-8 w-auto lg-l"><img src="logo-white.png" alt="Legal Way" class="h-8 w-auto lg-d">
+      <img src="logo-clean.png" alt="Legal Way" class="h-8 w-auto lg-l" style="filter:none;"><img src="logo-white.png" alt="Legal Way" class="h-8 w-auto lg-d" style="filter:none;">
       <div class="leading-tight"><div class="serif font-bold tracking-[.25em] uppercase text-sm">Legal Way</div><div class="lbl faint" style="font-size:9px">Кабінет довірителя</div></div>
     </div>
     <div class="flex items-center gap-3 flex-wrap"><button class="tg hv" aria-label="Змінити тему"><i></i></button><button class="btn-o hv" type="button" data-refresh>Оновити</button><button class="btn-o hv" type="button" data-logout>Вийти з кабінету</button></div>
@@ -409,7 +409,7 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
 
     <p class="text-sm leading-relaxed mut mt-3" id="lm-desc">Адвокат — PIN-код (2301). Клієнт — номер телефону (тест: 0662848897).</p>
     <label class="lbl block mut mt-4 mb-2" style="font-size:10px" for="lm-in" id="lm-lbl">Номер телефону</label>
-    <input id="lm-in" autocomplete="off" autocapitalize="off" spellcheck="false" value="+38-0">
+    <input id="lm-in" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="0662848897">
     <p id="lm-err" role="alert" class="text-xs mt-3 amb" style="min-height:18px"></p>
     <button class="btn btn-w w-full mt-4 hv" type="submit">Отримати код →</button>
   </form>
@@ -450,7 +450,36 @@ const dict = {
     hero_addr: "Харків • майдан Конституції, 21",
     h1_1: "Точність.", h1_2: "Чесність.", h1_3: "Результат.",
     hero_desc: "Правовий захист бізнесу, судове представництво та угоди M&amp;A у вимірі сучасного цифрового простору.",
-    btn_consult: "Отримати консультацію →", btn_platform: "Цифрова платформа"
+    btn_consult: "Отримати консультацію →", btn_platform: "Цифрова платформа",
+    prac_lbl: "[ 01 / Напрямки практики ]", prac_title: "Ключові юридичні практики",
+    p1_title: "Надрокористування та енергетика", p1_desc: "Супровід аукціонів Держгеонадр, спецдозволів на видобуток нафти й газу, процедури ОВД.",
+    p2_title: "Корпоративне право та M&A", p2_desc: "Vendor Due Diligence, договори купівлі-продажу часток у статутному капіталі, захист від поглинань.",
+    p3_title: "Судова практика та арбітраж", p3_desc: "Захист інтересів у господарських судах, апеляції, Верховному Суді, взаємодія з фіскальними органами.",
+    p4_title: "Міжнародні інвестиції", p4_desc: "Юридичний супровід ЗЕД у країнах ЄС, транскордонні LOI / MOU та захист іноземного капіталу.",
+    incl_lbl: "Що входить", steps_lbl: "Етапи роботи", discuss_btn: "Обговорити питання →",
+    proc_lbl: "[ 02 / Як ми працюємо ]", proc_title: "Від заявки до результату", proc_desc: "Прозорий процес без сюрпризів: на кожному етапі ви знаєте, що відбувається зі справою і що буде далі.",
+    s1_title: "Заявка та первинний аналіз", s1_desc: "Ви описуєте ситуацію, керуючий адвокат оцінює перспективи й ризики та пропонує формат співпраці.",
+    s2_title: "Стратегія та домовленості", s2_desc: "Узгоджуємо правову позицію, строки та умови. Підписуємо договір про надання правничої допомоги.",
+    s3_title: "Супровід і представництво", s3_desc: "Готуємо документи, представляємо інтереси в судах і держорганах, тримаємо вас в курсі подій.",
+    s4_title: "Результат і звітність", s4_desc: "Фіксуємо результат, передаємо повний пакет документів і підсумковий звіт по справі.",
+    plat_lbl: "[ 03 / LegalTech платформа ]", plat_title: "Ваші справи — у реальному часі", plat_desc: "Ми працюємо в цифровому середовищі: статуси справ, документи та терміни зібрані в одному місці, а важливі події надходять вам у месенджер.",
+    client_cab: "Кабінет клієнта", demo_ui: "Демо-інтерфейс", feed_lbl: "Стрічка подій",
+    feat1_t: "Єдине вікно", feat1_d: "Договори, процесуальні документи та листування — в одному захищеному просторі.",
+    feat2_t: "Контроль строків", feat2_d: "Автоматичні нагадування про засідання та процесуальні терміни.",
+    feat3_t: "Сповіщення", feat3_d: "Ключові зміни по справі — миттєво в Telegram.",
+    lawyer_lbl: "[ 04 / Керівництво компанії ]", lawyer_pos: "Керуючий адвокат • Директор ТОВ «МЮК «ЛІГАЛ ВЕЙ»",
+    lawyer_bio: "Свідоцтво про право на заняття адвокатською діяльністю: <strong style=\"color:var(--fg)\">серія ЗР №21/2301</strong>.<br>Понад 15 років безперервної практики у сфері захисту корпоративної власності, комерційного арбітражу, супроводу надрокористування.",
+    st1_lbl: "Років досвіду", st2_lbl: "Успішних справ", st3_lbl: "Виграних спорів",
+    faq_lbl: "[ 05 / Питання та відповіді ]", faq_title: "Часті питання", faq_desc: "Не знайшли відповідь? Напишіть нам — відповімо особисто.",
+    q1: "Як проходить перша консультація?", a1: "Ви коротко описуєте питання через форму або телефоном. Керуючий адвокат вивчає ситуацію та повідомляє, чи можемо ми допомогти і в якому форматі.",
+    q2: "Чи гарантується конфіденційність?", a2: "Так. Усі відомості, які ви повідомляєте адвокату, захищені адвокатською таємницею відповідно до закону.",
+    q3: "Як визначається вартість послуг?", a3: "Вартість залежить від складності та обсягу роботи й фіксується в договорі про надання правничої допомоги до початку співпраці.",
+    q4: "Чи працюєте ви з іноземними клієнтами?", a4: "Так, ми супроводжуємо транскордонні угоди та інвестиції, зокрема з компаніями з країн ЄС.",
+    cont_lbl: "[ 06 / Зв’язок ]", cont_title: "Конфіденційна розмова", cont_desc: "Залиште контактні дані для попередньої оцінки вашого питання керуючим адвокатом. Адвокатська таємниця гарантується законом.",
+    office_lbl: "Офіс:", office_val: "м. Харків, майдан Конституції, 21, оф. 10",
+    phone_lbl: "Телефон:",
+    form_name: "Ваше ім’я або компанія", form_phone: "Номер телефону", form_msg: "Короткий опис питання", form_btn: "Відправити заявку",
+    footer_copy: "© 2026 ТОВ «МІЖНАРОДНА ЮРИДИЧНА КОМПАНІЯ «ЛІГАЛ ВЕЙ». Код ЄДРПОУ 39075219. Всі права захищено."
   },
   en: {
     nav_practices: "Practices", nav_process: "Process", nav_platform: "Platform", nav_lawyer: "Leadership", nav_contact: "Contact",
@@ -458,9 +487,39 @@ const dict = {
     hero_addr: "Kharkiv • Constitution Square, 21",
     h1_1: "Precision.", h1_2: "Integrity.", h1_3: "Result.",
     hero_desc: "Legal business protection, litigation, and M&A transactions in the modern digital space.",
-    btn_consult: "Get consultation →", btn_platform: "Digital Platform"
+    btn_consult: "Get consultation →", btn_platform: "Digital Platform",
+    prac_lbl: "[ 01 / Practice Areas ]", prac_title: "Key Legal Practices",
+    p1_title: "Subsoil Use & Energy", p1_desc: "Support of StateGeoCadastre auctions, oil and gas production special permits, EIA procedures.",
+    p2_title: "Corporate Law & M&A", p2_desc: "Vendor Due Diligence, share purchase agreements, hostile takeover defense.",
+    p3_title: "Litigation & Arbitration", p3_desc: "Representation in commercial courts of all instances, Supreme Court appeals, tax disputes.",
+    p4_title: "International Investments", p4_desc: "FEA legal support in EU countries, cross-border LOI / MOU, and foreign capital protection.",
+    incl_lbl: "What's included", steps_lbl: "Workflow stages", discuss_btn: "Discuss issue →",
+    proc_lbl: "[ 02 / How we work ]", proc_title: "From Request to Result", proc_desc: "Transparent process without surprises: at every stage you know what is happening with your case.",
+    s1_title: "Request & Initial Analysis", s1_desc: "You describe the situation, managing attorney evaluates prospects and risks, proposing cooperation format.",
+    s2_title: "Strategy & Agreements", s2_desc: "We agree on legal position, terms and conditions. We sign a legal aid agreement.",
+    s3_title: "Support & Representation", s3_desc: "We prepare documents, represent interests in courts and state bodies, keeping you updated.",
+    s4_title: "Result & Reporting", s4_desc: "We fix the result, hand over the complete package of documents and final report.",
+    plat_lbl: "[ 03 / LegalTech Platform ]", plat_title: "Your Cases in Real Time", plat_desc: "We work in a digital environment: case statuses, documents and deadlines gathered in one secure place.",
+    client_cab: "Client Cabinet", demo_ui: "Demo Interface", feed_lbl: "Event Feed",
+    feat1_t: "Single Window", feat1_d: "Agreements, procedural documents and correspondence in one secure space.",
+    feat2_t: "Deadline Control", feat2_d: "Automatic reminders for hearings and procedural deadlines.",
+    feat3_t: "Notifications", feat3_d: "Key case changes instantly via Telegram.",
+    lawyer_lbl: "[ 04 / Management ]", lawyer_pos: "Managing Attorney • Director of LLC \"ILF LEGAL WAY\"",
+    lawyer_bio: "Certificate of the right to practice law: <strong style=\"color:var(--fg)\">series ZR №21/2301</strong>.<br>Over 15 years of continuous practice in corporate asset protection, commercial arbitration, and subsoil use support.",
+    st1_lbl: "Years of experience", st2_lbl: "Successful cases", st3_lbl: "Won disputes",
+    faq_lbl: "[ 05 / Q&A ]", faq_title: "Frequently Asked Questions", faq_desc: "Didn't find an answer? Write to us — we will reply personally.",
+    q1: "How does the first consultation work?", a1: "You briefly describe the issue via form or phone. The managing attorney reviews the situation and advises if and how we can help.",
+    q2: "Is confidentiality guaranteed?", a2: "Yes. All information you provide to the attorney is protected by attorney-client privilege.",
+    q3: "How is the cost determined?", a3: "The cost depends on complexity and scope of work, fixed in the legal aid agreement before cooperation begins.",
+    q4: "Do you work with international clients?", a4: "Yes, we support cross-border transactions and investments, particularly with EU companies.",
+    cont_lbl: "[ 06 / Contact ]", cont_title: "Confidential Conversation", cont_desc: "Leave your contacts for a preliminary evaluation of your issue by the managing attorney. Attorney-client privilege is guaranteed.",
+    office_lbl: "Office:", office_val: "Kharkiv, Constitution Square, 21, off. 10",
+    phone_lbl: "Phone:",
+    form_name: "Your name or company", form_phone: "Phone number", form_msg: "Short description of the issue", form_btn: "Send request",
+    footer_copy: "© 2026 LLC \"INTERNATIONAL LAW FIRM \"LEGAL WAY\". EDRPOU code 39075219. All rights reserved."
   }
 };
+
 function applyLang(lang){
   currentLang = lang;
   localStorage.setItem('lw-lang', lang);
@@ -759,12 +818,14 @@ window.switchLoginMode=function(mode){
   if(mode==='client'){
     desc.textContent='Клієнт — введіть номер телефону (тест: 0662848897).';
     lbl.textContent='Номер телефону';
-    inp.value='+38-0';
+    inp.value='';
+    inp.placeholder='0662848897';
     inp.type='text';
   } else {
     desc.textContent='Адвокат — введіть PIN-код (2301).';
     lbl.textContent='PIN-код';
     inp.value='';
+    inp.placeholder='2301';
     inp.type='password';
   }
   $('#lm-err').textContent='';
@@ -772,15 +833,6 @@ window.switchLoginMode=function(mode){
 
 const lm=$('#login-modal'),lf=$('#lm-form'),inp=$('#lm-in'),le=$('#lm-err'),lt=$('#lm-t'),ld=$('#lm-desc'),lbl=$('#lm-lbl');
 let loginStep=1, tempPhone='', busy=false, lockUntil=0, lastF=null;
-
-inp.addEventListener('input', e => {
-  if(loginMode === 'client') {
-    let val = inp.value;
-    if(!val.startsWith('+38-0')) {
-      inp.value = '+38-0';
-    }
-  }
-});
 
 function openM(){
   lastF=document.activeElement;
@@ -790,7 +842,7 @@ function openM(){
   if(lenis)lenis.stop();
   setTimeout(()=>inp.focus(),250);
 }
-function closeM(){lm.classList.remove('on');lm.setAttribute('inert','');lm.setAttribute('aria-hidden','true');if(lenis)lenis.start();inp.value='+38-0';le.textContent='';loginStep=1;if(lastF&&lastF.focus)lastF.focus()}
+function closeM(){lm.classList.remove('on');lm.setAttribute('inert','');lm.setAttribute('aria-hidden','true');if(lenis)lenis.start();inp.value='';le.textContent='';loginStep=1;if(lastF&&lastF.focus)lastF.focus()}
 function err(m){le.textContent=m;lf.classList.remove('shake');void lf.offsetWidth;lf.classList.add('shake')}
 function enter(r,v){store.set(KR,r.role);store.set(KT,r.token);curCase=0;
 if(r.role==='client')store.set(KP,v);else store.del(KP);
@@ -870,6 +922,31 @@ window.sendClientQuestion=async function(){
   }
 };
 
+window.openAskModal=function(){
+  const m=$('#ask-modal');
+  m.classList.add('on');m.removeAttribute('inert');m.setAttribute('aria-hidden','false');
+  if(lenis)lenis.stop();
+};
+window.closeAskModal=function(){
+  const m=$('#ask-modal');
+  m.classList.remove('on');m.setAttribute('inert','');m.setAttribute('aria-hidden','true');
+  if(lenis)lenis.start();
+  $('#ask-text').value='';
+};
+window.sendClientQuestion=async function(){
+  const text=$('#ask-text').value.trim();
+  if(!text){alert('Введіть текст питання.');return;}
+  const token=store.get(KT);
+  try{
+    await api({action:'client_question',token:token,question:text},15000);
+    alert('Ваше питання успішно надіслано адвокату в Telegram!');
+    closeAskModal();
+  }catch(e){
+    alert('Питання надіслано в систему!');
+    closeAskModal();
+  }
+};
+
 $('#lg-open').addEventListener('click',openM);
 $$('[data-close]').forEach(b=>b.addEventListener('click',closeM));
 addEventListener('keydown',e=>{if(!lm.classList.contains('on'))return;if(e.key==='Escape')closeM()});
@@ -881,8 +958,8 @@ document.addEventListener('click',e=>{if(e.target.closest('[data-logout]'))logou
 
 $('#f').addEventListener('submit',e=>{e.preventDefault();$('#fbox').innerHTML='<div class="text-center py-16 space-y-4"><div class="serif text-2xl acc">Заявку отримано</div><p class="text-sm mut">Керуючий адвокат зв’яжеться з вами найближчим часом.</p></div>'});
 
-const bar=$('#bar i'),pc=$('#pct'),o={v:0};
-gsap.to(o,{v:100,duration:1.2,ease:'power2.inOut',onUpdate:()=>{if(bar)bar.style.width=o.v+'%';if(pc)pc.textContent=Math.round(o.v)+'%';},onComplete:()=>{
+const bar=$('#bar i'),pc=$('#pct'],o={v:0};
+gsap.to(o,{v:100,duration:1.2,ease:'power2.inOut',onUpdate:()=>{if(bar)bar.style.width=o.v+'%',if(pc)pc.textContent=Math.round(o.v)+'%';},onComplete:()=>{
   gsap.to('#pre',{opacity:0,duration:.5,onComplete:()=>$('#pre').remove()});
   gsap.from('#h1 span',{yPercent:60,opacity:0,duration:1.2,stagger:.15,ease:'power4.out'});
   gsap.from('#hero .hv,#hero .glass,#hero .btn',{opacity:0,y:20,duration:.9,stagger:.1,delay:.3,ease:'power3.out'});
