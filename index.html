@@ -21,7 +21,7 @@
 :root{--bg:#f4f2ee;--fg:#111114;--mut:rgba(17,17,20,.74);--faint:rgba(17,17,20,.62);--amb:#8a5a12;--sky:#0369a1;--line:rgba(17,17,20,.12);--c1:rgba(255,255,255,.78);--c2:rgba(255,255,255,.38);--acc:#0f766e;--inv:#111114;--invt:#fff;--glow:rgba(15,118,110,.14);--vig:rgba(0,0,0,.08);--gr:.035;--hd:rgba(244,242,238,.72);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html[data-theme=dark]{--bg:#050508;--fg:#f6f6f4;--mut:rgba(246,246,244,.74);--faint:rgba(246,246,244,.54);--amb:#fbbf24;--sky:#38bdf8;--line:rgba(255,255,255,.1);--c1:rgba(255,255,255,.07);--c2:rgba(255,255,255,.015);--acc:#8be9c8;--inv:#fff;--invt:#000;--glow:rgba(139,233,200,.16);--vig:rgba(0,0,0,.6);--gr:.05;--hd:rgba(0,0,0,.4);color-scheme:dark}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--fg);font-family:'Plus Jakarta Sans',system-ui,sans-serif;overflow-x:hidden;transition:background .6s,color .6s}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:'Plus Jakarta Sans',system-ui,sans-serif;overflow-x:hidden;transition:background .6s,color .6s;-webkit-user-select:none;user-select:none}
 .serif{font-family:'Cinzel',Georgia,serif}.mut{color:var(--mut)}.faint{color:var(--faint)}.acc{color:var(--acc)}.amb{color:var(--amb)}.sky{color:var(--sky)}.wrap{padding-inline:max(24px,calc((100% - 1280px)/2))}
 ::placeholder{color:var(--faint);opacity:1}
 #gl{position:fixed;inset:0;z-index:0;pointer-events:none}
@@ -42,7 +42,7 @@ body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;back
 .sh{background:linear-gradient(100deg,var(--fg) 30%,var(--acc) 50%,var(--fg) 70%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 6s linear infinite}
 @keyframes sh{to{background-position:-250% 0}}
 
-input,textarea{width:100%;background:var(--c1);border:1px solid var(--line);border-radius:12px;padding:14px 20px 14px 20px !important;text-indent:2px;font-size:14px;color:var(--fg);outline:none;transition:border-color .3s,box-shadow .3s;font-family:inherit;user-select:text}
+input,textarea{width:100%;background:var(--c1);border:1px solid var(--line);border-radius:12px;padding:14px 20px 14px 20px !important;text-indent:2px;font-size:14px;color:var(--fg);outline:none;transition:border-color .3s,box-shadow .3s;font-family:inherit;-webkit-user-select:text;user-select:text}
 input:focus,textarea:focus{border-color:var(--acc);box-shadow:0 0 0 4px var(--glow)}
 
 #pre{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px}
@@ -92,7 +92,8 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
 .btn-o{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 14px;border:1px solid var(--line);background:var(--c1);border-radius:12px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--fg);font-family:inherit;transition:border-color .3s,color .3s,box-shadow .3s;white-space:nowrap;cursor:pointer}
 .btn-o:hover{border-color:var(--acc);color:var(--acc);box-shadow:0 0 24px var(--glow)}
 .btn-o.on{background:var(--acc);color:var(--invt);border-color:var(--acc)}
-.dh{position:sticky;top:0;z-index:40;display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:14px;background:var(--hd);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+.dh{position:sticky;top:0;z-index:40;display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:14px;background:var(--hd);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--line);flex-wrap:wrap;}
+.dh .flex{flex-wrap:wrap;}
 .lm{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .4s}
 .lm.on{opacity:1;pointer-events:auto}
 .lm-bd{position:absolute;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
@@ -139,19 +140,23 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
 <canvas id="gl"></canvas>
 
 <div id="view-public">
-<header class="fixed top-0 left-0 w-full z-50 wrap flex justify-between items-center gap-4 border-b" style="background:var(--hd);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-color:var(--line);padding-top:calc(14px + env(safe-area-inset-top,0px));padding-bottom:14px">
+<header class="fixed top-0 left-0 w-full z-50 wrap flex justify-between items-center gap-3 border-b" style="background:var(--hd);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-color:var(--line);padding-top:calc(14px + env(safe-area-inset-top,0px));padding-bottom:14px;flex-wrap:wrap;">
   <a href="#hero" class="flex items-center gap-3">
     <img src="logo-clean.png" alt="Legal Way" class="h-8 w-auto lg-l"><img src="logo-white.png" alt="Legal Way" class="h-8 w-auto lg-d">
     <span class="serif font-bold tracking-[.3em] uppercase text-base hidden sm:inline">Legal Way</span>
   </a>
   <nav class="nav hidden lg:flex gap-9 text-[11px] tracking-[.2em] uppercase font-medium">
-    <a href="#practices">Практики</a><a href="#process">Процес</a><a href="#platform">Платформа</a><a href="#lawyer">Керівництво</a><a href="#faq">FAQ</a><a href="#contact">Контакти</a>
+    <a href="#practices" data-i18n="nav_practices">Практики</a><a href="#process" data-i18n="nav_process">Процес</a><a href="#platform" data-i18n="nav_platform">Платформа</a><a href="#lawyer" data-i18n="nav_lawyer">Керівництво</a><a href="#faq">FAQ</a><a href="#contact" data-i18n="nav_contact">Контакти</a>
   </nav>
-  <div class="flex items-center gap-4">
-    <div class="lbl hidden md:flex items-center gap-2 acc" style="font-size:10px"><span class="dot"></span><span class="hidden md:inline">Система активна</span><span id="clk" class="faint tabular-nums">--:--:--</span></div>
+  <div class="flex items-center gap-3 flex-wrap">
+    <div class="lbl hidden md:flex items-center gap-2 acc" style="font-size:10px"><span class="dot"></span><span class="hidden md:inline" data-i18n="sys_active">Система активна</span><span id="clk" class="faint tabular-nums">--:--:--</span></div>
     <button class="tg hv" id="tg" aria-label="Змінити тему"><i></i></button>
-    <button class="btn-o hv" id="lg-open" type="button" aria-haspopup="dialog"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="hidden sm:inline">Вхід в кабінет</span></button>
+    <button class="btn-o hv" id="lang-toggle" type="button" aria-label="Змінити мову" style="font-size:10px;padding:0 10px;min-width:38px;">EN</button>
     <button class="bgr lg:hidden" id="bgr" aria-label="Меню" aria-expanded="false"><svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 1h18M0 11h18"/></svg></button>
+    <button class="btn-o hv" id="lg-open" type="button" aria-haspopup="dialog" title="Вхід в кабінет">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+      <span class="hidden sm:inline" data-i18n="login_btn">Вхід в кабінет</span>
+    </button>
   </div>
 </header>
 
@@ -163,19 +168,14 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
 <section id="hero" class="relative min-h-screen flex flex-col justify-center wrap pt-28 pb-16 overflow-hidden">
   <div class="relative w-full grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
   <div class="max-w-2xl space-y-8 relative z-10">
-    <span class="lbl inline-block px-4 py-2 rounded-full border hv" style="border-color:var(--line);background:var(--c1)">Харків • майдан Конституції, 21</span>
+    <span class="lbl inline-block px-4 py-2 rounded-full border hv" style="border-color:var(--line);background:var(--c1)" data-i18n="hero_addr">Харків • майдан Конституції, 21</span>
     <h1 class="serif text-5xl md:text-7xl leading-[1.05] tracking-tight" id="h1">
-      <span class="block font-medium">Точність.</span><span class="block font-bold sh">Чесність.</span><span class="block font-medium">Результат.</span>
+      <span class="block font-medium" data-i18n="h1_1">Точність.</span><span class="block font-bold sh" data-i18n="h1_2">Чесність.</span><span class="block font-medium" data-i18n="h1_3">Результат.</span>
     </h1>
-    <p class="text-base md:text-lg font-light max-w-lg leading-relaxed mut">Правовий захист бізнесу, судове представництво та угоди M&amp;A у вимірі сучасного цифрового простору.</p>
+    <p class="text-base md:text-lg font-light max-w-lg leading-relaxed mut" data-i18n="hero_desc">Правовий захист бізнесу, судове представництво та угоди M&amp;A у вимірі сучасного цифрового простору.</p>
     <div class="flex flex-wrap gap-4 pt-2">
-      <a href="#contact" class="btn btn-w mag hv">Отримати консультацію →</a>
-      <a href="#platform" class="btn glass mag hv" style="border-radius:14px">Цифрова платформа</a>
-    </div>
-    <div class="glass inline-flex flex-wrap gap-x-6 gap-y-2 px-5 py-3 text-[11px] tabular-nums" style="border-radius:14px">
-      <span class="flex items-center gap-2"><span class="dot"></span>Онлайн</span>
-      <span class="mut">Відгук <b id="ping" style="color:var(--fg)">24</b> мс</span>
-      <span class="mut">Заявок сьогодні <b id="req" style="color:var(--fg)">7</b></span>
+      <a href="#contact" class="btn btn-w mag hv" data-i18n="btn_consult">Отримати консультацію →</a>
+      <a href="#platform" class="btn glass mag hv" style="border-radius:14px" data-i18n="btn_platform">Цифрова платформа</a>
     </div>
   </div>
   <div class="hero-peg" id="pegasus" aria-hidden="true"><canvas></canvas></div>
@@ -325,7 +325,7 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
       <img src="logo-clean.png" alt="Legal Way" class="h-8 w-auto lg-l"><img src="logo-white.png" alt="Legal Way" class="h-8 w-auto lg-d">
       <div class="leading-tight"><div class="serif font-bold tracking-[.25em] uppercase text-sm">Legal Way</div><div class="lbl faint" style="font-size:9px">Кабінет адвоката</div></div>
     </div>
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-3 flex-wrap">
       <button class="btn-o hv on" type="button" id="adv-tab-cases" onclick="switchAdvTab('cases')">Судові справи</button>
       <button class="btn-o hv" type="button" id="adv-tab-clients" onclick="switchAdvTab('clients')">Актуальні клієнти</button>
       <button class="tg hv" aria-label="Змінити тему"><i></i></button>
@@ -346,7 +346,7 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
         <input id="adv-q" type="search" placeholder="Пошук за номером, судом, стороною…" aria-label="Пошук справ" style="max-width:340px;">
       </div>
       
-      <div class="glass rv table-responsive-wrapper" style="overflow-x:auto"><table class="tb"><thead><tr><th>№ справи</th><th>Суд</th><th>Клієнт / предмет</th><th>Наступна дія</th><th>Дата</th><th>Статус</th><th>Дія (Клопотання)</th></tr></thead><tbody id="adv-body"></tbody></table></div>
+      <div class="glass rv table-responsive-wrapper" style="overflow-x:auto"><table class="tb"><thead><tr><th>№ справи</th><th>Суд</th><th>Клієнт</th><th>Предмет спора</th><th>Наступна дія</th><th>Дата</th><th>Дія (Клопотання)</th></tr></thead><tbody id="adv-body"></tbody></table></div>
       
       <div id="adv-mobile-cards"></div>
     </div>
@@ -365,7 +365,7 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
       <img src="logo-clean.png" alt="Legal Way" class="h-8 w-auto lg-l"><img src="logo-white.png" alt="Legal Way" class="h-8 w-auto lg-d">
       <div class="leading-tight"><div class="serif font-bold tracking-[.25em] uppercase text-sm">Legal Way</div><div class="lbl faint" style="font-size:9px">Кабінет довірителя</div></div>
     </div>
-    <div class="flex items-center gap-3"><button class="tg hv" aria-label="Змінити тему"><i></i></button><button class="btn-o hv" type="button" data-refresh>Оновити</button><button class="btn-o hv" type="button" data-logout>Вийти з кабінету</button></div>
+    <div class="flex items-center gap-3 flex-wrap"><button class="tg hv" aria-label="Змінити тему"><i></i></button><button class="btn-o hv" type="button" data-refresh>Оновити</button><button class="btn-o hv" type="button" data-logout>Вийти з кабінету</button></div>
   </header>
   <div class="wrap pt-14 pb-28 space-y-10">
     <div class="rv space-y-4"><span class="lbl acc">[ Особистий кабінет ]</span><h1 class="serif text-4xl md:text-5xl font-medium leading-tight">Ваша справа</h1>
@@ -408,7 +408,7 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
 
     <p class="text-sm leading-relaxed mut mt-3" id="lm-desc">Адвокат — PIN-код (2301). Клієнт — номер телефону (тест: 0662848897).</p>
     <label class="lbl block mut mt-4 mb-2" style="font-size:10px" for="lm-in" id="lm-lbl">Номер телефону</label>
-    <input id="lm-in" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Введіть дані…">
+    <input id="lm-in" autocomplete="off" autocapitalize="off" spellcheck="false" value="+38-0">
     <p id="lm-err" role="alert" class="text-xs mt-3 amb" style="min-height:18px"></p>
     <button class="btn btn-w w-full mt-4 hv" type="submit">Отримати код →</button>
   </form>
@@ -432,6 +432,43 @@ const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const html=document.documentElement,theme=()=>html.dataset.theme;
 gsap.registerPlugin(ScrollTrigger);ScrollTrigger.config({ignoreMobileResize:true});
+
+// Simple i18n support
+let currentLang = localStorage.getItem('lw-lang') || 'uk';
+const dict = {
+  uk: {
+    nav_practices: "Практики", nav_process: "Процес", nav_platform: "Платформа", nav_lawyer: "Керівництво", nav_contact: "Контакти",
+    sys_active: "Система активна", login_btn: "Вхід в кабінет",
+    hero_addr: "Харків • майдан Конституції, 21",
+    h1_1: "Точність.", h1_2: "Чесність.", h1_3: "Результат.",
+    hero_desc: "Правовий захист бізнесу, судове представництво та угоди M&amp;A у вимірі сучасного цифрового простору.",
+    btn_consult: "Отримати консультацію →", btn_platform: "Цифрова платформа"
+  },
+  en: {
+    nav_practices: "Practices", nav_process: "Process", nav_platform: "Platform", nav_lawyer: "Leadership", nav_contact: "Contact",
+    sys_active: "System active", login_btn: "Sign in",
+    hero_addr: "Kharkiv • Constitution Square, 21",
+    h1_1: "Precision.", h1_2: "Integrity.", h1_3: "Result.",
+    hero_desc: "Legal business protection, litigation, and M&A transactions in the modern digital space.",
+    btn_consult: "Get consultation →", btn_platform: "Digital Platform"
+  }
+};
+function applyLang(lang){
+  currentLang = lang;
+  localStorage.setItem('lw-lang', lang);
+  const btn = $('#lang-toggle');
+  if(btn) btn.textContent = lang === 'uk' ? 'EN' : 'UA';
+  $$('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(dict[lang][k]) el.innerHTML = dict[lang][k];
+  });
+}
+window.toggleLang = function(){
+  applyLang(currentLang === 'uk' ? 'en' : 'uk');
+};
+const langBtn = $('#lang-toggle');
+if(langBtn) langBtn.addEventListener('click', toggleLang);
+applyLang(currentLang);
 
 let lenis=null;if(!RM&&window.Lenis){lenis=new Lenis({lerp:.085});lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
 $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=$(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{duration:1.6})}}))}
@@ -510,8 +547,6 @@ function addEv(){const d=document.createElement('div');d.className='ev flex gap-
 addEv();addEv();setInterval(addEv,3500);
 
 setInterval(()=>$('#clk').textContent=tf.format(new Date()),1000);
-setInterval(()=>$('#ping').textContent=18+Math.floor(Math.random()*18),2200);
-setInterval(()=>{if(Math.random()>.7)$('#req').textContent=+$('#req').textContent+1},5000);
 
 let rt;const settle=()=>{clearTimeout(rt);rt=setTimeout(()=>{ScrollTrigger.refresh();if(lenis)lenis.resize()},40)};
 function setAcd(c,o){c.classList.toggle('open',o);c.querySelector('.acd-h').setAttribute('aria-expanded',o);const p=c.querySelector('.acd-p');o?p.removeAttribute('inert'):p.setAttribute('inert','')}
@@ -569,30 +604,32 @@ function renderAdv(){
   const rows=CASES.filter(c=>[c.num,c.court,c.client,c.subject].join(' ').toLowerCase().includes(q));
   
   advBody.innerHTML=rows.length?rows.map(c=>{const u=c.d!=null&&c.d<=3;
+  const fullCaseInfo = `Справа: ${c.num||c.id}\nСуд: ${c.court}\nКлієнт: ${c.client}\nПредмет: ${c.subject}\nСтатус: ${c.status||'—'}\nДата: ${c.ev?fmtYmd(c.ev.date):'—'}`;
   return `<tr${c.active?'':' style="opacity:.55"'}>
     <td class="font-mono text-xs whitespace-nowrap">
-      <a href="#" onclick="navigator.clipboard.writeText('${esc(c.num||c.id)}');alert('Номер справи ${esc(c.num||c.id)} скопійовано!');return false;" title="Копіювати номер" style="color:var(--acc);text-decoration:underline">${esc(c.num||c.id)}</a>
-      <button type="button" onclick="navigator.clipboard.writeText('${esc(c.num||c.id)}');alert('Номер скопійовано!');" style="background:none;border:0;cursor:pointer;margin-left:6px;font-size:11px;" title="Копіювати">📋</button>
+      <span style="color:var(--acc);font-weight:600">${esc(c.num||c.id)}</span>
+      <button type="button" onclick="navigator.clipboard.writeText(\`${fullCaseInfo.replace(/`/g, '\\`')}\`);alert('Всі дані справи скопійовано в буфер!');" style="background:none;border:0;cursor:pointer;margin-left:6px;font-size:12px;" title="Копіювати дані">📋</button>
     </td>
     <td>${esc(c.court)}</td>
-    <td class="mut">${esc(c.client)}<div class="text-[11px] faint">${esc(c.subject)}</div></td>
+    <td class="mut">${esc(c.client)}</td>
+    <td>${esc(c.subject||'—')}</td>
     <td>${esc(c.ev?c.ev.label:(c.stage||'—'))}</td>
     <td class="tabular-nums whitespace-nowrap">${c.ev?fmtYmd(c.ev.date)+(c.ev.time?' '+esc(c.ev.time):'')+`<div class="text-[11px] ${u?'amb':'faint'}">${relDays(c.d)}</div>`:'<span class="faint">—</span>'}</td>
-    <td><span class="chip ${u?'warn':''}">${esc(c.status||'—')}</span></td>
     <td><button class="btn-o hv" style="font-size:10px;padding:4px 10px" onclick="sendMotion('${esc(c.num)}')">Створити клопотання</button></td>
   </tr>`}).join(''):'<tr><td colspan="7" class="faint" style="text-align:center;padding:40px">Нічого не знайдено</td></tr>';
 
   const mobContainer=$('#adv-mobile-cards');
   if(mobContainer){
     mobContainer.innerHTML=rows.length?rows.map(c=>{const u=c.d!=null&&c.d<=3;
+    const fullCaseInfo = `Справа: ${c.num||c.id}\nСуд: ${c.court}\nКлієнт: ${c.client}\nПредмет: ${c.subject}\nСтатус: ${c.status||'—'}\nДата: ${c.ev?fmtYmd(c.ev.date):'—'}`;
     return `<div class="glass p-5 space-y-3"${c.active?'':' style="opacity:.55"'}>
       <div class="flex justify-between items-start">
         <span class="font-mono text-xs acc font-bold">${esc(c.num||c.id)}</span>
-        <span class="chip ${u?'warn':'ok'}">${esc(c.status||'У роботі')}</span>
+        <button type="button" onclick="navigator.clipboard.writeText(\`${fullCaseInfo.replace(/`/g, '\\`')}\`);alert('Всі дані справи скопійовано!');" class="btn-o" style="font-size:10px;padding:2px 8px;">📋 Копіювати</button>
       </div>
       <div>
         <h4 class="font-semibold text-base">${esc(c.client)}</h4>
-        <p class="text-xs faint">${esc(c.subject)}</p>
+        <p class="text-xs faint"><b>Предмет:</b> ${esc(c.subject)}</p>
       </div>
       <div class="text-xs space-y-1 mut pt-2 border-t" style="border-color:var(--line)">
         <div><b>Суд:</b> ${esc(c.court)}</div>
@@ -661,7 +698,7 @@ $('#cl-next-l').textContent=ev?ev.label+(c.court?' · '+c.court:''):'Найбл�
 const D=c.docs||[];$('#cl-docs').innerHTML=D.length?D.map(d=>`<div class="flex justify-between items-center gap-3 text-sm"><span>${esc(d.name)}</span><a href="${esc(d.url||'https://drive.google.com')}" target="_blank" rel="noopener noreferrer" class="chip acc" style="text-decoration:none">Завантажити PDF</a></div>`).join(''):'';}
 
 function renderAdvStats(){$('#adv-date').textContent=df.format(new Date());const t=kyivYmd(),lim=dayNum(t)+7;
-const wk=y=>y&&y>=t&&dayNum(y)<=lim;
+const wk=y=>y&&y>=t&&dayNum(t)<=lim;
 $('#adv-s1').textContent=CASES.filter(c=>c.active).length;
 $('#adv-s2').textContent=CASES.filter(c=>c.active&&wk(c.hearing)).length;}
 
@@ -708,21 +745,29 @@ window.switchLoginMode=function(mode){
   if(mode==='client'){
     desc.textContent='Клієнт — введіть номер телефону (тест: 0662848897).';
     lbl.textContent='Номер телефону';
-    inp.placeholder='0662848897';
+    inp.value='+38-0';
     inp.type='text';
-    inp.value='';
   } else {
     desc.textContent='Адвокат — введіть PIN-код (2301).';
     lbl.textContent='PIN-код';
-    inp.placeholder='2301';
-    inp.type='password';
     inp.value='';
+    inp.type='password';
   }
   $('#lm-err').textContent='';
 };
 
 const lm=$('#login-modal'),lf=$('#lm-form'),inp=$('#lm-in'),le=$('#lm-err'),lt=$('#lm-t'),ld=$('#lm-desc'),lbl=$('#lm-lbl');
 let loginStep=1, tempPhone='', busy=false, lockUntil=0, lastF=null;
+
+// Mask input for phone
+inp.addEventListener('input', e => {
+  if(loginMode === 'client') {
+    let val = inp.value;
+    if(!val.startsWith('+38-0')) {
+      inp.value = '+38-0';
+    }
+  }
+});
 
 function openM(){
   lastF=document.activeElement;
@@ -732,7 +777,7 @@ function openM(){
   if(lenis)lenis.stop();
   setTimeout(()=>inp.focus(),250);
 }
-function closeM(){lm.classList.remove('on');lm.setAttribute('inert','');lm.setAttribute('aria-hidden','true');if(lenis)lenis.start();inp.value='';le.textContent='';loginStep=1;if(lastF&&lastF.focus)lastF.focus()}
+function closeM(){lm.classList.remove('on');lm.setAttribute('inert','');lm.setAttribute('aria-hidden','true');if(lenis)lenis.start();inp.value='+38-0';le.textContent='';loginStep=1;if(lastF&&lastF.focus)lastF.focus()}
 function err(m){le.textContent=m;lf.classList.remove('shake');void lf.offsetWidth;lf.classList.add('shake')}
 function enter(r,v){store.set(KR,r.role);store.set(KT,r.token);curCase=0;
 if(r.role==='client')store.set(KP,v);else store.del(KP);
@@ -823,7 +868,7 @@ document.addEventListener('click',e=>{if(e.target.closest('[data-logout]'))logou
 
 $('#f').addEventListener('submit',e=>{e.preventDefault();$('#fbox').innerHTML='<div class="text-center py-16 space-y-4"><div class="serif text-2xl acc">Заявку отримано</div><p class="text-sm mut">Керуючий адвокат зв’яжеться з вами найближчим часом.</p></div>'});
 
-const bar=$('#bar i'),pc=$('#pct'),o={v:0};
+const bar=$('#bar i'),pc=$('#pct'],o={v:0};
 gsap.to(o,{v:100,duration:1.2,ease:'power2.inOut',onUpdate:()=>{if(bar)bar.style.width=o.v+'%';if(pc)pc.textContent=Math.round(o.v)+'%';},onComplete:()=>{
   gsap.to('#pre',{opacity:0,duration:.5,onComplete:()=>$('#pre').remove()});
   gsap.from('#h1 span',{yPercent:60,opacity:0,duration:1.2,stagger:.15,ease:'power4.out'});
@@ -832,7 +877,6 @@ gsap.to(o,{v:100,duration:1.2,ease:'power2.inOut',onUpdate:()=>{if(bar)bar.style
 }});
 setTimeout(()=>{const pre=$('#pre');if(pre)pre.remove();},3000);
 
-// Защита от зависания прелоадера
 window.addEventListener('load', () => {
   setTimeout(() => {
     const pre = document.getElementById('pre');
