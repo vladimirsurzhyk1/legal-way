@@ -9,7 +9,7 @@
 <title>LEGAL WAY — Міжнародна юридична компанія</title>
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20192%20192%27%3E%3Crect%20width%3D%27192%27%20height%3D%27192%27%20rx%3D%2736%27%20fill%3D%27%23050508%27/%3E%3Ctext%20x%3D%2796%27%20y%3D%27122%27%20font-family%3D%27Georgia%2Cserif%27%20font-size%3D%2784%27%20text-anchor%3D%27middle%27%20fill%3D%27%238be9c8%27%3ELW%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="logo-clean.png">
 <script>try{var s=localStorage.getItem('lw-theme');if(s)document.documentElement.dataset.theme=s}catch(e){}</script>
 <script>try{var r=localStorage.getItem('lw_role');if(r==='advocate'||r==='client')document.documentElement.dataset.view=r}catch(e){}</script>
 <script src="https://cdn.tailwindcss.com/3.4.17"></script>
@@ -141,19 +141,19 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
 <canvas id="gl"></canvas>
 
 <div id="view-public">
-<header class="fixed top-0 left-0 w-full z-50 wrap flex justify-between items-center gap-3 border-b" style="background:var(--hd);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-color:var(--line);padding-top:calc(14px + env(safe-area-inset-top,0px));padding-bottom:14px;flex-wrap:wrap;">
+<header class="fixed top-0 left-0 w-full z-50 wrap flex flex-wrap xl:flex-nowrap justify-between items-center gap-3 border-b" style="background:var(--hd);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-color:var(--line);padding-top:calc(14px + env(safe-area-inset-top,0px));padding-bottom:14px;">
   <a href="#hero" class="flex items-center gap-3">
     <img src="logo-clean.png" alt="Legal Way" class="h-8 w-auto lg-l" style="filter:none;"><img src="logo-white.png" alt="Legal Way" class="h-8 w-auto lg-d" style="filter:none;">
     <span class="serif font-bold tracking-[.3em] uppercase text-base hidden sm:inline">Legal Way</span>
   </a>
-  <nav class="nav hidden lg:flex gap-9 text-[11px] tracking-[.2em] uppercase font-medium">
+  <nav class="nav hidden xl:flex gap-6 2xl:gap-9 text-[11px] tracking-[.2em] uppercase font-medium whitespace-nowrap">
     <a href="#practices" data-i18n="nav_practices">Практики</a><a href="#process" data-i18n="nav_process">Процес</a><a href="#platform" data-i18n="nav_platform">Платформа</a><a href="#lawyer" data-i18n="nav_lawyer">Керівництво</a><a href="#faq">FAQ</a><a href="#contact" data-i18n="nav_contact">Контакти</a>
   </nav>
-  <div class="flex items-center gap-3 flex-wrap">
-    <div class="lbl hidden md:flex items-center gap-2 acc" style="font-size:10px"><span class="dot"></span><span class="hidden md:inline" data-i18n="sys_active">Система активна</span><span id="clk" class="faint tabular-nums">--:--:--</span></div>
+  <div class="flex items-center gap-3 flex-wrap xl:flex-nowrap shrink-0">
+    <div class="lbl hidden md:flex items-center gap-2 acc whitespace-nowrap" style="font-size:10px"><span class="dot"></span><span class="hidden 2xl:inline" data-i18n="sys_active">Система активна</span><span id="clk" class="faint tabular-nums">--:--:--</span></div>
     <button class="tg hv" id="tg" data-i18n-aria="aria_theme" aria-label="Змінити тему"><i></i></button>
     <button class="btn-o hv lang-toggle" id="lang-toggle" type="button" data-i18n-aria="aria_lang" aria-label="Змінити мову" style="font-size:10px;padding:0 10px;min-width:38px;">EN</button>
-    <button class="bgr lg:hidden" id="bgr" data-i18n-aria="aria_menu" aria-label="Меню" aria-expanded="false"><svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 1h18M0 11h18"/></svg></button>
+    <button class="bgr xl:hidden" id="bgr" data-i18n-aria="aria_menu" aria-label="Меню" aria-expanded="false"><svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 1h18M0 11h18"/></svg></button>
     <button class="btn-o hv" id="lg-open" type="button" aria-haspopup="dialog" data-i18n-title="login_btn" title="Вхід в кабінет">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
       <span class="hidden sm:inline" data-i18n="login_btn">Вхід в кабінет</span>
