@@ -433,7 +433,6 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const html=document.documentElement,theme=()=>html.dataset.theme;
 gsap.registerPlugin(ScrollTrigger);ScrollTrigger.config({ignoreMobileResize:true});
 
-// Simple i18n support
 let currentLang = localStorage.getItem('lw-lang') || 'uk';
 const dict = {
   uk: {
@@ -604,11 +603,11 @@ function renderAdv(){
   const rows=CASES.filter(c=>[c.num,c.court,c.client,c.subject].join(' ').toLowerCase().includes(q));
   
   advBody.innerHTML=rows.length?rows.map(c=>{const u=c.d!=null&&c.d<=3;
-  const fullCaseInfo = `Справа: ${c.num||c.id}\nСуд: ${c.court}\nКлієнт: ${c.client}\nПредмет: ${c.subject}\nСтатус: ${c.status||'—'}\nДата: ${c.ev?fmtYmd(c.ev.date):'—'}`;
+  const fullCaseInfo = "Справа: " + (c.num||c.id) + " | Суд: " + c.court + " | Клієнт: " + c.client + " | Предмет: " + c.subject + " | Статус: " + (c.status||'—') + " | Дата: " + (c.ev?fmtYmd(c.ev.date):'—');
   return `<tr${c.active?'':' style="opacity:.55"'}>
     <td class="font-mono text-xs whitespace-nowrap">
       <span style="color:var(--acc);font-weight:600">${esc(c.num||c.id)}</span>
-      <button type="button" onclick="navigator.clipboard.writeText(\`${fullCaseInfo.replace(/`/g, '\\`')}\`);alert('Всі дані справи скопійовано в буфер!');" style="background:none;border:0;cursor:pointer;margin-left:6px;font-size:12px;" title="Копіювати дані">📋</button>
+      <button type="button" onclick="navigator.clipboard.writeText('${fullCaseInfo.replace(/'/g, "\\'")}');alert('Всі дані справи скопійовано!');" style="background:none;border:0;cursor:pointer;margin-left:6px;font-size:12px;" title="Копіювати дані">📋</button>
     </td>
     <td>${esc(c.court)}</td>
     <td class="mut">${esc(c.client)}</td>
@@ -621,11 +620,11 @@ function renderAdv(){
   const mobContainer=$('#adv-mobile-cards');
   if(mobContainer){
     mobContainer.innerHTML=rows.length?rows.map(c=>{const u=c.d!=null&&c.d<=3;
-    const fullCaseInfo = `Справа: ${c.num||c.id}\nСуд: ${c.court}\nКлієнт: ${c.client}\nПредмет: ${c.subject}\nСтатус: ${c.status||'—'}\nДата: ${c.ev?fmtYmd(c.ev.date):'—'}`;
+    const fullCaseInfo = "Справа: " + (c.num||c.id) + " | Суд: " + c.court + " | Клієнт: " + c.client + " | Предмет: " + c.subject + " | Статус: " + (c.status||'—') + " | Дата: " + (c.ev?fmtYmd(c.ev.date):'—');
     return `<div class="glass p-5 space-y-3"${c.active?'':' style="opacity:.55"'}>
       <div class="flex justify-between items-start">
         <span class="font-mono text-xs acc font-bold">${esc(c.num||c.id)}</span>
-        <button type="button" onclick="navigator.clipboard.writeText(\`${fullCaseInfo.replace(/`/g, '\\`')}\`);alert('Всі дані справи скопійовано!');" class="btn-o" style="font-size:10px;padding:2px 8px;">📋 Копіювати</button>
+        <button type="button" onclick="navigator.clipboard.writeText('${fullCaseInfo.replace(/'/g, "\\'")}');alert('Всі дані справи скопійовано!');" class="btn-o" style="font-size:10px;padding:2px 8px;">📋 Копіювати</button>
       </div>
       <div>
         <h4 class="font-semibold text-base">${esc(c.client)}</h4>
@@ -759,7 +758,6 @@ window.switchLoginMode=function(mode){
 const lm=$('#login-modal'),lf=$('#lm-form'),inp=$('#lm-in'),le=$('#lm-err'),lt=$('#lm-t'),ld=$('#lm-desc'),lbl=$('#lm-lbl');
 let loginStep=1, tempPhone='', busy=false, lockUntil=0, lastF=null;
 
-// Mask input for phone
 inp.addEventListener('input', e => {
   if(loginMode === 'client') {
     let val = inp.value;
