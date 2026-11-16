@@ -615,7 +615,7 @@ function renderAdv(){
   return `<tr${c.active?'':' style="opacity:.55"'}>
     <td class="font-mono text-xs whitespace-nowrap">
       <span style="color:var(--acc);font-weight:600">${esc(c.num||c.id)}</span>
-      <button type="button" onclick="copyCaseData('${esc(copyText)}')" style="background:none;border:0;cursor:pointer;margin-left:6px;font-size:12px;" title="Копіювати дані">📋</button>
+      <button type="button" data-copy-txt="${esc(copyText)}" onclick="copyCaseData(this.getAttribute('data-copy-txt'))" style="background:none;border:0;cursor:pointer;margin-left:6px;font-size:12px;" title="Копіювати дані">📋</button>
     </td>
     <td>${esc(c.court)}</td>
     <td class="mut">${esc(c.client)}</td>
@@ -632,7 +632,7 @@ function renderAdv(){
     return `<div class="glass p-5 space-y-3"${c.active?'':' style="opacity:.55"'}>
       <div class="flex justify-between items-start">
         <span class="font-mono text-xs acc font-bold">${esc(c.num||c.id)}</span>
-        <button type="button" onclick="copyCaseData('${esc(copyText)}')" class="btn-o" style="font-size:10px;padding:2px 8px;">📋 Копіювати</button>
+        <button type="button" data-copy-txt="${esc(copyText)}" onclick="copyCaseData(this.getAttribute('data-copy-txt'))" class="btn-o" style="font-size:10px;padding:2px 8px;">📋 Копіювати</button>
       </div>
       <div>
         <h4 class="font-semibold text-base">${esc(c.client)}</h4>
