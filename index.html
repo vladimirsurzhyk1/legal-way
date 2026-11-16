@@ -134,7 +134,7 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
 }
 
 
-/* UI refinement: stable header, restrained controls and aligned actions */
+/* LEGAL WAY UI refinement: stable header, restrained controls and aligned actions */
 .public-header{box-sizing:border-box;min-height:64px;flex-wrap:nowrap!important;gap:clamp(10px,1.7vw,26px)!important;padding-top:calc(10px + env(safe-area-inset-top,0px))!important;padding-bottom:10px!important}
 .public-header>a{flex:0 0 auto;white-space:nowrap}
 .public-header .nav{flex:1 1 auto;justify-content:center;align-items:center;gap:clamp(12px,1.7vw,28px)!important;white-space:nowrap}
@@ -338,7 +338,7 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
     <div class="glass p-8 md:p-10 fu" id="fbox">
       <form id="f" class="space-y-5">
         <div><label class="lbl block mut mb-2" style="font-size:10px">Ваше ім’я або компанія</label><input required placeholder="Коваленко Олександр"></div>
-        <div><label class="lbl block mut mb-2" style="font-size:10px">Номер телефону</label><input id="f-phone" type="tel" required placeholder="+38 (0__) ___-__-__"></div>
+        <div><label class="lbl block mut mb-2" style="font-size:10px">Номер телефону</label><input type="tel" required placeholder="+380..."></div>
         <div><label class="lbl block mut mb-2" style="font-size:10px">Короткий опис питання</label><textarea rows="3" placeholder="Опишіть ситуацію..."></textarea></div>
         <button class="btn btn-w w-full mag hv" type="submit">Відправити заявку</button>
       </form>
@@ -442,7 +442,7 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
 
     <p class="text-sm leading-relaxed mut mt-3" id="lm-desc">Адвокат — PIN-код (2301). Клієнт — номер телефону (тест: 0662848897).</p>
     <label class="lbl block mut mt-4 mb-2" style="font-size:10px" for="lm-in" id="lm-lbl">Номер телефону</label>
-    <input id="lm-in" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="+38-066-XXX-XX-XX">
+    <input id="lm-in" autocomplete="off" autocapitalize="off" spellcheck="false" value="+38-0">
     <p id="lm-err" role="alert" class="text-xs mt-3 amb" style="min-height:18px"></p>
     <button class="btn btn-w w-full mt-4 hv" type="submit">Отримати код →</button>
   </form>
@@ -461,7 +461,7 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
 </div>
 
 <script>
-/* Страховка: прелоадер никогда не зависнет */
+/* Страховка: прелоадер никогда не зависнет, даже если основной скрипт упадёт */
 (function(){
   function kill(){var p=document.getElementById('pre');if(p&&p.parentNode){p.style.transition='opacity .4s';p.style.opacity='0';setTimeout(function(){if(p.parentNode)p.parentNode.removeChild(p)},450)}}
   window.addEventListener('error',function(){setTimeout(kill,300)});
@@ -868,19 +868,17 @@ window.switchLoginMode=function(mode){
   loginMode=mode;
   $('#tab-client').classList.toggle('on',mode==='client');
   $('#tab-advocate').classList.toggle('on',mode==='advocate');
-  const lbl=$('#lm-lbl'), inp=$('#lm-in'), desc=$('#lm-desc'), btn=$('#lm-form button[type="submit"]');
+  const lbl=$('#lm-lbl'), inp=$('#lm-in'), desc=$('#lm-desc');
   if(mode==='client'){
     desc.textContent='Клієнт — введіть номер телефону (тест: 0662848897).';
     lbl.textContent='Номер телефону';
-    inp.value='+38-066-';
+    inp.value='+38-0';
     inp.type='text';
-    if(btn) btn.textContent = 'Отримати код →';
   } else {
     desc.textContent='Адвокат — введіть PIN-код (2301).';
     lbl.textContent='PIN-код';
     inp.value='';
     inp.type='password';
-    if(btn) btn.textContent = 'Увійти →';
   }
   $('#lm-err').textContent='';
 };
@@ -999,9 +997,9 @@ document.addEventListener('click',e=>{if(e.target.closest('[data-logout]'))logou
 
 $('#f').addEventListener('submit',e=>{e.preventDefault();$('#fbox').innerHTML='<div class="text-center py-16 space-y-4"><div class="serif text-2xl acc">Заявку отримано</div><p class="text-sm mut">Керуючий адвокат зв’яжеться з вами найближчим часом.</p></div>'});
 
-const bar=$('#bar i'),pc=$('#pct'],o={v:0};
+const bar=$('#bar i'),pc=$('#pct'),o={v:0};
 gsap.to(o,{v:100,duration:1.2,ease:'power2.inOut',onUpdate:()=>{if(bar)bar.style.width=o.v+'%';if(pc)pc.textContent=Math.round(o.v)+'%';},onComplete:()=>{
-  gsap.to('#pre',{opacity:0,duration:.5,onComplete:()=>$('#pre'.remove())});
+  gsap.to('#pre',{opacity:0,duration:.5,onComplete:()=>$('#pre').remove()});
   gsap.from('#h1 span',{yPercent:60,opacity:0,duration:1.2,stagger:.15,ease:'power4.out'});
   gsap.from('#hero .hv,#hero .glass,#hero .btn',{opacity:0,y:20,duration:.9,stagger:.1,delay:.3,ease:'power3.out'});
   gsap.from('#pegasus',{opacity:0,duration:1.5,delay:.2,ease:'power3.out'});
