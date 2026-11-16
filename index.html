@@ -428,6 +428,15 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
 </div>
 
 <script>
+/* Страховка: прелоадер никогда не зависнет, даже если основной скрипт упадёт */
+(function(){
+  function kill(){var p=document.getElementById('pre');if(p&&p.parentNode){p.style.transition='opacity .4s';p.style.opacity='0';setTimeout(function(){if(p.parentNode)p.parentNode.removeChild(p)},450)}}
+  window.addEventListener('error',function(){setTimeout(kill,300)});
+  window.addEventListener('unhandledrejection',function(){setTimeout(kill,300)});
+  setTimeout(kill,4500);
+})();
+</script>
+<script>
 window.copyCaseData = function(txt) {
   navigator.clipboard.writeText(txt).then(function() {
     alert('Всі дані справи скопійовано!');
@@ -606,16 +615,23 @@ function prepare(){
   CLIENTS=(DATA&&DATA.clients)||[];
 }
 
+const MOTIONS=[
+  ['Клопотання про ознайомлення','Про ознайомлення з матеріалами'],
+  ['Клопотання про відкладення (хвороба)','У зв’язку з хворобою'],
+  ['Клопотання про допуск адвоката','Про допуск адвоката']
+];
+const motionOptions=()=>MOTIONS.map(m=>'<option value="'+esc(m[0])+'">'+esc(m[1])+'</option>').join('');
+
 function renderAdv(){
   if(!DATA) return;
   const q=(advQ.value||'').trim().toLowerCase();
   const rows=CASES.filter(c=>[c.num,c.court,c.client,c.subject].join(' ').toLowerCase().includes(q));
-  
-  advBody.innerHTML=rows.length?rows.map(c=>{const u=c.d!=null&&c.d<=3;
+
+  advBody.innerHTML=rows.length?rows.map(c=>{const u=c.d!=null&&c.d<=3;const key=c.num||c.id;
   return `<tr${c.active?'':' style="opacity:.55"'}>
     <td class="font-mono text-xs whitespace-nowrap">
-      <span style="color:var(--acc);font-weight:600">${esc(c.num||c.id)}</span>
-      <button type="button" class="copy-case-btn" data-num="${esc(c.num||c.id)}" data-court="${esc(c.court)}" data-client="${esc(c.client)}" data-subject="${esc(c.subject)}" style="background:none;border:0;cursor:pointer;margin-left:6px;font-size:12px;" title="Копіювати дані">📋</button>
+      <span style="color:var(--acc);font-weight:600">${esc(key)}</span>
+      <button type="button" class="copy-case-btn" data-num="${esc(key)}" data-court="${esc(c.court)}" data-client="${esc(c.client)}" data-subject="${esc(c.subject)}" style="background:none;border:0;cursor:pointer;margin-left:6px;font-size:12px;" title="Копіювати дані">📋</button>
     </td>
     <td>${esc(c.court)}</td>
     <td class="mut">${esc(c.client)}</td>
@@ -623,24 +639,20 @@ function renderAdv(){
     <td>${esc(c.ev?c.ev.label:(c.stage||'—'))}</td>
     <td class="tabular-nums whitespace-nowrap">${c.ev?fmtYmd(c.ev.date)+(c.ev.time?' '+esc(c.ev.time):'')+`<div class="text-[11px] ${u?'amb':'faint'}">${relDays(c.d)}</div>`:'<span class="faint">—</span>'}</td>
     <td>
-      <div class="flex flex-col gap-1.5" style="min-width:180px;">
-        <select id="motion-type-${esc(c.num||c.id)}" class="text-xs p-1.5 rounded-lg border" style="background:var(--c1);border-color:var(--line);color:var(--fg)">
-          <option value="Клопотання про ознайомлення">Про ознайомлення з матеріалами</option>
-          <option value="Клопотання про відкладення (хвороба)">У зв'язку з хворобою</option>
-          <option value="Клопотання про допуск адвоката">Про допуск адвоката</option>
-        </select>
-        <button class="btn-o hv" style="font-size:10px;padding:4px 10px;width:100%" onclick="generateAndSendMotion('${esc(c.num||c.id)}')">Сформувати в ТГ 🚀</button>
+      <div class="motion-box flex flex-col gap-1.5" data-case="${esc(key)}" style="min-width:180px;">
+        <select class="motion-sel text-xs p-1.5 rounded-lg border" aria-label="Вид клопотання" style="background:var(--c1);border-color:var(--line);color:var(--fg)">${motionOptions()}</select>
+        <button type="button" class="motion-btn btn-o hv" style="font-size:10px;padding:4px 10px;width:100%">Сформувати в ТГ 🚀</button>
       </div>
     </td>
   </tr>`}).join(''):'<tr><td colspan="7" class="faint" style="text-align:center;padding:40px">Нічого не знайдено</td></tr>';
 
   const mobContainer=$('#adv-mobile-cards');
   if(mobContainer){
-    mobContainer.innerHTML=rows.length?rows.map(c=>{const u=c.d!=null&&c.d<=3;
+    mobContainer.innerHTML=rows.length?rows.map(c=>{const key=c.num||c.id;
     return `<div class="glass p-5 space-y-3"${c.active?'':' style="opacity:.55"'}>
       <div class="flex justify-between items-start">
-        <span class="font-mono text-xs acc font-bold">${esc(c.num||c.id)}</span>
-        <button type="button" class="copy-case-btn btn-o" data-num="${esc(c.num||c.id)}" data-court="${esc(c.court)}" data-client="${esc(c.client)}" data-subject="${esc(c.subject)}" style="font-size:10px;padding:2px 8px;">📋 Копіювати</button>
+        <span class="font-mono text-xs acc font-bold">${esc(key)}</span>
+        <button type="button" class="copy-case-btn btn-o" data-num="${esc(key)}" data-court="${esc(c.court)}" data-client="${esc(c.client)}" data-subject="${esc(c.subject)}" style="font-size:10px;padding:2px 8px;">📋 Копіювати</button>
       </div>
       <div>
         <h4 class="font-semibold text-base">${esc(c.client)}</h4>
@@ -651,55 +663,52 @@ function renderAdv(){
         <div><b>Подія:</b> ${esc(c.ev?c.ev.label:(c.stage||'—'))}</div>
         <div><b>Дата:</b> ${c.ev?fmtYmd(c.ev.date)+(c.ev.time?' '+esc(c.ev.time):''):'—'} ${c.ev?`(${relDays(c.d)})`:''}</div>
       </div>
-      <div class="pt-2 space-y-2">
-        <select id="mob-motion-type-${esc(c.num||c.id)}" class="text-xs p-2 rounded-lg border w-full" style="background:var(--c1);border-color:var(--line);color:var(--fg)">
-          <option value="Клопотання про ознайомлення">Про ознайомлення з матеріалами</option>
-          <option value="Клопотання про відкладення (хвороба)">У зв'язку з хворобою</option>
-          <option value="Клопотання про допуск адвоката">Про допуск адвоката</option>
-        </select>
-        <button class="btn-o hv w-full" style="font-size:11px" onclick="generateAndSendMotionMobile('${esc(c.num||c.id)}')">Сформувати в ТГ 🚀</button>
+      <div class="motion-box pt-2 space-y-2" data-case="${esc(key)}">
+        <select class="motion-sel text-xs p-2 rounded-lg border w-full" aria-label="Вид клопотання" style="background:var(--c1);border-color:var(--line);color:var(--fg)">${motionOptions()}</select>
+        <button type="button" class="motion-btn btn-o hv w-full" style="font-size:11px">Сформувати в ТГ 🚀</button>
       </div>
     </div>`}).join(''):'<div class="faint text-center py-10">Нічого не знайдено</div>';
   }
 }
 
-window.generateAndSendMotion = async function(caseNum) {
-  const selectEl = document.getElementById('motion-type-' + caseNum);
-  const motionType = selectEl ? selectEl.value : 'Клопотання про ознайомлення';
-  await executeMotionRequest(caseNum, motionType);
-};
-
-window.generateAndSendMotionMobile = async function(caseNum) {
-  const selectEl = document.getElementById('mob-motion-type-' + caseNum);
-  const motionType = selectEl ? selectEl.value : 'Клопотання про ознайомлення';
-  await executeMotionRequest(caseNum, motionType);
-};
-
-async function executeMotionRequest(caseNum, motionType) {
-  if(!confirm(`Сформувати «${motionType}» по справі №${caseNum} та надіслати в Telegram?`)) return;
-  const token = store.get(KT);
-  alert('Документ формується та надсилається в Telegram...');
-  try {
-    const res = await api({
-      action: 'generate_motion',
-      token: token,
-      caseNum: caseNum,
-      motionType: motionType
-    }, 35000);
-    if(res && res.ok) {
+let motionBusy=false;
+async function executeMotionRequest(caseNum,motionType,btn){
+  if(motionBusy) return;
+  const token=store.get(KT);
+  if(!token||role!=='advocate'){alert('Сесія закінчилась. Увійдіть як адвокат.');return}
+  if(!confirm('Сформувати «'+motionType+'» по справі №'+caseNum+' та надіслати в Telegram?')) return;
+  motionBusy=true;
+  const label=btn?btn.textContent:'';
+  if(btn){btn.disabled=true;btn.textContent='Формується…'}
+  try{
+    const res=await api({action:'generate_motion',token:token,caseNum:caseNum,motionType:motionType},60000);
+    if(res&&res.ok){
       alert('Клопотання успішно створено та надіслано в Telegram!');
-    } else {
-      alert('Помилка: ' + (res.error || 'не вдалося згенерувати документ'));
+    }else{
+      const m=String((res&&res.error)||'не вдалося згенерувати документ').replace(/^Error:\s*/,'');
+      alert('Помилка: '+m);
+      if(/Неавторизован/i.test(m)) logout();
     }
-  } catch(e) {
-    alert('Помилка зв’язку із сервером при генерації клопотання.');
+  }catch(e){
+    alert(e&&e.name==='AbortError'?'Сервер відповідає надто довго. Перевірте Telegram — документ міг бути надісланий.':'Помилка зв’язку із сервером при генерації клопотання.');
+  }finally{
+    motionBusy=false;
+    if(btn){btn.disabled=false;btn.textContent=label}
   }
 }
 
-document.addEventListener('click', e => {
-  const btn = e.target.closest('.copy-case-btn');
-  if(btn) {
-    const text = "Справа: " + btn.dataset.num + " | Суд: " + btn.dataset.court + " | Клієнт: " + btn.dataset.client + " | Предмет: " + btn.dataset.subject;
+document.addEventListener('click',e=>{
+  const mb=e.target.closest('.motion-btn');
+  if(mb){
+    const box=mb.closest('.motion-box');
+    if(!box) return;
+    const sel=box.querySelector('.motion-sel');
+    executeMotionRequest(box.dataset.case,sel?sel.value:MOTIONS[0][0],mb);
+    return;
+  }
+  const btn=e.target.closest('.copy-case-btn');
+  if(btn){
+    const text='Справа: '+btn.dataset.num+' | Суд: '+btn.dataset.court+' | Клієнт: '+btn.dataset.client+' | Предмет: '+btn.dataset.subject;
     copyCaseData(text);
   }
 });
@@ -813,7 +822,7 @@ window.switchLoginMode=function(mode){
 };
 
 const lm=$('#login-modal'),lf=$('#lm-form'),inp=$('#lm-in'),le=$('#lm-err'),lt=$('#lm-t'),ld=$('#lm-desc'),lbl=$('#lm-lbl');
-let loginStep=1, tempPhone='', busy=false, lockUntil=0, lastF=null;
+let loginStep=1, tempPhone='', busy=false, lockUntil=0, lastF=null, fails=0;
 
 inp.addEventListener('input', e => {
   if(loginMode === 'client') {
@@ -903,12 +912,15 @@ window.sendClientQuestion=async function(){
   if(!text){alert('Введіть текст питання.');return;}
   const token=store.get(KT);
   try{
-    await api({action:'client_question',token:token,question:text},15000);
-    alert('Ваше питання успішно надіслано адвокату в Telegram!');
-    closeAskModal();
+    const r=await api({action:'client_question',token:token,question:text},15000);
+    if(r&&r.ok){
+      alert('Ваше питання успішно надіслано адвокату в Telegram!');
+      closeAskModal();
+    }else{
+      alert('Не вдалося надіслати питання: '+((r&&r.error)||'помилка сервера')+'. Спробуйте ще раз.');
+    }
   }catch(e){
-    alert('Питання надіслано в систему!');
-    closeAskModal();
+    alert('Помилка зв’язку із сервером. Питання не надіслано — спробуйте ще раз.');
   }
 };
 
@@ -923,7 +935,7 @@ document.addEventListener('click',e=>{if(e.target.closest('[data-logout]'))logou
 
 $('#f').addEventListener('submit',e=>{e.preventDefault();$('#fbox').innerHTML='<div class="text-center py-16 space-y-4"><div class="serif text-2xl acc">Заявку отримано</div><p class="text-sm mut">Керуючий адвокат зв’яжеться з вами найближчим часом.</p></div>'});
 
-const bar=$('#bar i'),pc=$('#pct'],o={v:0};
+const bar=$('#bar i'),pc=$('#pct'),o={v:0};
 gsap.to(o,{v:100,duration:1.2,ease:'power2.inOut',onUpdate:()=>{if(bar)bar.style.width=o.v+'%';if(pc)pc.textContent=Math.round(o.v)+'%';},onComplete:()=>{
   gsap.to('#pre',{opacity:0,duration:.5,onComplete:()=>$('#pre').remove()});
   gsap.from('#h1 span',{yPercent:60,opacity:0,duration:1.2,stagger:.15,ease:'power4.out'});
