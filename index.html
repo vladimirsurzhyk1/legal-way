@@ -190,6 +190,30 @@ button.chip{background:transparent;font-family:inherit;cursor:pointer}
 .tk-card.done{opacity:.6}
 .tk-meta{display:flex;flex-wrap:wrap;gap:8px 24px;font-size:12px;color:var(--mut)}
 .tk-meta b{color:var(--fg);font-weight:600}
+
+/* header: full company name */
+.public-header>a.brand{flex:0 1 auto;min-width:0;white-space:normal}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand-txt{flex-direction:column;justify-content:center;gap:3px;min-width:0}
+.brand-full{display:block;max-width:clamp(210px,26vw,320px);min-height:2.5em;font-size:9px;line-height:1.25;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:var(--mut);white-space:normal;text-wrap:balance}
+@media (min-width:1280px) and (max-width:1535px){.public-header .nav{gap:12px!important;font-size:10px!important;letter-spacing:.14em!important}}
+
+/* tasks: card grid + status select */
+#tk-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr));gap:20px;align-items:stretch}
+#tk-list .tk-empty{grid-column:1/-1}
+.tk-card{display:flex;flex-direction:column;gap:12px;height:100%;padding:20px 22px}
+.tk-card.done{opacity:1}
+.tk-card.done .tk-top,.tk-card.done .tk-desc,.tk-card.done .tk-meta{opacity:.6}
+.tk-card.overdue{border-color:var(--amb)}
+.tk-top{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:10px}
+.tk-desc{margin:0;font-size:14px;line-height:1.55;color:var(--mut);white-space:pre-line;word-break:break-word}
+.tk-meta{flex-direction:column;gap:4px}
+.tk-foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--line)}
+.tk-status{height:38px;min-height:38px}
+.tk-status:disabled{opacity:.6;cursor:wait}
+.tk-status[data-st="prog"]{color:var(--sky)!important;border-color:var(--sky)!important}
+.tk-status[data-st="review"]{color:var(--amb)!important;border-color:var(--amb)!important}
+.tk-status[data-st="done"]{color:var(--acc)!important;border-color:var(--acc)!important}
 </style>
 </head>
 <body>
@@ -200,15 +224,15 @@ button.chip{background:transparent;font-family:inherit;cursor:pointer}
 
 <div id="view-public">
 <header id="public-header" class="public-header fixed top-0 left-0 w-full z-50 wrap flex justify-between items-center gap-3 border-b" style="background:var(--hd);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-color:var(--line);padding-top:calc(14px + env(safe-area-inset-top,0px));padding-bottom:14px;flex-wrap:wrap;">
-  <a href="#hero" class="flex items-center gap-3">
+  <a href="#hero" class="brand">
     <img src="logo-clean.png" alt="Legal Way" class="h-8 w-auto lg-l"><img src="logo-white.png" alt="Legal Way" class="h-8 w-auto lg-d">
-    <span class="serif font-bold tracking-[.3em] uppercase text-base hidden sm:inline">Legal Way</span>
+    <span class="brand-txt hidden sm:flex"><span class="serif font-bold tracking-[.3em] uppercase text-sm whitespace-nowrap">Legal Way</span><span class="brand-full" data-i18n="hero_addr">ТОВ «МІЖНАРОДНА ЮРИДИЧНА КОМПАНІЯ «ЛІГАЛ ВЕЙ»</span></span>
   </a>
   <nav class="nav hidden lg:flex gap-9 text-[11px] tracking-[.2em] uppercase font-medium">
     <a href="#practices" data-i18n="nav_practices">Практики</a><a href="#process" data-i18n="nav_process">Процес</a><a href="#platform" data-i18n="nav_platform">Платформа</a><a href="#lawyer" data-i18n="nav_lawyer">Керівництво</a><a href="#faq">FAQ</a><a href="#contact" data-i18n="nav_contact">Контакти</a>
   </nav>
   <div class="flex items-center gap-3 flex-wrap">
-    <div class="lbl hidden md:flex items-center gap-2 acc" style="font-size:10px"><span class="dot"></span><span class="hidden md:inline" data-i18n="sys_active">Система активна</span><span id="clk" class="faint tabular-nums">--:--:--</span></div>
+    <div class="lbl hidden md:flex items-center gap-2 acc" style="font-size:10px"><span class="dot"></span><span class="hidden 2xl:inline" data-i18n="sys_active">Система активна</span><span id="clk" class="faint tabular-nums">--:--:--</span></div>
     <button class="tg hv" id="tg" aria-label="Змінити тему"><i></i></button>
     <button class="btn-o hv" id="lang-toggle" type="button" aria-label="Змінити мову" style="font-size:10px;padding:0 10px;min-width:38px;">EN</button>
     <button class="bgr xl:hidden" id="bgr" aria-label="Меню" aria-expanded="false"><svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 1h18M0 11h18"/></svg></button>
@@ -361,7 +385,7 @@ button.chip{background:transparent;font-family:inherit;cursor:pointer}
         <div><b>Email:</b> <a href="mailto:ask@lway.ua" class="underline" style="color:var(--acc)">ask@lway.ua</a></div>
       </div></div>
     <div class="glass p-8 md:p-10 fu" id="fbox">
-      <form id="f" class="space-y-5">
+      <form id="f" class="space-y-5" novalidate>
         <div><label class="lbl block mut mb-2" style="font-size:10px">Ваше ім’я або компанія</label><input id="f-name" name="name" autocomplete="name" maxlength="150" required placeholder="Коваленко Олександр"></div>
         <div><label class="lbl block mut mb-2" style="font-size:10px">Номер телефону</label><input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="+38-0XX-XXX-XX-XX"></div>
         <div><label class="lbl block mut mb-2" style="font-size:10px">Короткий опис питання</label><textarea id="f-msg" rows="3" maxlength="1000" placeholder="Опишіть ситуацію..."></textarea></div>
@@ -435,7 +459,7 @@ button.chip{background:transparent;font-family:inherit;cursor:pointer}
           <button class="btn-o hv on" type="button" id="tk-new">+ Нове завдання</button>
         </div>
       </div>
-      <div id="tk-list" class="space-y-4"></div>
+      <div id="tk-list"></div>
     </div>
   </div>
 </div>
@@ -502,13 +526,13 @@ button.chip{background:transparent;font-family:inherit;cursor:pointer}
   </form>
 </div>
 
-<div id="ask-modal" class="lm" role="dialog" aria-modal="true" aria-hidden="true" inert>
+<div id="ask-modal" class="lm" role="dialog" aria-modal="true" aria-labelledby="ask-t" aria-hidden="true" inert>
   <div class="lm-bd" onclick="closeAskModal()"></div>
   <div class="glass lm-card space-y-4">
     <button type="button" class="hv" onclick="closeAskModal()" aria-label="Закрити" style="position:absolute;top:16px;right:18px;font-size:24px;line-height:1;background:none;border:0;color:var(--mut)">×</button>
     <div id="ask-form" class="space-y-4">
     <span class="lbl acc">Питання адвокату</span>
-    <h2 class="serif text-2xl font-medium">Зв'язок по справі</h2>
+    <h2 class="serif text-2xl font-medium" id="ask-t">Зв'язок по справі</h2>
     <p class="text-sm mut">Опишіть ваше питання. Керуючий адвокат отримає сповіщення в Telegram і зв'яжеться з вами.</p>
     <textarea id="ask-text" rows="4" placeholder="Ваше питання або коментар..."></textarea>
     <p id="ask-err" role="alert" class="text-xs amb" style="min-height:16px"></p>
@@ -633,7 +657,7 @@ const EN={
 "Змінити мову": "Change language",
 "Меню": "Menu",
 "Вхід в кабінет": "Sign in",
-"ТОВ «МІЖНАРОДНА ЮРИДИЧНА КОМПАНІЯ «ЛІГАЛ ВЕЙ»": "LLC \"INTERNATIONAL LAW COMPANY \"LEGAL WAY\"",
+"ТОВ «МІЖНАРОДНА ЮРИДИЧНА КОМПАНІЯ «ЛІГАЛ ВЕЙ»": "LLC “INTERNATIONAL LAW COMPANY “LEGAL WAY””",
 "Точність.": "Precision.",
 "Чесність.": "Integrity.",
 "Результат.": "Result.",
@@ -717,7 +741,7 @@ const EN={
 "Ключові зміни по справі - миттєво в Telegram.": "Key case updates instantly in Telegram.",
 "[ 04 / Керівництво компанії ]": "[ 04 / Company management ]",
 "Липко Олег Юрійович": "Oleh Lypko",
-"Керуючий адвокат • Директор ТОВ «МЮК «ЛІГАЛ ВЕЙ»": "Managing attorney • Director of LLC “ILC “LEGAL WAY”",
+"Керуючий адвокат • Директор ТОВ «МЮК «ЛІГАЛ ВЕЙ»": "Managing attorney • Director of LLC “ILC “LEGAL WAY””",
 "Свідоцтво про право на заняття адвокатською діяльністю:": "Certificate of the right to practise law:",
 "серія ЗР №21/2301": "series ZR No. 21/2301",
 "Понад 15 років безперервної практики у сфері захисту корпоративної власності, комерційного арбітражу, супроводу надрокористування.": "Over 15 years of continuous practice in corporate property protection, commercial arbitration and subsoil use support.",
@@ -747,7 +771,7 @@ const EN={
 "Короткий опис питання": "Brief description of your matter",
 "Опишіть ситуацію...": "Describe the situation...",
 "Відправити заявку": "Submit request",
-"© 2026 ТОВ «МІЖНАРОДНА ЮРИДИЧНА КОМПАНІЯ «ЛІГАЛ ВЕЙ». Код ЄДРПОУ 39075219. Всі права захищено.": "© 2026 LLC “INTERNATIONAL LAW COMPANY “LEGAL WAY”. EDRPOU code 39075219. All rights reserved.",
+"© 2026 ТОВ «МІЖНАРОДНА ЮРИДИЧНА КОМПАНІЯ «ЛІГАЛ ВЕЙ». Код ЄДРПОУ 39075219. Всі права захищено.": "© 2026 LLC “INTERNATIONAL LAW COMPANY “LEGAL WAY””. EDRPOU code 39075219. All rights reserved.",
 "Закрити": "Close",
 "Захищений вхід": "Secure sign-in",
 "Я клієнт": "I am a client",
@@ -772,7 +796,9 @@ const EN={
 "Надіслати адвокату →": "Send to the attorney →",
 "Питання щодо: ": "Regarding: ",
 "Заявку отримано": "Request received",
-"Керуючий адвокат зв’яжеться з вами найближчим часом.": "The managing attorney will contact you shortly."
+"Керуючий адвокат зв’яжеться з вами найближчим часом.": "The managing attorney will contact you shortly.",
+"Вкажіть ім’я або назву компанії.": "Enter your name or company name.",
+"Сервер відповідає надто довго. Заявка могла дійти - зателефонуйте нам або повторіть спробу.": "The server is taking too long. Your request may have arrived - please call us or try again."
 };
 const T=k=>(currentLang==='en'&&EN[k])?EN[k]:k;
 const I18N_ROOTS=['#view-public','#mn','#login-modal','#ask-modal'];
@@ -1118,20 +1144,25 @@ if(advQ) advQ.addEventListener('input',renderAdv);
 /* ---- завантаження договору ---- */
 function dlBtnHtml(cl){
   const ph=String(cl.phone||'').replace(/\D/g,'');
-  return '<button type="button" class="btn-o hv dl-btn w-full" data-url="'+esc(cl.contractUrl||'')+'" data-phone="'+esc(ph)+'">Завантажити договір (PDF)</button>';
+  return '<button type="button" class="btn-o hv dl-btn w-full" data-url="'+esc(cl.contractUrl||'')+'" data-phone="'+esc(ph)+'" data-cid="'+esc(cl.id||'')+'">Завантажити договір (PDF)</button>';
 }
 function toast(m){
   let t=document.getElementById('lw-copy-toast');
   if(!t){t=document.createElement('div');t.id='lw-copy-toast';t.className='lw-toast';t.setAttribute('role','status');document.body.appendChild(t)}
   t.textContent=m;t.classList.add('on');clearTimeout(window.__lwToastTimer);
-  window.__lwToastTimer=setTimeout(()=>t.classList.remove('on'),2600);
+  window.__lwToastTimer=setTimeout(()=>t.classList.remove('on'),3200);
 }
 function b64Blob(b64,type){const bin=atob(b64),u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return new Blob([u],{type:type||'application/pdf'})}
-function saveBlob(blob,name){
-  const url=URL.createObjectURL(blob),a=document.createElement('a');
+const isIOS=()=>/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+function saveBlob(blob,name,win){
+  const url=URL.createObjectURL(blob);
+  if(win&&!win.closed){
+    try{win.location.href=url;setTimeout(()=>URL.revokeObjectURL(url),120000);return}catch(e){}
+  }
+  const a=document.createElement('a');
   a.href=url;a.download=name||'document.pdf';a.rel='noopener';a.style.display='none';
   document.body.appendChild(a);a.click();
-  setTimeout(()=>{a.remove();URL.revokeObjectURL(url)},4000);
+  setTimeout(()=>{a.remove();URL.revokeObjectURL(url)},60000);
 }
 function openLink(url){
   if(!/^https?:\/\//i.test(url||''))return false;
@@ -1143,22 +1174,37 @@ document.addEventListener('click',async e=>{
   const b=e.target.closest('.dl-btn');if(!b)return;
   e.preventDefault();e.stopPropagation();
   if(dlBusy)return;
-  const url=b.dataset.url||'',phone=b.dataset.phone||'',token=store.get(KT);
+  const token=store.get(KT);
+  if(!token||!role){toast('Сесія закінчилась. Увійдіть знову.');return}
+  const url=b.dataset.url||'',phone=b.dataset.phone||'',cid=b.dataset.cid||'';
+  /* iOS Safari: вкладку потрібно відкрити синхронно, у момент кліку */
+  let win=null;
+  if(isIOS()){
+    try{win=window.open('','_blank')}catch(x){win=null}
+    if(win){try{win.document.title='Договір';win.document.body.innerHTML='<p style="font:16px system-ui;padding:24px">Завантаження договору…</p>'}catch(x){}}
+  }
   const t0=b.textContent;dlBusy=true;b.disabled=true;b.textContent='Завантаження…';
+  let done=false,msg='',expired=false;
   try{
-    let done=false;
-    if(token){
-      try{
-        const r=await api({action:'contract_pdf',token:token,phone:phone},45000);
-        if(r&&r.ok&&r.pdfBase64){saveBlob(b64Blob(r.pdfBase64),r.fileName||'Dogovir.pdf');toast('Договір завантажено');done=true}
-        else if(r&&r.ok===false&&/Сесія/i.test(r.error||'')){toast(r.error);logout();return}
-      }catch(x){}
+    const r=await api({action:'contract_pdf',token:token,phone:phone,clientId:cid},60000);
+    if(r&&r.ok&&r.pdfBase64){
+      saveBlob(b64Blob(r.pdfBase64),r.fileName||'Dogovir.pdf',win);
+      win=null;done=true;toast('Договір завантажено');
+    }else{
+      msg=(r&&r.error)||'Не вдалося отримати договір.';
+      expired=/Сесія/i.test(msg);
     }
-    if(!done){
-      if(openLink(url))toast('Договір відкрито в новій вкладці');
-      else toast('Не вдалося завантажити договір. Дозвольте спливаючі вікна або зверніться до адвоката.');
-    }
+  }catch(x){
+    msg=x&&x.name==='AbortError'?'Сервер відповідає надто довго. Спробуйте ще раз.':'Помилка зв’язку із сервером. Спробуйте ще раз.';
   }finally{dlBusy=false;b.disabled=false;b.textContent=t0}
+  if(done)return;
+  if(expired){if(win&&!win.closed)win.close();toast(msg);logout();return}
+  let opened=false;
+  if(role==='advocate'&&/^https?:\/\//i.test(url)){
+    if(win&&!win.closed){win.location.href=url;opened=true}else opened=openLink(url);
+  }
+  if(opened)toast('Договір відкрито в новій вкладці');
+  else{if(win&&!win.closed)win.close();toast(msg||'Не вдалося завантажити договір.')}
 });
 
 /* ---- завдання ---- */
@@ -1169,6 +1215,15 @@ function tkRel(t){
   if(!t.deadline||t.done)return '';
   const d=daysTo(t.deadline);
   return d<0?'прострочено на '+(-d)+' дн.':d===0?'сьогодні':d===1?'завтра':'через '+d+' дн.';
+}
+const TK_STATUSES=['Нове','В роботі','На перевірці','Виконано'];
+const tkIsDone=st=>/викон|закрит|done/i.test(String(st||''));
+const tkStKey=st=>{const n=normName(st);return n==='в роботі'?'prog':n==='на перевірці'?'review':n==='виконано'?'done':'new'};
+function tkSelectHtml(t){
+  const cur=String(t.status||'').trim()||TK_STATUSES[0];
+  const list=TK_STATUSES.indexOf(cur)===-1?TK_STATUSES.concat([cur]):TK_STATUSES;
+  return '<select class="motion-sel tk-status" data-tk-id="'+esc(t.id)+'" data-prev="'+esc(cur)+'" data-st="'+tkStKey(cur)+'" aria-label="Статус завдання"'+(t.id?'':' disabled title="У завдання немає ID"')+'>'+
+    list.map(x=>'<option value="'+esc(x)+'"'+(x===cur?' selected':'')+'>'+esc(x)+'</option>').join('')+'</select>';
 }
 function renderTasks(){
   if(!tkList)return;
@@ -1183,24 +1238,54 @@ function renderTasks(){
     .sort((a,b)=>(Number(!!a.done)-Number(!!b.done))||(Number(b.priority==='urgent')-Number(a.priority==='urgent'))||String(a.deadline||'9999-99-99').localeCompare(String(b.deadline||'9999-99-99')));
   tkList.innerHTML=rows.length?rows.map(t=>{
     const od=tkOverdue(t),rel=tkRel(t);
-    return `<article class="glass tk-card space-y-3${t.done?' done':''}">
-      <div class="flex flex-wrap items-start justify-between gap-3">
+    return `<article class="glass tk-card${t.done?' done':''}${od?' overdue':''}">
+      <div class="tk-top">
         <div class="min-w-0"><div class="text-xs faint font-mono mb-1">${esc(dash(t.id))}</div><h3 class="text-base font-semibold" style="word-break:break-word">${esc(t.title)}</h3></div>
-        <div class="flex flex-wrap gap-2">
+        <div class="flex flex-wrap gap-2 justify-end">
           ${t.priority==='urgent'?'<span class="chip warn">Терміново</span>':'<span class="chip mut">Звичайне</span>'}
           ${od?'<span class="chip warn">Прострочено</span>':''}
-          <span class="chip ${t.done?'ok':'acc'}">${esc(dash(t.status))}</span>
         </div>
       </div>
-      ${t.description?`<p class="text-sm mut" style="white-space:pre-line;word-break:break-word">${esc(t.description)}</p>`:''}
+      ${t.description?`<p class="tk-desc">${esc(t.description)}</p>`:''}
       <div class="tk-meta">
         <span>Відповідальний: <b>${esc(dash(t.assignee))}</b></span>
         <span>Дедлайн: <b class="tabular-nums">${t.deadline?fmtYmd(t.deadline):'-'}</b>${rel?` <span class="${od?'amb':'faint'}">(${rel})</span>`:''}</span>
         ${t.creator?`<span>Створив: <b>${esc(t.creator)}</b></span>`:''}
         ${t.createdAt?`<span class="faint">Створено: ${esc(t.createdAt)}</span>`:''}
       </div>
-    </article>`}).join(''):'<div class="faint text-center py-12">Завдань не знайдено</div>';
+      <div class="tk-foot"><div class="cm-k">Статус</div>${tkSelectHtml(t)}</div>
+    </article>`}).join(''):'<div class="faint text-center py-12 tk-empty">Завдань не знайдено</div>';
 }
+const tkBusyIds={};
+tkList.addEventListener('change',async e=>{
+  const sel=e.target.closest('.tk-status');if(!sel)return;
+  const id=sel.dataset.tkId||'',status=sel.value,prev=sel.dataset.prev||'';
+  if(!id||status===prev)return;
+  const token=store.get(KT);
+  if(!token||role!=='advocate'){sel.value=prev;toast('Сесія закінчилась. Увійдіть як адвокат.');return}
+  if(tkBusyIds[id]){sel.value=prev;return}
+  tkBusyIds[id]=true;sel.disabled=true;
+  try{
+    const r=await api({action:'task_update_status',token:token,id:id,status:status},30000);
+    if(r&&r.ok){
+      if(!DATA)DATA={cases:[],clients:[],tasks:[]};
+      if(Array.isArray(r.tasks)){DATA.tasks=r.tasks}
+      else{(DATA.tasks||[]).forEach(t=>{if(t.id===id){t.status=r.status||status;t.done=tkIsDone(t.status)}})}
+      TASKS=DATA.tasks;
+      sess.set(KC,JSON.stringify({role:role,t:lastLoad||Date.now(),data:DATA}));
+      renderTasks();
+      toast('Статус змінено: '+(r.status||status));
+    }else{
+      sel.value=prev;
+      const m=(r&&r.error)||'Не вдалося змінити статус.';
+      toast(m);
+      if(/Сесія/i.test(m))setTimeout(logout,1500);
+    }
+  }catch(x){
+    sel.value=prev;
+    toast(x&&x.name==='AbortError'?'Сервер відповідає надто довго. Статус не змінено.':'Помилка зв’язку із сервером. Статус не змінено.');
+  }finally{delete tkBusyIds[id];sel.disabled=false}
+});
 $('#tk-f').addEventListener('click',e=>{const b=e.target.closest('[data-tf]');if(!b)return;tkFilter=b.dataset.tf;renderTasks()});
 tkQ.addEventListener('input',renderTasks);
 
@@ -1427,12 +1512,14 @@ window.sendClientQuestion=async function(){
       askTimer=setTimeout(closeAskModal,5000);
     }else{
       er.textContent=(r&&r.error)||'Не вдалося надіслати запит. Спробуйте ще раз.';
+      if(/Сесія/i.test(er.textContent))setTimeout(()=>{closeAskModal();logout()},1500);
     }
   }catch(x){
     er.textContent=x&&x.name==='AbortError'?'Сервер відповідає надто довго. Спробуйте ще раз.':'Помилка зв’язку із сервером. Запит не надіслано - спробуйте ще раз.';
   }finally{askBusy=false;btn.disabled=false;btn.textContent=t0}
 };
 
+addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#ask-modal').classList.contains('on'))closeAskModal()});
 $('#lg-open').addEventListener('click',openM);
 $$('[data-close]').forEach(b=>b.addEventListener('click',closeM));
 addEventListener('keydown',e=>{if(!lm.classList.contains('on'))return;if(e.key==='Escape')closeM()});
@@ -1444,27 +1531,40 @@ document.addEventListener('click',e=>{if(e.target.closest('[data-logout]'))logou
 
 const fPhone=$('#f-phone');
 fPhone.addEventListener('focus',()=>{if(!fPhone.value)fPhone.value='+38-0'});
-fPhone.addEventListener('input',()=>{fPhone.value=fmtPhone(fPhone.value);fPhone.setCustomValidity('')});
+fPhone.addEventListener('input',()=>{fPhone.value=fmtPhone(fPhone.value)});
 fPhone.addEventListener('blur',()=>{if(!phoneRest(fPhone.value).length)fPhone.value=''});
-const fForm=$('#f'),fName=$('#f-name'),fMsg=$('#f-msg'),fErr=$('#f-err');let fService='Загальне питання',fBusy=false;
+const fForm=$('#f'),fName=$('#f-name'),fMsg=$('#f-msg'),fErr=$('#f-err');let fService='Загальне питання',fBusy=false,fRef='';
 $$('[data-topic]').forEach(a=>a.addEventListener('click',()=>{fService=a.dataset.topic||fService}));
-fForm.addEventListener('submit',async e=>{e.preventDefault();
-if(fBusy)return;
-if(phoneRest(fPhone.value).length<9){fPhone.setCustomValidity(T('Введіть повний номер телефону.'));fPhone.reportValidity();return}
-const payload={action:'lead',name:fName.value.trim(),phone:'+380'+phoneRest(fPhone.value),service:fService,message:fMsg.value.trim()};
-const btn=fForm.querySelector('button[type=submit]'),t0=btn.textContent;
-fBusy=true;btn.disabled=true;btn.textContent=T('Надсилання…');fErr.textContent='';
-let res=null;
-for(let k=0;k<2&&!(res&&res.ok);k++){
-  try{res=await api(payload,25000)}
-  catch(x){res=null;if(x&&x.name==='AbortError')break;if(k===0)await new Promise(r=>setTimeout(r,1200))}
-}
-fBusy=false;btn.disabled=false;btn.textContent=t0;
-if(res&&res.ok){
-  $('#fbox').innerHTML='<div class="text-center py-16 space-y-4"><div class="serif text-2xl acc">'+T('Заявку отримано')+'</div><p class="text-sm mut">'+T('Керуючий адвокат зв’яжеться з вами найближчим часом.')+'</p></div>';
-}else{
-  fErr.textContent=(res&&res.error)?String(res.error):T('Не вдалося надіслати заявку. Спробуйте ще раз або зателефонуйте нам.');
-}
+fForm.addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(fBusy)return;
+  fErr.textContent='';
+  const name=fName.value.trim();
+  if(!name){fErr.textContent=T('Вкажіть ім’я або назву компанії.');fName.focus();return}
+  if(phoneRest(fPhone.value).length<9){fErr.textContent=T('Введіть повний номер телефону.');fPhone.focus();return}
+  /* ref захищає від дубліката заявки при повторній відправці */
+  if(!fRef)fRef='L'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+  const payload={action:'lead',ref:fRef,name:name,phone:'+380'+phoneRest(fPhone.value),service:fService,message:fMsg.value.trim()};
+  const btn=fForm.querySelector('button[type=submit]'),t0=btn.textContent;
+  fBusy=true;btn.disabled=true;btn.textContent=T('Надсилання…');
+  let res=null,timedOut=false;
+  try{res=await api(payload,30000)}
+  catch(x){
+    if(x&&x.name==='AbortError')timedOut=true;
+    else{
+      await new Promise(r=>setTimeout(r,1200));
+      try{res=await api(payload,30000)}catch(y){res=null;timedOut=!!(y&&y.name==='AbortError')}
+    }
+  }
+  fBusy=false;btn.disabled=false;btn.textContent=t0;
+  if(res&&res.ok){
+    fRef='';
+    $('#fbox').innerHTML='<div class="text-center py-16 space-y-4" role="status" aria-live="polite"><div class="serif text-2xl acc">'+T('Заявку отримано')+'</div><p class="text-sm mut">'+T('Керуючий адвокат зв’яжеться з вами найближчим часом.')+'</p></div>';
+  }else if(res&&res.error){
+    fErr.textContent=String(res.error);
+  }else{
+    fErr.textContent=timedOut?T('Сервер відповідає надто довго. Заявка могла дійти - зателефонуйте нам або повторіть спробу.'):T('Не вдалося надіслати заявку. Спробуйте ще раз або зателефонуйте нам.');
+  }
 });
 
 const bar=$('#bar i'),pc=$('#pct'),o={v:0};
