@@ -1,8 +1,30 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  * LEGAL WAY OS: єдиний бекенд (клопотання, договори, кабінети, ліди, завдання)
  */
-const TEMPLATE_DOC_ID = "1M5EYVGfTvMEiQY11fAhYtaIdwXyDlt4WsHQVNOhf-t8"; // Шаблон процесуальних документів
-const CONTRACT_TEMPLATE_DOC_ID = "1jqz8CbaarxF-mVGbFoEl429v1eFWL7lqPqHKVeme0JY"; // Актуальний шаблон адвокатського договору
+const TEMPLATE_DOC_ID = "1M5EYVGfTvMEiQY11fAhYtaIdwXyDlt4WsHQVNOhf-t8";
 const ADVOCATE_EMAIL = "advocat.lipko@gmail.com";
 const ADVOCATE_NAME = "Липко Олег Юрійович";
 const DEFAULT_ADVOCATE_PIN = "230101";
@@ -261,10 +283,7 @@ function formatHearingDate(raw, tz) {
 
 // ========================== ROUTER ==========================
 function doGet(e) {
-  return HtmlService
-    .createHtmlOutputFromFile("ClientForm")
-    .setTitle("LEGAL WAY — Реквізити для договору")
-    .addMetaTag("viewport", "width=device-width, initial-scale=1");
+  return textOut("Legal Way OS API Active");
 }
 function doPost(e) {
   try {
@@ -1670,35 +1689,18 @@ function sendTelegramDocument(botToken, chatId, fileBlob, caption) {
 // ========================== ДОГОВОРИ ТА КЛІЄНТИ ==========================
 function processContractForm(payload) {
   try {
-    if (!payload || !String(payload.name || "").trim()) {
-      throw new Error("Не вказано ПІБ або найменування клієнта.");
-    }
-
-    const data = Object.assign({}, payload);
-    data.name = String(data.name || "").trim().slice(0, 200);
-    data.email = String(data.email || "").trim().slice(0, 120);
-    data.phone = String(data.phone || "").trim().slice(0, 30);
-    data.taxId = String(data.taxId || data.rnokpp || data.edrpou || "").trim().slice(0, 20);
-    data.passport = String(data.passport || "").trim().slice(0, 300);
-    data.clientType = String(data.clientType || "person").toLowerCase();
-
-    const r = generateContractPdf(data);
+    if (!payload || !payload.name) throw new Error("Не вказано ПІБ або найменування клієнта.");
+    payload.name = String(payload.name).trim().slice(0, 200);
+    payload.email = String(payload.email || "").trim().slice(0, 120);
+    payload.phone = String(payload.phone || "").trim().slice(0, 30);
+    const r = generateContractPdf(payload);
     return {
-      status: "success",
-      ok: true,
-      contractNumber: r.contractNumber,
-      pdfBase64: r.pdfBase64,
-      fileName: r.pdfFileName,
-      clientLogin: r.normalizedPhone,
-      clientPassword: r.password
+      status: "success", ok: true,
+      contractNumber: r.contractNumber, pdfBase64: r.pdfBase64, fileName: r.pdfFileName,
+      clientLogin: r.normalizedPhone, clientPassword: r.password
     };
   } catch (err) {
-    console.error("processContractForm: " + (err.stack || err));
-    return {
-      status: "error",
-      ok: false,
-      message: err.message || err.toString()
-    };
+    return { status: "error", ok: false, message: err.message || err.toString() };
   }
 }
 
@@ -1708,14 +1710,12 @@ function registerClientCredentials(info) {
     if (!sheet) throw new Error("Не знайдено лист «" + SHEET_CLIENTS + "».");
     const passCol = ensureColumn(sheet, "password");
     const existing = findClientByPhone(phoneDigits(info.phone));
-
     if (existing) {
       if (existing.password) return { password: existing.password, created: false };
       const pw = randomPassword(8);
       sheet.getRange(existing.rowNum, passCol).setNumberFormat("@").setValue(pw);
       return { password: pw, created: true };
     }
-
     const lastCol = sheet.getLastColumn();
     const h = sheet.getRange(1, 1, 1, lastCol).getValues()[0].map(x => normStr(x));
     const row = new Array(lastCol).fill("");
@@ -1732,19 +1732,15 @@ function registerClientCredentials(info) {
 
     const pw = randomPassword(8);
     row[passCol - 1] = pw;
-    const newRow = sheet.getLastRow() + 1;
-    sheet.getRange(newRow, 1, 1, lastCol).setValues([row]);
-    sheet.getRange(newRow, passCol).setNumberFormat("@").setValue(pw);
+    const r = sheet.getLastRow() + 1;
+    sheet.getRange(r, 1, 1, lastCol).setValues([row]);
+    sheet.getRange(r, passCol).setNumberFormat("@").setValue(pw);
     return { password: pw, created: true };
   });
 }
 
 function generateContractPdf(clientData) {
-  if (!CONTRACT_TEMPLATE_DOC_ID || CONTRACT_TEMPLATE_DOC_ID === TEMPLATE_DOC_ID) {
-    throw new Error("Не налаштовано окремий шаблон адвокатського договору.");
-  }
-
-  const tz = Session.getScriptTimeZone() || "Europe/Kyiv";
+  const tz = Session.getScriptTimeZone() || "Europe/Kiev";
   const nextClId = getNextClientId();
   const currentYear = new Date().getFullYear().toString().slice(-2);
   const contractNumber = nextClId + "/" + currentYear;
@@ -1753,136 +1749,85 @@ function generateContractPdf(clientData) {
   const month = MONTHS_UK[now.getMonth()];
   const year = now.getFullYear().toString();
   const expiryDate = "31 грудня " + year;
-
-  const isCompany = clientData.clientType === "company";
-  const isFop = clientData.clientType === "fop";
-  const normalizedPhone = normalizePhone(clientData.phone);
   const formattedAddress = formatClientAddress(clientData);
+  const templateFile = DriveApp.getFileById(TEMPLATE_DOC_ID);
+  const isCompany = clientData.clientType === "company";
+  const normalizedPhone = normalizePhone(clientData.phone);
 
-  let clientDisplayName = "";
-  let clientPreamble = "";
-  let signatureName = "";
-
+  let clientDisplayName = "", boldPartOfPreamble = "", requisitesClient = "", signatureName = "";
   if (isCompany) {
-    const companyName = String(clientData.name || "").trim()
-      .replace(/^тов(?:ариство\s+з\s+обмеженою\s+відповідальністю)?\s*/i, "")
-      .replace(/^["«]|["»]$/g, "")
-      .trim();
-    const canonicalCompany = /^ТОВ\s*[«"]/i.test(clientData.name)
-      ? String(clientData.name).trim()
-      : "ТОВ «" + companyName + "»";
-
-    clientDisplayName = canonicalCompany;
-    const signerPosition = String(clientData.signerPosition || "Директора").trim();
-    const signerName = String(clientData.signerName || "").trim();
-    const basis = String(clientData.companyBasis || "Статуту").trim();
-    clientPreamble = canonicalCompany +
-      (signerName ? ", в особі " + signerPosition + " " + signerName : "") +
-      ", що діє на підставі " + basis;
-    signatureName = signerName || "Уповноважений представник";
+    boldPartOfPreamble = formatCanonicalCompanyName(clientData.name);
+    clientDisplayName = boldPartOfPreamble;
+    signatureName = formatSignerToDirectorStyle(clientData.signerName);
+    requisitesClient = boldPartOfPreamble;
   } else {
-    const cleanName = String(clientData.name || "")
-      .replace(/фізична\s+особа\s*(-підприємець)?/gi, "")
-      .replace(/\bфоп\b/gi, "")
-      .replace(/\s+/g, " ")
-      .trim();
-
+    let cleanName = (clientData.name || "").replace(/фізична\s+особа\s*(-підприємець)?/gi, "").replace(/фоп/gi, "").replace(/\s+/g, " ").trim();
     clientDisplayName = cleanName;
-    clientPreamble = cleanName;
-    signatureName = cleanName;
-    if (!cleanName) throw new Error("Не вдалося визначити ПІБ клієнта.");
-  }
-
-  if (!normalizedPhone || phoneDigits(normalizedPhone).length < 9) {
-    throw new Error("Перевірте номер телефону клієнта.");
+    requisitesClient = cleanName.toUpperCase();
+    signatureName = formatShortName(cleanName);
   }
 
   const draftsFolder = getOrCreateDraftsFolder();
-  const safeClientName = String(clientDisplayName).replace(/["'«»\\s]+/g, "_").slice(0, 80);
-  const baseFileName = "Проєкт_Договору_" + contractNumber.replace("/", "_") + "_" + safeClientName;
-  const templateFile = DriveApp.getFileById(CONTRACT_TEMPLATE_DOC_ID);
-  const newDocFile = templateFile.makeCopy(baseFileName, draftsFolder);
+  const fileName = "Проєкт_Договору_" + contractNumber.replace("/", "_") + "_" + clientDisplayName.replace(/["'«»\s]+/g, "_");
+  const newDocFile = templateFile.makeCopy(fileName, draftsFolder);
+  const newDoc = DocumentApp.openById(newDocFile.getId());
+  const body = newDoc.getBody();
+
+  fillTag(body, "{{НОМЕР_ДОГОВОРУ}}", contractNumber);
+  fillTag(body, "{{ДЕНЬ}}", day);
+  fillTag(body, "{{МІСЯЦЬ}}", month);
+  fillTag(body, "{{РІК}}", year);
+  fillTag(body, "{{СРОК_ДІЇ}}", expiryDate);
+  fillTag(body, "{{КЛІЄНТ_АДРЕСА}}", formattedAddress);
+  fillTag(body, "{{КЛІЄНТ_ТЕЛЕФОН}}", normalizedPhone);
+  fillTag(body, "{{КЛІЄНТ_EMAIL}}", clientData.email || "");
+  fillTag(body, "{{КЛІЄНТ_ПІБ_КОРОТКЕ}}", signatureName);
+  fillTag(body, "{{КЛІЄНТ_ПІБ}}", requisitesClient);
+  newDoc.saveAndClose();
+
+  const pdfBlob = newDocFile.getAs("application/pdf").setName(fileName + ".pdf");
+  const pdfFile = draftsFolder.createFile(pdfBlob);
+  const pdfFileName = safeFileName("Dogovir_" + surnameLatin(clientDisplayName)) + ".pdf";
+  pdfBlob.setName(pdfFileName);
+  const pdfBase64 = Utilities.base64Encode(pdfBlob.getBytes());
+
+  let password = "";
+  try {
+    const cred = registerClientCredentials({
+      clientId: nextClId, name: clientDisplayName, isCompany: isCompany,
+      phone: normalizedPhone, email: clientData.email || "", address: formattedAddress,
+      taxId: clientData.taxId || clientData.rnokpp || clientData.edrpou || "", docUrl: newDocFile.getUrl()
+    });
+    password = cred.password;
+  } catch (e) {
+    console.error("registerClientCredentials: " + e);
+  }
 
   try {
-    const newDoc = DocumentApp.openById(newDocFile.getId());
-    const body = newDoc.getBody();
-
-    fillTag(body, "{{НОМЕР_ДОГОВОРУ}}", contractNumber);
-    fillTag(body, "{{ДЕНЬ}}", day);
-    fillTag(body, "{{МІСЯЦЬ}}", month);
-    fillTag(body, "{{РІК}}", year);
-    fillTag(body, "{{СТРОК_ДІЇ}}", expiryDate);
-    // На випадок старого варіанта шаблону — обидва написання.
-    fillTag(body, "{{СРОК_ДІЇ}}", expiryDate);
-
-    fillTag(body, "{{КЛІЄНТ_ПІБ}}", clientPreamble);
-    fillTag(body, "{{КЛІЄНТ_АДРЕСА}}", formattedAddress);
-    fillTag(body, "{{КЛІЄНТ_РНОКПП}}", clientData.taxId || "—");
-    fillTag(body, "{{КЛІЄНТ_ПАСПОРТ}}", clientData.passport || (isCompany ? "не застосовується (юридична особа)" : "—"));
-    fillTag(body, "{{КЛІЄНТ_EMAIL}}", clientData.email || "—");
-    fillTag(body, "{{КЛІЄНТ_ТЕЛЕФОН}}", normalizedPhone);
-    fillTag(body, "{{КЛІЄНТ_ПІБ_КОРОТКЕ}}", signatureName);
-
-    newDoc.saveAndClose();
-
-    const pdfFileName = safeFileName("Dogovir_" + surnameLatin(clientDisplayName)) + ".pdf";
-    const pdfBlob = newDocFile.getAs(MimeType.PDF).setName(pdfFileName);
-    const pdfFile = draftsFolder.createFile(pdfBlob);
-    const pdfBase64 = Utilities.base64Encode(pdfBlob.getBytes());
-
-    let password = "";
-    try {
-      const cred = registerClientCredentials({
-        clientId: nextClId,
-        name: clientDisplayName,
-        isCompany: isCompany,
-        phone: normalizedPhone,
-        email: clientData.email || "",
-        address: formattedAddress,
-        taxId: clientData.taxId || "",
-        docUrl: newDocFile.getUrl()
-      });
-      password = cred.password || "";
-    } catch (e) {
-      console.error("registerClientCredentials: " + (e.stack || e));
-    }
-
     const props = PropertiesService.getScriptProperties();
-    const tgToken = props.getProperty("TG_TOKEN");
-    const chatId = props.getProperty("TG_CHAT_ID");
+    const tgToken = props.getProperty("TG_TOKEN"), chatId = props.getProperty("TG_CHAT_ID");
     if (tgToken && chatId) {
       const msg = "<b>ДОГОВІР СФОРМОВАНО: № " + escapeHtml(contractNumber) + "</b>\n\n" +
         "<b>Клієнт:</b> " + escapeHtml(clientDisplayName) + "\n" +
         "<b>Логін (телефон):</b> <code>" + escapeHtml(normalizedPhone) + "</code>\n" +
-        (password
-          ? "<b>Пароль:</b> <code>" + escapeHtml(password) + "</code>\n"
-          : "<b>Пароль:</b> не створено\n") +
+        (password ? "<b>Пароль:</b> <code>" + escapeHtml(password) + "</code>\n" : "<b>Пароль:</b> не створено\n") +
         "\n<i>Переслати клієнту разом із договором. Вхід у кабінет: телефон + цей пароль.</i>";
-
-      sendTelegram(tgToken, "sendMessage", {
-        chat_id: chatId,
-        text: msg,
-        parse_mode: "HTML"
-      });
+      sendTelegram(tgToken, "sendMessage", { chat_id: chatId, text: msg, parse_mode: "HTML" });
       sendTelegramDocument(tgToken, chatId, pdfBlob, "<b>Договір " + escapeHtml(contractNumber) + "</b>");
     }
+  } catch (e) {}
 
-    return {
-      contractNumber: contractNumber,
-      rawClientId: nextClId,
-      cleanName: clientDisplayName,
-      normalizedPhone: normalizedPhone,
-      password: password,
-      docUrl: newDocFile.getUrl(),
-      viewUrl: "https://drive.google.com/file/d/" + pdfFile.getId() + "/view",
-      pdfBase64: pdfBase64,
-      pdfFileName: pdfFileName
-    };
-  } catch (err) {
-    // Не залишаємо порожній/помилковий документ у папці чернеток.
-    try { newDocFile.setTrashed(true); } catch (cleanupError) {}
-    throw err;
-  }
+  return {
+    contractNumber: contractNumber,
+    rawClientId: nextClId,
+    cleanName: clientDisplayName,
+    normalizedPhone: normalizedPhone,
+    password: password,
+    docUrl: newDocFile.getUrl(),
+    viewUrl: "https://drive.google.com/file/d/" + pdfFile.getId() + "/view",
+    pdfBase64: pdfBase64,
+    pdfFileName: pdfFileName
+  };
 }
 
 function getOrCreateDraftsFolder() {
@@ -1909,23 +1854,10 @@ function getNextClientId() {
     return "CL-" + String(nextNum).padStart(3, "0");
   });
 }
-function formatCanonicalCompanyName(n) {
-  const value = String(n || "КЛІЄНТ").trim();
-  return /^тов/i.test(value) ? value : "ТОВ «" + value.toUpperCase() + "»";
-}
-function formatSignerToDirectorStyle(s) { return String(s || "Директор").trim(); }
-function formatClientAddress(d) {
-  d = d || {};
-  const parts = [];
-  if (d.zip) parts.push(String(d.zip).trim());
-  if (d.region) parts.push(String(d.region).trim() + " область");
-  if (d.city) parts.push((/^(м\.|с\.|смт)/i.test(String(d.city).trim()) ? "" : "м. ") + String(d.city).trim());
-  if (d.street) parts.push("вул. " + String(d.street).trim());
-  if (d.building) parts.push("буд. " + String(d.building).trim());
-  if (d.apartment) parts.push("кв./офіс " + String(d.apartment).trim());
-  return parts.length ? "Україна, " + parts.join(", ") : "Україна";
-}
-function formatShortName(n) { return String(n || "").trim(); }
+function formatCanonicalCompanyName(n) { return "ТОВ «" + (n || "КЛІЄНТ").toUpperCase() + "»"; }
+function formatSignerToDirectorStyle(s) { return s || "Директор"; }
+function formatClientAddress(d) { return d && d.city ? "м. " + d.city + ", вул. " + (d.street || "") : "Україна"; }
+function formatShortName(n) { return n; }
 
 // ========================== ЛІДИ ТА ЛЕНДІНГ ==========================
 function handleLanding(data, props) {
@@ -2010,3 +1942,7 @@ function handleTelegramCallback(cb, token) {
     });
   }
 }
+
+
+
+
