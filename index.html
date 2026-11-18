@@ -261,7 +261,10 @@ function formatHearingDate(raw, tz) {
 
 // ========================== ROUTER ==========================
 function doGet(e) {
-  return textOut("Legal Way OS API Active");
+  return HtmlService
+    .createHtmlOutputFromFile("ClientForm")
+    .setTitle("LEGAL WAY — Реквізити для договору")
+    .addMetaTag("viewport", "width=device-width, initial-scale=1");
 }
 function doPost(e) {
   try {
