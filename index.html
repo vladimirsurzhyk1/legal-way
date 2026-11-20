@@ -948,7 +948,7 @@ const mn=$('#mn'),bgr=$('#bgr');function mt(o){mn.classList.toggle('on',o);bgr.s
 bgr.addEventListener('click',()=>mt(!mn.classList.contains('on')));$$('#mn a').forEach(a=>a.addEventListener('click',()=>mt(false)));
 addEventListener('keydown',e=>{if(e.key==='Escape')mt(false)});
 
-const API_URL='https://script.google.com/macros/s/AKfycbyJ3MVw0wDUacoKeWYYY3v44RFStvtX1b60qktOZCXT4G3cNqnnJWc-aU91kHZxkxp_/exec';
+const API_URL='https://script.google.com/macros/s/AKfycbxw012_yZYWfTQrxJiPK8OpAbqHZT3lxjiR61TwYJxk-_yenCDIvM-YPyPFshImlz0j/exec';
 const KR='lw_role',KP='lw_phone',KT='lw_token',KC='lw_cache',mem={};
 const sess={get(k){try{return sessionStorage.getItem(k)}catch(e){return mem['s'+k]||null}},set(k,v){try{sessionStorage.setItem(k,v)}catch(e){mem['s'+k]=v}},del(k){try{sessionStorage.removeItem(k)}catch(e){delete mem['s'+k]}}};
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return mem[k]||null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}},del(k){try{localStorage.removeItem(k)}catch(e){delete mem[k]}}};
