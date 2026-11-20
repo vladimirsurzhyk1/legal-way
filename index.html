@@ -143,6 +143,10 @@ html[data-view=advocate] #view-public,html[data-view=client] #view-public{displa
 .public-header .btn-o{height:40px;min-height:40px;padding:0 13px!important;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}
 .public-header #lang-toggle{min-width:40px!important;width:40px;padding:0!important}
 .public-header .tg{height:28px;min-width:52px}
+.public-header .brand-txt{justify-content:center;min-width:0}
+@media (max-width:1535px){.public-header>.flex:last-child>.lbl{display:none!important}}
+@media (min-width:1280px) and (max-width:1439px){.public-header .nav{gap:10px!important;font-size:10px!important;letter-spacing:.12em!important}.public-header .btn-o{padding:0 11px!important}}
+@media (max-width:420px){.public-header{padding-left:14px!important;padding-right:14px!important}.public-header>.flex:last-child{gap:6px!important}.public-header .tg{min-width:44px}}
 @media (min-width:1024px) and (max-width:1279px){.public-header .nav{display:none!important}.public-header #bgr{display:grid!important}}
 @media (max-width:767px){.public-header{min-height:62px;gap:8px!important}.public-header>.flex:last-child{gap:7px!important}.public-header .lbl{display:none!important}.public-header #lg-open{width:40px;padding:0!important}.public-header #lg-open span{display:none!important}}
 .dh{flex-wrap:nowrap;min-height:64px}
@@ -192,10 +196,9 @@ button.chip{background:transparent;font-family:inherit;cursor:pointer}
 .tk-meta b{color:var(--fg);font-weight:600}
 
 /* header: full company name */
-.public-header>a.brand{flex:0 1 auto;min-width:0;white-space:normal}
+.public-header>a.brand{flex:0 0 auto;min-width:0;white-space:nowrap}
 .brand{display:flex;align-items:center;gap:12px;min-width:0}
 .brand-txt{flex-direction:column;justify-content:center;gap:3px;min-width:0}
-.brand-full{display:block;max-width:clamp(210px,26vw,320px);min-height:2.5em;font-size:9px;line-height:1.25;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:var(--mut);white-space:normal;text-wrap:balance}
 @media (min-width:1280px) and (max-width:1535px){.public-header .nav{gap:12px!important;font-size:10px!important;letter-spacing:.14em!important}}
 
 /* tasks: card grid + status select */
@@ -226,7 +229,7 @@ button.chip{background:transparent;font-family:inherit;cursor:pointer}
 <header id="public-header" class="public-header fixed top-0 left-0 w-full z-50 wrap flex justify-between items-center gap-3 border-b" style="background:var(--hd);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-color:var(--line);padding-top:calc(14px + env(safe-area-inset-top,0px));padding-bottom:14px;flex-wrap:wrap;">
   <a href="#hero" class="brand">
     <img src="logo-clean.png" alt="Legal Way" class="h-8 w-auto lg-l"><img src="logo-white.png" alt="Legal Way" class="h-8 w-auto lg-d">
-    <span class="brand-txt hidden sm:flex"><span class="serif font-bold tracking-[.3em] uppercase text-sm whitespace-nowrap">Legal Way</span><span class="brand-full" data-i18n="hero_addr">ТОВ «МІЖНАРОДНА ЮРИДИЧНА КОМПАНІЯ «ЛІГАЛ ВЕЙ»</span></span>
+    <span class="brand-txt hidden sm:flex"><span class="serif font-bold tracking-[.3em] uppercase text-sm whitespace-nowrap">Legal Way</span></span>
   </a>
   <nav class="nav hidden lg:flex gap-9 text-[11px] tracking-[.2em] uppercase font-medium">
     <a href="#practices" data-i18n="nav_practices">Практики</a><a href="#process" data-i18n="nav_process">Процес</a><a href="#platform" data-i18n="nav_platform">Платформа</a><a href="#lawyer" data-i18n="nav_lawyer">Керівництво</a><a href="#faq">FAQ</a><a href="#contact" data-i18n="nav_contact">Контакти</a>
@@ -480,6 +483,7 @@ button.chip{background:transparent;font-family:inherit;cursor:pointer}
         <div class="flex flex-wrap justify-between gap-3 items-start"><div><div class="text-xs faint font-mono mb-2" id="cl-num">-</div><h2 class="serif text-2xl" id="cl-title">-</h2></div><span class="chip ok" id="cl-status">У роботі</span></div>
         <div class="space-y-2"><div class="flex justify-between text-xs mut"><span>Прогрес справи</span><b id="cl-pct" style="color:var(--fg)">0%</b></div><div class="pb"><i id="cl-bar"></i></div></div>
         <ol class="tl" id="cl-tl"></ol>
+        <div id="cl-ev" class="space-y-3" style="display:none;border-top:1px solid var(--line);padding-top:20px"></div>
       </div>
       <div class="space-y-6">
         <div class="glass hv p-6 rv space-y-2"><div class="lbl faint" style="font-size:10px">Найближча подія</div><div class="serif text-2xl" id="cl-next-d">-</div><div class="text-sm mut" id="cl-next-l">Найближчих подій немає</div></div>
@@ -515,7 +519,7 @@ button.chip{background:transparent;font-family:inherit;cursor:pointer}
     <label class="lbl block mut mt-4 mb-2" style="font-size:10px" for="lm-in" id="lm-lbl">Номер телефону</label>
     <input id="lm-in" type="tel" inputmode="tel" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="+38-0XX-XXX-XX-XX" value="+38-0">
     <div id="lm-pw-wrap" style="display:block">
-      <label class="lbl block mut mt-4 mb-2" style="font-size:10px" for="lm-pw">Пароль</label>
+      <label class="lbl block mut mt-4 mb-2" style="font-size:10px" for="lm-pw" id="lm-pw-lbl">Пароль</label>
       <div style="position:relative">
         <input id="lm-pw" type="password" autocomplete="current-password" autocapitalize="off" spellcheck="false" placeholder="Пароль" style="padding-right:96px!important">
         <button type="button" id="lm-eye" class="lbl hv" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:0;color:var(--mut);font-size:10px;cursor:pointer">Показати</button>
@@ -776,16 +780,18 @@ const EN={
 "Захищений вхід": "Secure sign-in",
 "Я клієнт": "I am a client",
 "Я адвокат": "I am an attorney",
-"PIN-код": "PIN code",
+"Логін": "Login",
 "Увійти →": "Sign in →",
 "Введіть повний номер телефону.": "Enter the full phone number.",
 "Клієнт - введіть номер телефону та постійний пароль, який ви отримали від адвоката.": "Client: enter your phone number and the permanent password you received from the attorney.",
-"Адвокат - введіть PIN-код.": "Attorney: enter your PIN code.",
+"Адвокат - введіть логін та пароль.": "Attorney: enter your login and password.",
 "Пароль": "Password",
+"Невірний логін або пароль.": "Incorrect login or password.",
+"Хронологія та завдання": "Timeline and tasks",
 "Показати": "Show",
 "Сховати": "Hide",
 "Введіть пароль.": "Enter your password.",
-"Введіть PIN-код.": "Enter your PIN code.",
+"Введіть логін.": "Enter your login.",
 "Надсилання…": "Sending…",
 "Не вдалося надіслати заявку. Спробуйте ще раз або зателефонуйте нам.": "Could not send your request. Please try again or call us.",
 "Ваш запит успішно надіслано. Очікуйте відповідь у месенджер": "Your request has been sent successfully. Please wait for a reply in your messenger.",
@@ -1328,40 +1334,54 @@ tkForm.addEventListener('submit',async e=>{
   finally{tkBusy=false;tkSub.disabled=false;tkSub.textContent=t0}
 });
 
-/* ---- трекер справи (етапи з колонки «Етап справи») ---- */
-const STAGES=['Первинний аналіз','Договір про надання правничої допомоги','Підготовка позовної заяви','Судовий розгляд','Рішення та виконання'];
+/* ---- трекер справи: етапи приходять з бекенду (c.stages: 6 кроків, судові/позасудові), STAGES — запасний варіант ---- */
+const STAGES=['Первинний аналіз та запити','Підготовка позову / документа','Позов / звернення надіслано','Відкрито провадження / в роботі','Розгляд та засідання','Рішення та виконання'];
 function stageIdxFromText(raw){
   const s=String(raw==null?'':raw).trim().toLowerCase();
   if(!s)return -1;
-  if(/^[1-5]$/.test(s))return Number(s)-1;
-  if(s.indexOf('виконан')!==-1)return 4;
-  if(s.indexOf('суд')!==-1)return 3;
-  if(s.indexOf('позов')!==-1)return 2;
-  if(s.indexOf('договір')!==-1||s.indexOf('договор')!==-1)return 1;
-  if(s.indexOf('аналіз')!==-1)return 0;
+  if(/^[1-6]$/.test(s))return [0,1,2,4,5,5][Number(s)-1];
+  if(/виконан|рішенн|ухвален|закрит|завершен|результат|вирок/.test(s))return 5;
+  if(/провадж|в\s+роботі|у\s+роботі|опрацюван/.test(s))return 3;
+  if(/засідан|розгляд|слухан|дебат|апеляц|відповід|переговор/.test(s))return 4;
+  if(/підготов|проєкт|проект|складан|договір|договор/.test(s))return 1;
+  if(/надіслан|направлен|відправлен|подан|звернення|претензі|позов/.test(s))return 2;
+  if(/аналіз|запит|збір|первин|консульт/.test(s))return 0;
   return -1;
 }
+function legacyStages(c){
+  const raw=String(c.stageText||'').trim(),ft=stageIdxFromText(raw);
+  const CUR=Math.min(Math.max(ft>=0?ft:(c.stageIdx|0),0),STAGES.length-1);
+  const showRaw=raw&&!/^[1-6]$/.test(raw);
+  return STAGES.map((t,i)=>{let sub;
+    if(i<CUR)sub='Завершено';
+    else if(i===CUR){sub=showRaw?raw:(c.active?'Поточний етап':'Завершено');
+      if(i===4&&c.hearing&&c.hearing>=kyivYmd())sub+=' · засідання '+fmtYmd(c.hearing)+(c.time?', '+c.time:'')}
+    else sub='Очікується';
+    return {t:t,s:i<CUR?'done':i===CUR?'cur':'next',sub:sub,docs:[]}});
+}
+const EV_LBL={hearing:'Засідання',doc:'Документ',task:'Завдання'};
 
 function renderClient(){$('#cl-phone').textContent=showPhone(store.get(KP));
 const L=(DATA&&DATA.cases)||[];if(curCase>=L.length)curCase=0;const c=L[curCase];
 const pick=$('#cl-pick');pick.style.display=L.length>1?'flex':'none';
 pick.innerHTML=L.length>1?L.map((x,i)=>`<button type="button" class="fc${i===curCase?' on':''}" data-ci="${i}">${esc(dash(x.num))}</button>`).join(''):'';
-if(!c){$('#cl-num').textContent='-';$('#cl-title').textContent='Справ не знайдено';$('#cl-tl').innerHTML='';$('#cl-docs').innerHTML='';return}
-const rawStage=String(c.stageText||'').trim(),fromText=stageIdxFromText(rawStage);
-const CUR=Math.min(Math.max(fromText>=0?fromText:(c.stageIdx|0),0),STAGES.length-1);
-const showRaw=rawStage&&!/^[1-5]$/.test(rawStage);
-$('#cl-num').textContent=dash(c.num);$('#cl-title').textContent=(c.subject&&String(c.subject).trim())||'Суть справи уточнюється';
+const evBox=$('#cl-ev');
+if(!c){$('#cl-num').textContent='-';$('#cl-title').textContent='Справ не знайдено';$('#cl-tl').innerHTML='';$('#cl-docs').innerHTML='';if(evBox){evBox.style.display='none';evBox.innerHTML=''}return}
+const ST=(Array.isArray(c.stages)&&c.stages.length)?c.stages:legacyStages(c);
+let CUR=ST.findIndex(s=>s.s==='cur'||s.s==='c');if(CUR<0)CUR=ST.reduce((a,s,i)=>(s.s==='done'||s.s==='d')?i:a,-1)+ (c.active?1:0);
+CUR=Math.min(Math.max(CUR,0),ST.length-1);
+$('#cl-num').textContent=dash(c.num)+(c.kind==='other'?' · позасудова справа':'');$('#cl-title').textContent=(c.subject&&String(c.subject).trim())||'Суть справи уточнюється';
 const st=$('#cl-status');st.textContent=c.status||'У роботі';st.className='chip '+(c.active?'ok':'mut');
-$('#cl-tl').innerHTML=STAGES.map((s,i)=>{
-  let sub;
-  if(i<CUR)sub='Завершено';
-  else if(i===CUR){
-    sub=showRaw?rawStage:(c.active?'Поточний етап':'Завершено');
-    if(i===3&&c.hearing&&c.hearing>=kyivYmd())sub+=' · засідання '+fmtYmd(c.hearing)+(c.time?', '+c.time:'');
-  }else sub='Очікується';
-  return `<li class="${i<CUR?'d':i===CUR?'c':''}"><i>${i<CUR?'✓':i+1}</i><div><span>${esc(s)}</span><div class="text-[11px] faint">${esc(sub)}</div></div></li>`;
+$('#cl-tl').innerHTML=ST.map((s,i)=>{
+  const cls=(s.s==='done'||s.s==='d')?'d':(s.s==='cur'||s.s==='c')?'c':'';
+  const dl=(s.docs&&s.docs.length)?'<div class="flex flex-wrap gap-2 mt-2">'+s.docs.map(d=>d.url?`<a href="${esc(d.url)}" target="_blank" rel="noopener noreferrer" class="chip acc" style="text-decoration:none">${esc(d.name)}</a>`:`<span class="chip mut">${esc(d.name)}</span>`).join('')+'</div>':'';
+  return `<li class="${cls}"><i>${cls==='d'?'✓':i+1}</i><div><span>${esc(s.t)}</span><div class="text-[11px] faint">${esc(s.sub)}</div>${dl}</div></li>`;
 }).join('');
-const pct=(!c.active&&CUR===STAGES.length-1)?100:Math.round((CUR+.5)/STAGES.length*100);$('#cl-pct').textContent=pct+'%';$('#cl-bar').style.width=pct+'%';
+const allDone=!c.active&&CUR===ST.length-1;
+const pct=allDone?100:Math.round((CUR+.5)/ST.length*100);$('#cl-pct').textContent=pct+'%';$('#cl-bar').style.width=pct+'%';
+if(evBox){const E=Array.isArray(c.events)?c.events:[];
+  evBox.style.display=E.length?'':'none';
+  evBox.innerHTML=E.length?'<div class="lbl faint" style="font-size:10px">'+T('Хронологія та завдання')+'</div>'+E.map(e=>`<div class="flex justify-between items-start gap-3 text-sm"><div style="min-width:0;${e.done?'opacity:.55;text-decoration:line-through':''}">${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">${esc(e.title)}</a>`:esc(e.title)}<div class="text-[11px] faint">${esc(EV_LBL[e.kind]||'Подія')}${e.time?' · '+esc(e.time):''}</div></div><span class="text-xs mut" style="white-space:nowrap">${e.date?esc(fmtYmd(e.date)):'-'}</span></div>`).join(''):'';}
 const ev=nextEv(c);$('#cl-next-d').textContent=ev?fmtYmd(ev.date)+(ev.time?', '+ev.time:''):'-';
 $('#cl-next-l').textContent=ev?ev.label+(c.court?' · '+c.court:''):'Найближчих подій немає';
 const D=c.docs||[];$('#cl-docs').innerHTML=D.length?D.map(d=>{
@@ -1419,10 +1439,10 @@ function loginUI(){
   le.textContent='';lt.textContent=T('Вхід в кабінет');
   pw.value='';pw.type='password';eye.textContent=T('Показати');
   if(loginMode==='advocate'){
-    ld.textContent=T('Адвокат - введіть PIN-код.');
-    lbl.textContent=T('PIN-код');
-    inp.type='password';inp.inputMode='numeric';inp.autocomplete='off';inp.placeholder='';inp.value='';
-    pwWrap.style.display='none';
+    ld.textContent=T('Адвокат - введіть логін та пароль.');
+    lbl.textContent=T('Логін');
+    inp.type='text';inp.inputMode='text';inp.autocomplete='username';inp.placeholder=T('Логін');inp.value='';
+    pwWrap.style.display='block';
   }else{
     ld.textContent=T('Клієнт - введіть номер телефону та постійний пароль, який ви отримали від адвоката.');
     lbl.textContent=T('Номер телефону');
@@ -1458,12 +1478,13 @@ lf.addEventListener('submit',async e=>{e.preventDefault();if(busy)return;const n
 if(now<lockUntil){err('Забагато спроб. Спробуйте через '+Math.ceil((lockUntil-now)/1000)+' с.');return}
 const btn=lsub,t0=btn.textContent;
 if(loginMode==='advocate'){
-  const pin=inp.value.trim();
-  if(!pin){err(T('Введіть PIN-код.'));return}
+  const login=inp.value.trim(),apass=pw.value;
+  if(!login){err(T('Введіть логін.'));inp.focus();return}
+  if(!apass){err(T('Введіть пароль.'));pw.focus();return}
   busy=true;btn.disabled=true;btn.textContent='Перевірка…';
   try{
-    const r=await api({action:'cabinet_login',credential:pin},20000);
-    if(r&&r.ok){fails=0;enter(r,'')}else{failed();err((r&&r.error)||'Невірний PIN-код.')}
+    const r=await api({action:'cabinet_login',login:login,password:apass},20000);
+    if(r&&r.ok){fails=0;enter(r,'')}else{failed();err((r&&r.error)||T('Невірний логін або пароль.'))}
   }catch(x){err('Помилка зв’язку із сервером.')}
   finally{busy=false;btn.disabled=false;btn.textContent=t0}
 }else{
