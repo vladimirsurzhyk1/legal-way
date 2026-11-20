@@ -12,13 +12,18 @@
 <link rel="icon" type="image/png" href="logo-clean.png">
 <script>try{var s=localStorage.getItem('lw-theme');if(s)document.documentElement.dataset.theme=s}catch(e){}</script>
 <script>try{var r=localStorage.getItem('lw_role');if(r==='advocate'||r==='client')document.documentElement.dataset.view=r}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Cinzel:wght@500;700&display=swap">
 <script src="https://cdn.tailwindcss.com/3.4.17"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Cinzel:wght@500;700&display=swap');
 :root{--bg:#f4f2ee;--fg:#111114;--mut:rgba(17,17,20,.74);--faint:rgba(17,17,20,.62);--amb:#8a5a12;--sky:#0369a1;--line:rgba(17,17,20,.12);--c1:rgba(255,255,255,.78);--c2:rgba(255,255,255,.38);--acc:#0f766e;--inv:#111114;--invt:#fff;--glow:rgba(15,118,110,.14);--vig:rgba(0,0,0,.08);--gr:.035;--hd:rgba(244,242,238,.72);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html[data-theme=dark]{--bg:#050508;--fg:#f6f6f4;--mut:rgba(246,246,244,.74);--faint:rgba(246,246,244,.54);--amb:#fbbf24;--sky:#38bdf8;--line:rgba(255,255,255,.1);--c1:rgba(255,255,255,.07);--c2:rgba(255,255,255,.015);--acc:#8be9c8;--inv:#fff;--invt:#000;--glow:rgba(139,233,200,.16);--vig:rgba(0,0,0,.6);--gr:.05;--hd:rgba(0,0,0,.4);color-scheme:dark}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
@@ -228,7 +233,7 @@ button.chip{background:transparent;font-family:inherit;cursor:pointer}
 <div id="view-public">
 <header id="public-header" class="public-header fixed top-0 left-0 w-full z-50 wrap flex justify-between items-center gap-3 border-b" style="background:var(--hd);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-color:var(--line);padding-top:calc(14px + env(safe-area-inset-top,0px));padding-bottom:14px;flex-wrap:wrap;">
   <a href="#hero" class="brand">
-    <img src="logo-clean.png" alt="Legal Way" class="h-8 w-auto lg-l"><img src="logo-white.png" alt="Legal Way" class="h-8 w-auto lg-d">
+    <img width="500" height="600" decoding="async" src="logo-clean.png" alt="Legal Way" class="h-8 w-auto lg-l"><img width="500" height="600" decoding="async" src="logo-white.png" alt="Legal Way" class="h-8 w-auto lg-d">
     <span class="brand-txt hidden sm:flex"><span class="serif font-bold tracking-[.3em] uppercase text-sm whitespace-nowrap">Legal Way</span></span>
   </a>
   <nav class="nav hidden lg:flex gap-9 text-[11px] tracking-[.2em] uppercase font-medium">
@@ -401,7 +406,7 @@ button.chip{background:transparent;font-family:inherit;cursor:pointer}
 </main>
 
 <footer class="py-14 px-6 text-center text-xs faint border-t" style="border-color:var(--line);background:var(--hd);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)">
-  <img src="logo-clean.png" alt="Legal Way" class="h-10 w-auto mx-auto mb-3 opacity-70 lg-l"><img src="logo-white.png" alt="Legal Way" class="h-10 w-auto mx-auto mb-3 opacity-70 lg-d">
+  <img width="500" height="600" decoding="async" loading="lazy" src="logo-clean.png" alt="Legal Way" class="h-10 w-auto mx-auto mb-3 opacity-70 lg-l"><img width="500" height="600" decoding="async" loading="lazy" src="logo-white.png" alt="Legal Way" class="h-10 w-auto mx-auto mb-3 opacity-70 lg-d">
   © 2026 ТОВ «МІЖНАРОДНА ЮРИДИЧНА КОМПАНІЯ «ЛІГАЛ ВЕЙ». Код ЄДРПОУ 39075219. Всі права захищено.
 </footer>
 </div>
@@ -409,7 +414,7 @@ button.chip{background:transparent;font-family:inherit;cursor:pointer}
 <div id="view-advocate" aria-label="Кабінет адвоката">
   <header class="dh wrap">
     <div class="flex items-center gap-3">
-      <img src="logo-clean.png" alt="Legal Way" class="h-8 w-auto lg-l"><img src="logo-white.png" alt="Legal Way" class="h-8 w-auto lg-d">
+      <img width="500" height="600" decoding="async" src="logo-clean.png" alt="Legal Way" class="h-8 w-auto lg-l"><img width="500" height="600" decoding="async" src="logo-white.png" alt="Legal Way" class="h-8 w-auto lg-d">
       <div class="leading-tight"><div class="serif font-bold tracking-[.25em] uppercase text-sm">Legal Way</div><div class="lbl faint" style="font-size:9px">Кабінет адвоката</div></div>
     </div>
     <div class="flex items-center gap-3 flex-wrap">
@@ -470,7 +475,7 @@ button.chip{background:transparent;font-family:inherit;cursor:pointer}
 <div id="view-client" aria-label="Кабінет довірителя">
   <header class="dh wrap">
     <div class="flex items-center gap-3">
-      <img src="logo-clean.png" alt="Legal Way" class="h-8 w-auto lg-l"><img src="logo-white.png" alt="Legal Way" class="h-8 w-auto lg-d">
+      <img width="500" height="600" decoding="async" src="logo-clean.png" alt="Legal Way" class="h-8 w-auto lg-l"><img width="500" height="600" decoding="async" src="logo-white.png" alt="Legal Way" class="h-8 w-auto lg-d">
       <div class="leading-tight"><div class="serif font-bold tracking-[.25em] uppercase text-sm">Legal Way</div><div class="lbl faint" style="font-size:9px">Кабінет довірителя</div></div>
     </div>
     <div class="flex items-center gap-3 flex-wrap"><button class="tg hv" aria-label="Змінити тему"><i></i></button><button class="btn-o hv" type="button" data-refresh>Оновити</button><button class="btn-o hv" type="button" data-logout>Вийти з кабінету</button></div>
